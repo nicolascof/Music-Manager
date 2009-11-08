@@ -19,6 +19,8 @@ namespace Music_Manager
         private static extern int GetMenuItemCount(IntPtr hWnd);
 
         Sql oSql;
+        Grupo[] oGrupo;
+        int cantidadGrupos;
 
         public frm_Principal ()
         {
@@ -29,6 +31,8 @@ namespace Music_Manager
             RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
 
             oSql = new Sql();
+            oGrupo = new Grupo[50];
+            cantidadGrupos = 0;
         }
 
         private void tsbAcercaDe_Click(object sender, EventArgs e)
@@ -73,36 +77,51 @@ namespace Music_Manager
                             TreeNode rn_Conjuntos = tv_Grupo.Nodes.Add("Conjuntos");
                             TreeNode rn_Solistas = tv_Grupo.Nodes.Add("Solistas");
 
-                            int iG = 0;
-                            int iA = 0;
+                            int cantidadAlbums;
 
                             while (oSql.DataReader1.Read())
                             {
-                                Grupo[] oGrupo = new Grupo[50];
-
-                                oGrupo[iG] = new Grupo();
-                                oGrupo[iG].IdGrupo = (int)oSql.DataReader1.GetValue(0);
-                                oGrupo[iG].Descripcion = (string)oSql.DataReader1.GetValue(1);
+                                oGrupo[cantidadGrupos] = new Grupo((int)oSql.DataReader1["cant_albums"]);
+                                oGrupo[cantidadGrupos].IdGrupo = (int)oSql.DataReader1["id_grupo"];
+                                oGrupo[cantidadGrupos].Descripcion = (string)oSql.DataReader1["descripcion"];
+                                oGrupo[cantidadGrupos].IdCompania = (int)oSql.DataReader1["id_compania"];
+                                oGrupo[cantidadGrupos].CantidadIntegrantes = (byte)oSql.DataReader1["cant_integrantes"];
+                                oGrupo[cantidadGrupos].SolistaConjunto = (bool)oSql.DataReader1["solista_conjunto"];
                                 
-                                oSql.sp_SeleccionAlbumPorGrupo(oGrupo[iG].Descripcion);
+                                if (oGrupo[cantidadGrupos].SolistaConjunto == true)
+                                    rn_Solistas.Nodes.Add("" + oGrupo[cantidadGrupos].IdGrupo + "", oGrupo[cantidadGrupos].Descripcion);
+                                else
+                                    rn_Conjuntos.Nodes.Add("" + oGrupo[cantidadGrupos].IdGrupo + "", oGrupo[cantidadGrupos].Descripcion);
+                                    
+                                cantidadAlbums = 0;
 
-                                rn_Conjuntos.Nodes.Add(oGrupo[iG].Descripcion);
+                                oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].Descripcion);
 
-                                iA = 0;
                                 using (oSql.DataReader2)
                                 {
                                     while (oSql.DataReader2.Read())
                                     {
-                                        oGrupo[iG].OAlbum[iA] = new Album();
-                                        oGrupo[iG].OAlbum[iA].IdAlbum = (int)oSql.DataReader2.GetValue(0);
-                                        ++iA;
+                                        //id_album    id_genero   id_disqueria id_compania id_grupo    varios_artistas titulo
+                                        //costo                                   fecha_terminado         fecha_lanzamiento       
+                                        //cant_temas  duracion_album observaciones                                                                    id_grupo    descripcion                    id_compania cant_integrantes solista_conjunto
+
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums] = new Album();
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdAlbum = (int)oSql.DataReader2["id_album"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdGenero = (int)oSql.DataReader2["id_genero"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdDisqueria = (int)oSql.DataReader2["id_disqueria"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdCompania = (int)oSql.DataReader2["id_compania"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdGrupo = (int)oSql.DataReader2["id_grupo"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Titulo = (string)oSql.DataReader2["titulo"];
+                                        ++cantidadAlbums;
                                     }
                                 }
 
-                                //rn_Conjuntos.Nodes.Add(oGrupo[iG].Descripcion);
+                                oSql.DataReader2.Close();
 
-                                ++iG;
+                                ++cantidadGrupos;
                             }
+
+                            oSql.DataReader1.Close();
                             /*
                             while (oSql.DataReader.Read())
                             {
@@ -129,23 +148,49 @@ namespace Music_Manager
         }
 
         private void tv_Grupo_AfterSelect (object sender, TreeViewEventArgs e)
-        {/*
-            oSql.sp_SeleccionAlbumPorGrupo(tv_Grupo.SelectedNode.Text);
+        {
+            int dato;
 
-            while (oSql.DataReader.Read())
+            if (tv_Grupo.SelectedNode.Name != "")
             {
-                cbx_Titulo.Items.Add(Convert.ToString(oSql.DataReader1(0)));
-            }
+                MessageBox.Show(tv_Grupo.SelectedNode.Name);
 
-            oSql.DataReader.Close();*/
+                dato = BusquedaBinaria(oGrupo, int.Parse(tv_Grupo.SelectedNode.Name));
+
+                for (int i = 0; i < oGrupo[dato].OAlbum.Length - 1; ++i)
+                {
+                    cbx_Titulo.Items.Add(oGrupo[dato].OAlbum[i].Titulo);
+                }
+            }
         }
 
-        private void cbx_Titulo_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbx_Titulo_SelectedIndexChanged (object sender, EventArgs e)
         {/*
             while (oSql.DataReader.Read())
             {
 
             }*/
+        }
+
+        private int BusquedaBinaria (Grupo[] oGrupo, int Dato)
+        {
+            int bajo = 0;
+            int alto = cantidadGrupos - 1;
+            int medio;
+
+            while (bajo <= alto)
+            {
+                medio = (bajo + alto) / 2;
+
+                if (Dato == (oGrupo[medio] == null ? 0 : oGrupo[medio].IdGrupo))
+                    return medio;
+                else if (Dato < (oGrupo[medio] == null ? 0 : oGrupo[medio].IdGrupo))
+                    alto = medio - 1;
+                else
+                    bajo = medio + 1;
+            }
+
+            return 0;
         }
     }
 }

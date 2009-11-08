@@ -11,12 +11,13 @@ namespace Music_Manager
         private int idDisqueria;
         private int idCompania;
         private int idgrupo;
-        private bool varios_Artitas;
+        private bool variosArtitas;
+        private string titulo;
         private decimal costo;
-        private string fecha_Terminado;
-        private string fecha_Lanzamiento;
-        private int cantidad_Temas;
-        private int duracion_Album;
+        private string fechaTerminado;
+        private string fechaLanzamiento;
+        private int cantidadTemas;
+        private int duracionAlbum;
         private string obsevaciones;
 
         public int IdAlbum
@@ -49,10 +50,16 @@ namespace Music_Manager
             get { return idgrupo; }
         }
 
-        public bool Varios_Artitas
+        public bool VariosArtitas
         {
-            set { varios_Artitas = value; }
-            get { return varios_Artitas; }
+            set { variosArtitas = value; }
+            get { return variosArtitas; }
+        }
+
+        public string Titulo
+        {
+            set { titulo = value; }
+            get { return titulo; }
         }
 
         public decimal Costo
@@ -61,28 +68,28 @@ namespace Music_Manager
             get { return costo; }
         }
 
-        public string Fecha_Terminado
+        public string FechaTerminado
         {
-            set { fecha_Terminado = value; }
-            get { return fecha_Terminado; }
+            set { fechaTerminado = value; }
+            get { return fechaTerminado; }
         }
 
-        public string Fecha_Lanzamiento
+        public string FechaLanzamiento
         {
-            set { fecha_Lanzamiento = value; }
-            get { return fecha_Lanzamiento; }
+            set { fechaLanzamiento = value; }
+            get { return fechaLanzamiento; }
         }
 
-        public int Cantidad_Temas
+        public int CantidadTemas
         {
-            set { cantidad_Temas = value; }
-            get { return cantidad_Temas; }
+            set { cantidadTemas = value; }
+            get { return cantidadTemas; }
         }
 
-        public int Duracion_Album
+        public int DuracionAlbum
         {
-            set { duracion_Album = value; }
-            get { return duracion_Album; }
+            set { duracionAlbum = value; }
+            get { return duracionAlbum; }
         }
 
         public string Obsevaciones
@@ -98,15 +105,17 @@ namespace Music_Manager
             this.IdDisqueria = 0;
             this.IdCompania = 0;
             this.IdGrupo = 0;
-            this.Varios_Artitas = false;
+            this.VariosArtitas = false;
+            this.Titulo = null;
             this.Costo = 0;
-            this.Fecha_Terminado = null;
-            this.fecha_Lanzamiento = null;
-            this.Cantidad_Temas = 0;
-            this.Duracion_Album = 0;
+            this.FechaTerminado = null;
+            this.fechaLanzamiento = null;
+            this.CantidadTemas = 0;
+            this.DuracionAlbum = 0;
             this.Obsevaciones = null;
         }
 
+        /*
         public Album(int IdAlbum, int IdGenero, int IdDisqueria, int IdCompania, int IdGrupo, bool VariosArtistas, decimal Costo, string FechaTerminado, string FechaLanzamiento, int CantidadTemas, int DuracionAlbum, string Obsevaciones)
         {
             this.IdAlbum = IdAlbum;
@@ -114,13 +123,14 @@ namespace Music_Manager
             this.IdDisqueria = IdDisqueria;
             this.IdCompania = IdDisqueria;
             this.IdGrupo = IdGrupo;
-            this.Varios_Artitas = VariosArtistas;
+            this.VariosArtitas = VariosArtistas;
             this.Costo = Costo;
-            this.Fecha_Terminado = FechaTerminado;
-            this.fecha_Lanzamiento = FechaLanzamiento;
-            this.Cantidad_Temas = CantidadTemas;
-            this.Duracion_Album = DuracionAlbum;
+            this.FechaTerminado = FechaTerminado;
+            this.fechaLanzamiento = FechaLanzamiento;
+            this.CantidadTemas = CantidadTemas;
+            this.DuracionAlbum = DuracionAlbum;
             this.Obsevaciones = Obsevaciones;
         }
+        */
     }
 }

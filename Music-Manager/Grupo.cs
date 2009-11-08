@@ -9,7 +9,7 @@ namespace Music_Manager
         private int idGrupo;
         private string descripcion;
         private int idCompania;
-        private int cantidadIntegrantes;
+        private byte cantidadIntegrantes;
         private bool solistaConjunto;
         private Album[] oAlbum;
 
@@ -31,7 +31,7 @@ namespace Music_Manager
             get { return idCompania; }
         }
 
-        public int CantidadIntegrantes
+        public byte CantidadIntegrantes
         {
             set { cantidadIntegrantes = value; }
             get { return cantidadIntegrantes; }
@@ -49,17 +49,17 @@ namespace Music_Manager
             get { return oAlbum; }
         }
 
-        public Grupo()
+        public Grupo(int CantidadAlbums)
         {
             this.IdGrupo = 0;
             this.Descripcion = null;
             this.IdCompania = 0;
             this.CantidadIntegrantes = 0;
             this.solistaConjunto = false;
-            OAlbum = new Album[10];
+            OAlbum = new Album[CantidadAlbums];
         }
-
-        public Grupo(int IdGrupos, string Descripcion, int IdCompania, int CantidadIntegrantes, bool SolistaConjunto)
+        /*
+        public Grupo(int IdGrupos, string Descripcion, int IdCompania, Int16 CantidadIntegrantes, bool SolistaConjunto)
         {
             this.IdGrupo = IdGrupos;
             this.Descripcion = Descripcion;
@@ -68,5 +68,6 @@ namespace Music_Manager
             this.SolistaConjunto = SolistaConjunto;
             oAlbum = new Album[10];
         }
+        */
     }
 }
