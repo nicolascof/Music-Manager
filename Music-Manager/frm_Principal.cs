@@ -73,6 +73,37 @@ namespace Music_Manager
                             TreeNode rn_Conjuntos = tv_Grupo.Nodes.Add("Conjuntos");
                             TreeNode rn_Solistas = tv_Grupo.Nodes.Add("Solistas");
 
+                            int iG = 0;
+                            int iA = 0;
+
+                            while (oSql.DataReader1.Read())
+                            {
+                                Grupo[] oGrupo = new Grupo[50];
+
+                                oGrupo[iG] = new Grupo();
+                                oGrupo[iG].IdGrupo = (int)oSql.DataReader1.GetValue(0);
+                                oGrupo[iG].Descripcion = (string)oSql.DataReader1.GetValue(1);
+                                
+                                oSql.sp_SeleccionAlbumPorGrupo(oGrupo[iG].Descripcion);
+
+                                rn_Conjuntos.Nodes.Add(oGrupo[iG].Descripcion);
+
+                                iA = 0;
+                                using (oSql.DataReader2)
+                                {
+                                    while (oSql.DataReader2.Read())
+                                    {
+                                        oGrupo[iG].OAlbum[iA] = new Album();
+                                        oGrupo[iG].OAlbum[iA].IdAlbum = (int)oSql.DataReader2.GetValue(0);
+                                        ++iA;
+                                    }
+                                }
+
+                                //rn_Conjuntos.Nodes.Add(oGrupo[iG].Descripcion);
+
+                                ++iG;
+                            }
+                            /*
                             while (oSql.DataReader.Read())
                             {
                                 if (Convert.ToString(oSql.DataReader["solista_conjunto"]) == "0")
@@ -84,7 +115,8 @@ namespace Music_Manager
                                     rn_Solistas.Nodes.Add(Convert.ToString(oSql.DataReader.GetValue(1)));
                                 }
                             }
-                            oSql.DataReader.Close();
+
+                            oSql.DataReader.Close();*/
                         }
                     }
                 }
@@ -97,23 +129,23 @@ namespace Music_Manager
         }
 
         private void tv_Grupo_AfterSelect (object sender, TreeViewEventArgs e)
-        {
+        {/*
             oSql.sp_SeleccionAlbumPorGrupo(tv_Grupo.SelectedNode.Text);
 
             while (oSql.DataReader.Read())
             {
-                cbx_Titulo.Items.Add(Convert.ToString(oSql.DataReader(0)));
+                cbx_Titulo.Items.Add(Convert.ToString(oSql.DataReader1(0)));
             }
 
-            oSql.DataReader.Close();
+            oSql.DataReader.Close();*/
         }
 
         private void cbx_Titulo_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {/*
             while (oSql.DataReader.Read())
             {
 
-            }
+            }*/
         }
     }
 }

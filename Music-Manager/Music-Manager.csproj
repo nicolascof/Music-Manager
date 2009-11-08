@@ -37,7 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Album.cs" />
-    <Compile Include="Autor.cs" />
     <Compile Include="Disqueria.cs" />
     <Compile Include="frm_About.cs">
       <SubType>Form</SubType>
@@ -51,6 +50,7 @@
     <Compile Include="frm_Splash.Designer.cs">
       <DependentUpon>frm_Splash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Grupo.cs" />
     <Compile Include="Sql.cs" />
     <Compile Include="frm_ConectarBD.cs">
       <SubType>Form</SubType>
@@ -70,7 +70,6 @@
     <Compile Include="frm_Principal.Designer.cs">
       <DependentUpon>frm_Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Persona.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_About.resx">

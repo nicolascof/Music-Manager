@@ -60,8 +60,8 @@
             this.cbx_Genero = new System.Windows.Forms.ComboBox();
             this.gbx_Grupo = new System.Windows.Forms.GroupBox();
             this.lbl_CantidadIntegrantes = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tbx_Grupo_Nombre = new System.Windows.Forms.TextBox();
+            this.tbx_CantidadIntegrantes = new System.Windows.Forms.TextBox();
+            this.tbx_GrupoNombre = new System.Windows.Forms.TextBox();
             this.lbl_Grupo_Nombre = new System.Windows.Forms.Label();
             this.tc_Agregar = new System.Windows.Forms.TabControl();
             this.ToolStrip.SuspendLayout();
@@ -109,7 +109,7 @@
             // 
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(105, 22);
             this.tsmi_Archivo_Cerrar.Text = "Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -357,8 +357,8 @@
             // gbx_Grupo
             // 
             this.gbx_Grupo.Controls.Add(this.lbl_CantidadIntegrantes);
-            this.gbx_Grupo.Controls.Add(this.textBox1);
-            this.gbx_Grupo.Controls.Add(this.tbx_Grupo_Nombre);
+            this.gbx_Grupo.Controls.Add(this.tbx_CantidadIntegrantes);
+            this.gbx_Grupo.Controls.Add(this.tbx_GrupoNombre);
             this.gbx_Grupo.Controls.Add(this.lbl_Grupo_Nombre);
             this.gbx_Grupo.Location = new System.Drawing.Point(6, 6);
             this.gbx_Grupo.Name = "gbx_Grupo";
@@ -376,19 +376,19 @@
             this.lbl_CantidadIntegrantes.TabIndex = 11;
             this.lbl_CantidadIntegrantes.Text = "Cantidad Integrantes";
             // 
-            // textBox1
+            // tbx_CantidadIntegrantes
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(211, 20);
-            this.textBox1.TabIndex = 10;
+            this.tbx_CantidadIntegrantes.Location = new System.Drawing.Point(130, 45);
+            this.tbx_CantidadIntegrantes.Name = "tbx_CantidadIntegrantes";
+            this.tbx_CantidadIntegrantes.Size = new System.Drawing.Size(211, 20);
+            this.tbx_CantidadIntegrantes.TabIndex = 10;
             // 
-            // tbx_Grupo_Nombre
+            // tbx_GrupoNombre
             // 
-            this.tbx_Grupo_Nombre.Location = new System.Drawing.Point(130, 19);
-            this.tbx_Grupo_Nombre.Name = "tbx_Grupo_Nombre";
-            this.tbx_Grupo_Nombre.Size = new System.Drawing.Size(211, 20);
-            this.tbx_Grupo_Nombre.TabIndex = 9;
+            this.tbx_GrupoNombre.Location = new System.Drawing.Point(130, 19);
+            this.tbx_GrupoNombre.Name = "tbx_GrupoNombre";
+            this.tbx_GrupoNombre.Size = new System.Drawing.Size(211, 20);
+            this.tbx_GrupoNombre.TabIndex = 9;
             // 
             // lbl_Grupo_Nombre
             // 
@@ -456,8 +456,8 @@
         private System.Windows.Forms.TabPage tabTemas;
         private System.Windows.Forms.TabPage tabInfo;
         private System.Windows.Forms.GroupBox gbx_Grupo;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox tbx_Grupo_Nombre;
+        private System.Windows.Forms.TextBox tbx_CantidadIntegrantes;
+        private System.Windows.Forms.TextBox tbx_GrupoNombre;
         private System.Windows.Forms.Label lbl_Grupo_Nombre;
         private System.Windows.Forms.TabControl tc_Agregar;
         private System.Windows.Forms.GroupBox gbx_Album;

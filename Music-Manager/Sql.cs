@@ -9,8 +9,10 @@ namespace Music_Manager
     class Sql
     {
         private SqlConnection conexion;
-        private SqlCommand command;
-        private SqlDataReader dataReader;
+        private SqlCommand command1;
+        private SqlCommand command2;
+        private SqlDataReader dataReader1;
+        private SqlDataReader dataReader2;
         private string stringConexion, consulta;
 
         public SqlConnection Conexion
@@ -19,16 +21,28 @@ namespace Music_Manager
             get { return conexion; }
         }
 
-        public SqlCommand Command
+        public SqlCommand Command1
         {
-            set { command = value; }
-            get { return command; }
+            set { command1 = value; }
+            get { return command1; }
         }
 
-        public SqlDataReader DataReader
+        public SqlCommand Command2
         {
-            set { dataReader = value; }
-            get { return dataReader; }
+            set { command2 = value; }
+            get { return command2; }
+        }
+
+        public SqlDataReader DataReader1
+        {
+            set { dataReader1 = value; }
+            get { return dataReader1; }
+        }
+
+        public SqlDataReader DataReader2
+        {
+            set { dataReader2 = value; }
+            get { return dataReader2; }
         }
 
         public string StringConexion
@@ -46,8 +60,9 @@ namespace Music_Manager
         public Sql()
         {
             Conexion = new SqlConnection();
-            Command = new SqlCommand();
-            DataReader = null;
+            Command1 = new SqlCommand();
+            DataReader1 = null;
+            DataReader2 = null;
             Consulta = null;
         }
 
@@ -94,13 +109,13 @@ namespace Music_Manager
          */
         public bool sp_SeleccionNombreGrupo ()
         {
-            Command.CommandText = "sp_SeleccionNombreGrupo";
-            Command.CommandType = CommandType.StoredProcedure;
+            Command1.CommandText = "sp_SeleccionNombreGrupo";
+            Command1.CommandType = CommandType.StoredProcedure;
 
             try 
             {
-                Command.Connection = Conexion;
-                DataReader = Command.ExecuteReader();
+                Command1.Connection = Conexion;
+                DataReader1 = Command1.ExecuteReader();
             } 
             catch (SqlException) 
             {
@@ -120,14 +135,14 @@ namespace Music_Manager
             SqlParameter parametro = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar);
             parametro.Value = nombreGrupo;
 
-            Command.CommandText = "sp_SeleccionAlbumPorGrupo";
-            Command.CommandType = CommandType.StoredProcedure;
-            Command.Parameters.Add(parametro);
+            Command2.CommandText = "sp_SeleccionAlbumPorGrupo";
+            Command2.CommandType = CommandType.StoredProcedure;
+            Command2.Parameters.Add(parametro);
 
             try
             {
-                Command.Connection = Conexion;
-                DataReader = Command.ExecuteReader();
+                Command2.Connection = Conexion;
+                DataReader2 = Command1.ExecuteReader();
             }
             catch (SqlException)
             {
@@ -135,6 +150,11 @@ namespace Music_Manager
             }
 
             return true;
+        }
+
+        public bool sp_SeleccionAlbum(string nombreAlbum, string nombreGrupo)
+        {
+            return false;
         }
     }
 }
