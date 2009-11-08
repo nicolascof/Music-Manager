@@ -22,10 +22,26 @@ VALUES ('Musimundo')
 
 -- Seleccion de nombres de grupos
 
-CREATE PROCEDURE sp_SeleccionNombreGrupo
+SELECT * FROM grupo
+
+CREATE 
+ALTER PROCEDURE sp_SeleccionNombreGrupo
 AS
-	SELECT *
-	FROM grupo
+	SELECT G.id_grupo,
+		G.descripcion, 
+		G.id_compania, 
+		G.cant_integrantes, 
+		G.solista_conjunto,
+		COUNT(A.id_grupo)[cant_albums]
+	FROM grupo AS G
+		INNER JOIN album AS A
+			ON G.id_grupo = A.id_grupo
+	GROUP BY G.id_grupo, 
+		G.descripcion, 
+		G.id_compania, 
+		G.cant_integrantes, 
+		G.solista_conjunto
+	ORDER BY 2
 
 EXEC sp_SeleccionNombreGrupo
 
@@ -38,7 +54,7 @@ CREATE
 ALTER PROCEDURE sp_SeleccionAlbumPorGrupo
 	@nombreGrupo nvarchar(25)
 AS
-	SELECT A.titulo
+	SELECT *
 	FROM album AS A, grupo AS G
 	WHERE A.id_grupo IN (
 		SELECT G.id_grupo
