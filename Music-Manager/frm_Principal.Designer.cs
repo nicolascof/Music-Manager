@@ -109,7 +109,7 @@
             // 
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(105, 22);
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
             this.tsmi_Archivo_Cerrar.Text = "Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -245,6 +245,7 @@
             this.cbx_Titulo.Name = "cbx_Titulo";
             this.cbx_Titulo.Size = new System.Drawing.Size(358, 21);
             this.cbx_Titulo.TabIndex = 14;
+            this.cbx_Titulo.SelectedIndexChanged += new System.EventHandler(this.cbx_Titulo_SelectedIndexChanged);
             // 
             // lbl_Observaciones
             // 
@@ -419,7 +420,7 @@
             this.Controls.Add(this.tv_Grupo);
             this.Controls.Add(this.tc_Agregar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

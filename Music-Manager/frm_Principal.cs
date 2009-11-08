@@ -84,6 +84,7 @@ namespace Music_Manager
                                     rn_Solistas.Nodes.Add(Convert.ToString(oSql.DataReader.GetValue(1)));
                                 }
                             }
+                            oSql.DataReader.Close();
                         }
                     }
                 }
@@ -100,7 +101,19 @@ namespace Music_Manager
             oSql.sp_SeleccionAlbumPorGrupo(tv_Grupo.SelectedNode.Text);
 
             while (oSql.DataReader.Read())
-                cbx_Titulo.Items.Add(Convert.ToString(oSql.DataReader.GetValue(0)));
+            {
+                cbx_Titulo.Items.Add(Convert.ToString(oSql.DataReader(0)));
+            }
+
+            oSql.DataReader.Close();
+        }
+
+        private void cbx_Titulo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            while (oSql.DataReader.Read())
+            {
+
+            }
         }
     }
 }

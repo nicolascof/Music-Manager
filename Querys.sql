@@ -54,7 +54,7 @@ CREATE
 ALTER PROCEDURE sp_SeleccionAlbum
 	@nombreAlbum nvarchar(25)
 AS
-	SELECT *
+	SELECT G.descricpion
 	FROM album AS A
 	WHERE A.titulo LIKE '%' + @nombreAlbum + '%'
 

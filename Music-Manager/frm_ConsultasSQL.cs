@@ -58,7 +58,7 @@ namespace Music_Manager
 
             conexion.Close();
 
-            dataGridView1.DataSource = dataSet.Tables[0];
+            dataGridView1.DataSource = dataSet.Tables["descripcion"];
         }
 
         private void btn_Cerrar_Click(object sender, EventArgs e)
