@@ -61,6 +61,7 @@ namespace Music_Manager
         {
             Conexion = new SqlConnection();
             Command1 = new SqlCommand();
+            Command2 = new SqlCommand();
             DataReader1 = null;
             DataReader2 = null;
             Consulta = null;
@@ -142,7 +143,7 @@ namespace Music_Manager
             try
             {
                 Command2.Connection = Conexion;
-                DataReader2 = Command1.ExecuteReader();
+                DataReader2 = Command2.ExecuteReader();
             }
             catch (SqlException)
             {
