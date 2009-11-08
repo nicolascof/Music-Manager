@@ -35,6 +35,11 @@ namespace Music_Manager
             cantidadGrupos = 0;
         }
 
+        private void frm_Principal_Load(object sender, EventArgs e)
+        {
+            EnableBoxes(false);
+        }
+
         private void tsbAcercaDe_Click(object sender, EventArgs e)
         {
             frm_About ofrm_AcercaDe = new frm_About();
@@ -139,23 +144,27 @@ namespace Music_Manager
 
             if (tv_Grupo.SelectedNode.Name != "")
             {
-                MessageBox.Show(tv_Grupo.SelectedNode.Name);
+                CleanBoxes();
+
+                EnableBoxes(false);
 
                 dato = BusquedaBinaria(oGrupo, int.Parse(tv_Grupo.SelectedNode.Name));
+
+                tbx_GrupoNombre.Text = oGrupo[dato].Descripcion;
+                tbx_CantidadIntegrantes.Text = oGrupo[dato].CantidadIntegrantes.ToString();
 
                 for (int i = 0; i < oGrupo[dato].OAlbum.Length; ++i)
                 {
                     cbx_Titulo.Items.Add(oGrupo[dato].OAlbum[i].Titulo);
                 }
+
+                cbx_Titulo.Enabled = true;
             }
         }
 
         private void cbx_Titulo_SelectedIndexChanged (object sender, EventArgs e)
-        {/*
-            while (oSql.DataReader.Read())
-            {
+        {
 
-            }*/
         }
 
         private int BusquedaBinaria (Grupo[] oGrupo, int Dato)
@@ -177,6 +186,67 @@ namespace Music_Manager
             }
 
             return 0;
+        }
+
+        private void EnableBoxes (bool b)
+        {
+            foreach (Control obj in this.gbx_Grupo.Controls)
+            {
+                if (obj is TextBox)
+                    obj.Enabled = b;
+            }
+
+            foreach (Control obj in this.gbx_Album.Controls)
+            {
+                if (obj is TextBox || obj is ComboBox || obj is RichTextBox || obj is DateTimePicker)
+                    obj.Enabled = b;
+            }
+        }
+
+        private void CleanBoxes ()
+        {
+            foreach (Control obj in this.gbx_Grupo.Controls)
+            {
+                if (obj is TextBox)
+                    obj.Text = null;
+            }
+
+            foreach (Control obj in this.gbx_Album.Controls)
+            {
+                if (obj is TextBox || obj is ComboBox || obj is RichTextBox)
+                    obj.Text = null;
+            }
+
+            cbx_Titulo.Items.Clear();
+        }
+
+        private void cbx_SeleccionConsulta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbx_SeleccionConsulta.SelectedIndex)
+            {
+                case 0:
+                    label1.Visible = true;
+                    label1.Text = "Nombre Grupo";
+                    textBox1.Visible = true;
+                    break;
+                case 1:
+                    label1.Visible = true;
+                    label1.Text = "Genero";
+                    textBox1.Visible = true;
+                    break;
+                case 2:
+                    label1.Visible = true;
+                    label1.Text = "Año";
+                    textBox1.Visible = true;
+                    break;
+                case 3:
+                    label1.Visible = true;
+                    label1.Text = "Nombre Grupo";
+                    textBox1.Visible = true;
+                    label2.Visible = true;
+                    label2.Text = "Desde";
+                    break;
+            }
         }
     }
 }

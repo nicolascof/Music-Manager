@@ -1,8 +1,13 @@
 USE cd 
 
-SELECT G.descripcion
-FROM grupo AS g, album AS A
-WHERE A.id_grupo = G.id_grupo
+UPDATE album
+SET titulo = 'Reckless',
+	costo = 45.98,
+	fecha_terminado = '01/02/1985',
+	fecha_lanzamiento = '01/06/1985',
+	cant_temas = 10,
+	duracion_album = 38
+WHERE id_album = 3
 
 -- COMPANIAS
 

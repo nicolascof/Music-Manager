@@ -58,6 +58,7 @@ namespace Music_Manager
             this.solistaConjunto = false;
             OAlbum = new Album[CantidadAlbums];
         }
+
         /*
         public Grupo(int IdGrupos, string Descripcion, int IdCompania, Int16 CantidadIntegrantes, bool SolistaConjunto)
         {
