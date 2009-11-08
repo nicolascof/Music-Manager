@@ -31,7 +31,11 @@ RootNode : rn
 RichTextBox : rtbx
 DateTimePicker : dtp
 
-- Subir un archivo
+- Actualizar repositorio del servidor con el local
+
+git pull origin master
+
+- Subir un archivo al repositorio remoto
 
 git add Music-Manager/Autor.cs
 git add Querys.sql
@@ -40,7 +44,7 @@ git commit -m 'Modificacion'
 
 git push origin master
 
-- Subir todas las modificaciones
+- Subir todas las modificaciones al repositorio remoto
 
 git add .
 
@@ -48,6 +52,6 @@ git commit -a -m 'Modificaciones'
 
 git push origin master
 
-- Ver estado
+- Ver estado de modificaciones a nivel local
 
 git status
