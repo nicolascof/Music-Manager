@@ -30,3 +30,24 @@ TreeView : tv
 RootNode : rn
 RichTextBox : rtbx
 DateTimePicker : dtp
+
+- Subir un archivo
+
+git add Music-Manager/Autor.cs
+git add Querys.sql
+
+git commit -m 'Modificacion'
+
+git push origin master
+
+- Subir todas las modificaciones
+
+git add .
+
+git commit -a -m 'Modificaciones'
+
+git push origin master
+
+- Ver estado
+
+git status
