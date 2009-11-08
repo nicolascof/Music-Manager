@@ -122,20 +122,6 @@ namespace Music_Manager
                             }
 
                             oSql.DataReader1.Close();
-                            /*
-                            while (oSql.DataReader.Read())
-                            {
-                                if (Convert.ToString(oSql.DataReader["solista_conjunto"]) == "0")
-                                {
-                                    rn_Conjuntos.Nodes.Add(Convert.ToString(oSql.DataReader.GetValue(1)));
-                                }
-                                else
-                                {
-                                    rn_Solistas.Nodes.Add(Convert.ToString(oSql.DataReader.GetValue(1)));
-                                }
-                            }
-
-                            oSql.DataReader.Close();*/
                         }
                     }
                 }
@@ -157,7 +143,7 @@ namespace Music_Manager
 
                 dato = BusquedaBinaria(oGrupo, int.Parse(tv_Grupo.SelectedNode.Name));
 
-                for (int i = 0; i < oGrupo[dato].OAlbum.Length - 1; ++i)
+                for (int i = 0; i < oGrupo[dato].OAlbum.Length; ++i)
                 {
                     cbx_Titulo.Items.Add(oGrupo[dato].OAlbum[i].Titulo);
                 }

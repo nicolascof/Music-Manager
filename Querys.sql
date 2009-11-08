@@ -41,7 +41,7 @@ AS
 		G.id_compania, 
 		G.cant_integrantes, 
 		G.solista_conjunto
-	ORDER BY 2
+	ORDER BY 1
 
 EXEC sp_SeleccionNombreGrupo
 
