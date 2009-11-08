@@ -40,19 +40,24 @@ namespace Music_Manager
             EnableBoxes(false);
         }
 
-        private void tsbAcercaDe_Click(object sender, EventArgs e)
+        private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tsl_AcercaDe_Click(object sender, EventArgs e)
         {
             frm_About ofrm_AcercaDe = new frm_About();
             ofrm_AcercaDe.Show();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void tsl_Consultas_Click(object sender, EventArgs e)
         { 
             frm_ConsultasSQL frm_consultasSQL = new frm_ConsultasSQL();
             frm_consultasSQL.Show();
         }
 
-        private void tsddbABD_Conectar_Click (object sender, EventArgs e)
+        private void tsmi_AdministradorDatos_Conectar_Click(object sender, EventArgs e)
         {
             frm_ConectarBaseDeDatos ofrm_ConectarBaseDeDatos = new frm_ConectarBaseDeDatos();
             ofrm_ConectarBaseDeDatos.ShowDialog();
@@ -92,11 +97,15 @@ namespace Music_Manager
                                 oGrupo[cantidadGrupos].IdCompania = (int)oSql.DataReader1["id_compania"];
                                 oGrupo[cantidadGrupos].CantidadIntegrantes = (byte)oSql.DataReader1["cant_integrantes"];
                                 oGrupo[cantidadGrupos].SolistaConjunto = (bool)oSql.DataReader1["solista_conjunto"];
-                                
+
                                 if (oGrupo[cantidadGrupos].SolistaConjunto == true)
-                                    rn_Solistas.Nodes.Add("" + oGrupo[cantidadGrupos].IdGrupo + "", oGrupo[cantidadGrupos].Descripcion);
+                                {
+                                    rn_Solistas.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
+                                }
                                 else
-                                    rn_Conjuntos.Nodes.Add("" + oGrupo[cantidadGrupos].IdGrupo + "", oGrupo[cantidadGrupos].Descripcion);
+                                {
+                                    rn_Conjuntos.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
+                                }
                                     
                                 cantidadAlbums = 0;
 
@@ -106,10 +115,6 @@ namespace Music_Manager
                                 {
                                     while (oSql.DataReader2.Read())
                                     {
-                                        //id_album    id_genero   id_disqueria id_compania id_grupo    varios_artistas titulo
-                                        //costo                                   fecha_terminado         fecha_lanzamiento       
-                                        //cant_temas  duracion_album observaciones                                                                    id_grupo    descripcion                    id_compania cant_integrantes solista_conjunto
-
                                         oGrupo[cantidadGrupos].OAlbum[cantidadAlbums] = new Album();
                                         oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdAlbum = (int)oSql.DataReader2["id_album"];
                                         oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdGenero = (int)oSql.DataReader2["id_genero"];
@@ -117,6 +122,12 @@ namespace Music_Manager
                                         oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdCompania = (int)oSql.DataReader2["id_compania"];
                                         oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdGrupo = (int)oSql.DataReader2["id_grupo"];
                                         oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Titulo = (string)oSql.DataReader2["titulo"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Costo = (decimal)oSql.DataReader2["costo"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].FechaTerminado = (DateTime)oSql.DataReader2["fecha_terminado"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].FechaLanzamiento = (DateTime)oSql.DataReader2["fecha_lanzamiento"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].CantidadTemas = (int)oSql.DataReader2["cant_temas"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].DuracionAlbum = (int)oSql.DataReader2["duracion_album"];
+                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Obsevaciones = (string)oSql.DataReader2["observaciones"];
                                         ++cantidadAlbums;
                                     }
                                 }
@@ -133,11 +144,11 @@ namespace Music_Manager
             }
         }
 
-        private void cerrarToolStripMenuItem_Click (object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        /* NAME: tv_Grupo_AfterSelect 
+         * DESCRIPTION: evento de seleccion de nodo
+         * PARAMETERS: object, TreeViewEventArgs
+         * RETURNS: void
+         */
         private void tv_Grupo_AfterSelect (object sender, TreeViewEventArgs e)
         {
             int dato;
@@ -150,23 +161,71 @@ namespace Music_Manager
 
                 dato = BusquedaBinaria(oGrupo, int.Parse(tv_Grupo.SelectedNode.Name));
 
-                tbx_GrupoNombre.Text = oGrupo[dato].Descripcion;
-                tbx_CantidadIntegrantes.Text = oGrupo[dato].CantidadIntegrantes.ToString();
-
-                for (int i = 0; i < oGrupo[dato].OAlbum.Length; ++i)
+                if (dato != -1)
                 {
-                    cbx_Titulo.Items.Add(oGrupo[dato].OAlbum[i].Titulo);
-                }
+                    tbx_IdGrupo.Text = oGrupo[dato].IdGrupo.ToString();
+                    tbx_GrupoNombre.Text = oGrupo[dato].Descripcion;
+                    tbx_CantidadIntegrantes.Text = oGrupo[dato].CantidadIntegrantes.ToString();
+                    lbl_PosicionArreglo.Text = dato.ToString();
 
-                cbx_Titulo.Enabled = true;
+                    for (int i = 0; i < oGrupo[dato].OAlbum.Length; ++i)
+                    {
+                        cbx_Titulo.Items.Add(oGrupo[dato].OAlbum[i].Titulo);
+                    }
+
+                    cbx_Titulo.Enabled = true;
+
+                    cbx_Titulo.SelectedIndex = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Grupo No Encontrado", "Grupo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
+        /* NAME: cbx_Titulo_SelectedIndexChanged 
+         * DESCRIPTION: evento de eleccion de album
+         * PARAMETERS: object, EventArgs
+         * RETURNS: void
+         */
         private void cbx_Titulo_SelectedIndexChanged (object sender, EventArgs e)
         {
+            int dato;
+            int posicion = int.Parse(lbl_PosicionArreglo.Text);
 
+            if (tv_Grupo.SelectedNode.Name != "" && cbx_Titulo.SelectedIndex != -1)
+            {
+                dato = BusquedaSecuencial(oGrupo, posicion, cbx_Titulo.SelectedItem.ToString());
+
+                if (dato != -1)
+                {
+                    tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum;
+                    cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero());
+                    cbx_Genero.SelectedIndex = 0;
+                    cbx_IdDisqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria());
+                    cbx_IdDisqueria.SelectedIndex = 0;
+                    cbx_IdCompania.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarCompania());
+                    cbx_IdCompania.SelectedIndex = 0;
+                    dtp_FechaTerminado.Value = oGrupo[posicion].OAlbum[dato].FechaTerminado;
+                    dtp_FechaLanzamiento.Value = oGrupo[posicion].OAlbum[dato].FechaLanzamiento;
+                    tbx_CantidadTemas.Text = oGrupo[posicion].OAlbum[dato].CantidadTemas.ToString();
+                    tbx_Duracion.Text = oGrupo[posicion].OAlbum[dato].DuracionAlbum.ToString();
+                    tbx_Costo.Text = oGrupo[posicion].OAlbum[dato].Costo.ToString();
+                    rtbx_Observaciones.Text = oGrupo[posicion].OAlbum[dato].Obsevaciones;
+                }
+                else
+                {
+                    MessageBox.Show("Dato No Encontrado", "Album", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
+        /* NAME: BusquedaBinaria 
+         * DESCRIPTION: busca dato en arreglo mediante metodo binario
+         * PARAMETERS: int -1:no encontro dato
+         * RETURNS: int
+         */
         private int BusquedaBinaria (Grupo[] oGrupo, int Dato)
         {
             int bajo = 0;
@@ -177,17 +236,40 @@ namespace Music_Manager
             {
                 medio = (bajo + alto) / 2;
 
-                if (Dato == (oGrupo[medio] == null ? 0 : oGrupo[medio].IdGrupo))
+                if (Dato == (oGrupo[medio] == null ? 0 : oGrupo[medio].IdGrupo)) // si se encuentra el valor
                     return medio;
-                else if (Dato < (oGrupo[medio] == null ? 0 : oGrupo[medio].IdGrupo))
+                else if (Dato < (oGrupo[medio] == null ? 0 : oGrupo[medio].IdGrupo)) // busca en la mitad más baja
                     alto = medio - 1;
-                else
-                    bajo = medio + 1;
+                else // busca en la mitad más alta
+                    bajo = medio + 1; 
             }
 
-            return 0;
+            return -1;
         }
 
+        /* NAME: BusquedaSecuencial 
+         * DESCRIPTION: busca dato en arreglo mediante metodo secuencial
+         * PARAMETERS: int -1:no encontro dato
+         * RETURNS: int
+         */
+        private int BusquedaSecuencial (Grupo[] oGrupo, int Posicion, string Dato)
+        {
+            for (int i = 0; i < oGrupo[Posicion].OAlbum.Length; ++i)
+            {
+                if (Dato.CompareTo(oGrupo[Posicion].OAlbum[i].Titulo) == 0)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        /* NAME: EnableBoxes 
+         * DESCRIPTION: habilita o deshabilita controles
+         * PARAMETERS: bool
+         * RETURNS: void
+         */
         private void EnableBoxes (bool b)
         {
             foreach (Control obj in this.gbx_Grupo.Controls)
@@ -203,6 +285,11 @@ namespace Music_Manager
             }
         }
 
+        /* NAME: CleanBoxes 
+         * DESCRIPTION: limpiar los controles
+         * PARAMETERS: void
+         * RETURNS: void
+         */
         private void CleanBoxes ()
         {
             foreach (Control obj in this.gbx_Grupo.Controls)
@@ -217,6 +304,7 @@ namespace Music_Manager
                     obj.Text = null;
             }
 
+            lbl_PosicionArreglo.Text = null;
             cbx_Titulo.Items.Clear();
         }
 

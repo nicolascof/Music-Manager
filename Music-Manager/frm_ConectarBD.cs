@@ -92,8 +92,11 @@ namespace Music_Manager
         private void btn_Conectar_Click (object sender, EventArgs e)
         {
             TipoAutenticacion = cbx_Autenticacion.SelectedIndex;
-            Bd = cbx_BaseDeDatos.SelectedItem.ToString();
-            Servidor = cbx_Servidor.SelectedItem.ToString().ToLower();
+            if (cbx_BaseDeDatos.SelectedItem != null && cbx_Servidor.SelectedItem != null)
+            {
+                Bd = cbx_BaseDeDatos.SelectedItem.ToString();
+                Servidor = cbx_Servidor.SelectedItem.ToString().ToLower();
+            }
             Usuario = tbx_Usuario.Text;
             Contrasenia = tbx_Contrasenia.Text;
         }

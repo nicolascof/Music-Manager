@@ -14,8 +14,8 @@ namespace Music_Manager
         private bool variosArtitas;
         private string titulo;
         private decimal costo;
-        private string fechaTerminado;
-        private string fechaLanzamiento;
+        private DateTime fechaTerminado;
+        private DateTime fechaLanzamiento;
         private int cantidadTemas;
         private int duracionAlbum;
         private string obsevaciones;
@@ -68,13 +68,13 @@ namespace Music_Manager
             get { return costo; }
         }
 
-        public string FechaTerminado
+        public DateTime FechaTerminado
         {
             set { fechaTerminado = value; }
             get { return fechaTerminado; }
         }
 
-        public string FechaLanzamiento
+        public DateTime FechaLanzamiento
         {
             set { fechaLanzamiento = value; }
             get { return fechaLanzamiento; }
@@ -100,19 +100,40 @@ namespace Music_Manager
 
         public Album()
         {
-            this.idAlbum = 0;
-            this.idGenero = 0;
+            this.IdAlbum = 0;
+            this.IdGenero = 0;
             this.IdDisqueria = 0;
             this.IdCompania = 0;
             this.IdGrupo = 0;
             this.VariosArtitas = false;
             this.Titulo = null;
             this.Costo = 0;
-            this.FechaTerminado = null;
-            this.fechaLanzamiento = null;
+            this.FechaTerminado = new DateTime();
+            this.FechaLanzamiento = new DateTime();
             this.CantidadTemas = 0;
             this.DuracionAlbum = 0;
             this.Obsevaciones = null;
+        }
+
+        public string MostrarGenero ()
+        {
+            string[] arregloGenero = { "Jazz", "Rock", "Pop", "Heavy Metal", "Dead Metal", "Grunge" };
+
+            return arregloGenero[IdGenero];
+        }
+
+        public string MostrarDisqueria ()
+        {
+            string[] arregloDisqueria = { "Eden", "Musimundo" };
+
+            return arregloDisqueria[IdDisqueria];
+        }
+
+        public string MostrarCompania ()
+        {
+            string[] arregloCompania = { "Sony BMG", "BGM", "Warner Music Group", "EMI", "Universal Music Group" };
+
+            return arregloCompania[IdCompania];
         }
 
         /*

@@ -23,6 +23,13 @@ SELECT * FROM disquerias
 INSERT INTO disquerias
 VALUES ('Musimundo')
 
+-- GENEROS
+
+SELECT * FROM generos
+
+INSERT INTO generos
+VALUES ('GRUNGE')
+
 -- PROCEDIMIENTOS ALMACENADOS
 
 -- Seleccion de nombres de grupos
