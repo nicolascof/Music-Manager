@@ -44,6 +44,13 @@
             this.btn_Grabar = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.gbx_Album = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbx_IdCompania = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbx_IdDisqueria = new System.Windows.Forms.ComboBox();
+            this.tbx_IdAlbum = new System.Windows.Forms.TextBox();
+            this.lbl_IdCompania = new System.Windows.Forms.Label();
+            this.lbl_IdDisqueria = new System.Windows.Forms.Label();
             this.lbl_Costo = new System.Windows.Forms.Label();
             this.tbx_Costo = new System.Windows.Forms.TextBox();
             this.cbx_Titulo = new System.Windows.Forms.ComboBox();
@@ -61,6 +68,9 @@
             this.lbl_Titulo = new System.Windows.Forms.Label();
             this.cbx_Genero = new System.Windows.Forms.ComboBox();
             this.gbx_Grupo = new System.Windows.Forms.GroupBox();
+            this.lbl_PosicionArreglo = new System.Windows.Forms.Label();
+            this.lbl_IdGrupo = new System.Windows.Forms.Label();
+            this.tbx_IdGrupo = new System.Windows.Forms.TextBox();
             this.lbl_CantidadIntegrantes = new System.Windows.Forms.Label();
             this.tbx_CantidadIntegrantes = new System.Windows.Forms.TextBox();
             this.tbx_GrupoNombre = new System.Windows.Forms.TextBox();
@@ -81,16 +91,6 @@
             this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tbx_IdGrupo = new System.Windows.Forms.TextBox();
-            this.lbl_IdGrupo = new System.Windows.Forms.Label();
-            this.lbl_PosicionArreglo = new System.Windows.Forms.Label();
-            this.lbl_IdDisqueria = new System.Windows.Forms.Label();
-            this.lbl_IdCompania = new System.Windows.Forms.Label();
-            this.cbx_IdDisqueria = new System.Windows.Forms.ComboBox();
-            this.cbx_IdCompania = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbx_IdAlbum = new System.Windows.Forms.TextBox();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Info.SuspendLayout();
@@ -277,6 +277,66 @@
             this.gbx_Album.TabStop = false;
             this.gbx_Album.Text = "Album";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(235, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 13);
+            this.label5.TabIndex = 22;
+            // 
+            // cbx_IdCompania
+            // 
+            this.cbx_IdCompania.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_IdCompania.FormattingEnabled = true;
+            this.cbx_IdCompania.Location = new System.Drawing.Point(129, 125);
+            this.cbx_IdCompania.Name = "cbx_IdCompania";
+            this.cbx_IdCompania.Size = new System.Drawing.Size(174, 21);
+            this.cbx_IdCompania.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(75, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Id Album";
+            // 
+            // cbx_IdDisqueria
+            // 
+            this.cbx_IdDisqueria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_IdDisqueria.FormattingEnabled = true;
+            this.cbx_IdDisqueria.Location = new System.Drawing.Point(129, 98);
+            this.cbx_IdDisqueria.Name = "cbx_IdDisqueria";
+            this.cbx_IdDisqueria.Size = new System.Drawing.Size(174, 21);
+            this.cbx_IdDisqueria.TabIndex = 19;
+            // 
+            // tbx_IdAlbum
+            // 
+            this.tbx_IdAlbum.Location = new System.Drawing.Point(129, 19);
+            this.tbx_IdAlbum.Name = "tbx_IdAlbum";
+            this.tbx_IdAlbum.Size = new System.Drawing.Size(100, 20);
+            this.tbx_IdAlbum.TabIndex = 20;
+            // 
+            // lbl_IdCompania
+            // 
+            this.lbl_IdCompania.AutoSize = true;
+            this.lbl_IdCompania.Location = new System.Drawing.Point(69, 128);
+            this.lbl_IdCompania.Name = "lbl_IdCompania";
+            this.lbl_IdCompania.Size = new System.Drawing.Size(54, 13);
+            this.lbl_IdCompania.TabIndex = 18;
+            this.lbl_IdCompania.Text = "Compañia";
+            // 
+            // lbl_IdDisqueria
+            // 
+            this.lbl_IdDisqueria.AutoSize = true;
+            this.lbl_IdDisqueria.Location = new System.Drawing.Point(72, 101);
+            this.lbl_IdDisqueria.Name = "lbl_IdDisqueria";
+            this.lbl_IdDisqueria.Size = new System.Drawing.Size(51, 13);
+            this.lbl_IdDisqueria.TabIndex = 17;
+            this.lbl_IdDisqueria.Text = "Disqueria";
+            // 
             // lbl_Costo
             // 
             this.lbl_Costo.AutoSize = true;
@@ -429,6 +489,31 @@
             this.gbx_Grupo.TabIndex = 10;
             this.gbx_Grupo.TabStop = false;
             this.gbx_Grupo.Text = "Conjunto / Solista";
+            this.gbx_Grupo.Enter += new System.EventHandler(this.gbx_Grupo_Enter);
+            // 
+            // lbl_PosicionArreglo
+            // 
+            this.lbl_PosicionArreglo.AutoSize = true;
+            this.lbl_PosicionArreglo.Location = new System.Drawing.Point(235, 22);
+            this.lbl_PosicionArreglo.Name = "lbl_PosicionArreglo";
+            this.lbl_PosicionArreglo.Size = new System.Drawing.Size(0, 13);
+            this.lbl_PosicionArreglo.TabIndex = 19;
+            // 
+            // lbl_IdGrupo
+            // 
+            this.lbl_IdGrupo.AutoSize = true;
+            this.lbl_IdGrupo.Location = new System.Drawing.Point(75, 22);
+            this.lbl_IdGrupo.Name = "lbl_IdGrupo";
+            this.lbl_IdGrupo.Size = new System.Drawing.Size(48, 13);
+            this.lbl_IdGrupo.TabIndex = 18;
+            this.lbl_IdGrupo.Text = "Id Grupo";
+            // 
+            // tbx_IdGrupo
+            // 
+            this.tbx_IdGrupo.Location = new System.Drawing.Point(129, 19);
+            this.tbx_IdGrupo.Name = "tbx_IdGrupo";
+            this.tbx_IdGrupo.Size = new System.Drawing.Size(100, 20);
+            this.tbx_IdGrupo.TabIndex = 17;
             // 
             // lbl_CantidadIntegrantes
             // 
@@ -630,90 +715,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(586, 350);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // tbx_IdGrupo
-            // 
-            this.tbx_IdGrupo.Location = new System.Drawing.Point(129, 19);
-            this.tbx_IdGrupo.Name = "tbx_IdGrupo";
-            this.tbx_IdGrupo.Size = new System.Drawing.Size(100, 20);
-            this.tbx_IdGrupo.TabIndex = 17;
-            // 
-            // lbl_IdGrupo
-            // 
-            this.lbl_IdGrupo.AutoSize = true;
-            this.lbl_IdGrupo.Location = new System.Drawing.Point(75, 22);
-            this.lbl_IdGrupo.Name = "lbl_IdGrupo";
-            this.lbl_IdGrupo.Size = new System.Drawing.Size(48, 13);
-            this.lbl_IdGrupo.TabIndex = 18;
-            this.lbl_IdGrupo.Text = "Id Grupo";
-            // 
-            // lbl_PosicionArreglo
-            // 
-            this.lbl_PosicionArreglo.AutoSize = true;
-            this.lbl_PosicionArreglo.Location = new System.Drawing.Point(235, 22);
-            this.lbl_PosicionArreglo.Name = "lbl_PosicionArreglo";
-            this.lbl_PosicionArreglo.Size = new System.Drawing.Size(0, 13);
-            this.lbl_PosicionArreglo.TabIndex = 19;
-            // 
-            // lbl_IdDisqueria
-            // 
-            this.lbl_IdDisqueria.AutoSize = true;
-            this.lbl_IdDisqueria.Location = new System.Drawing.Point(72, 101);
-            this.lbl_IdDisqueria.Name = "lbl_IdDisqueria";
-            this.lbl_IdDisqueria.Size = new System.Drawing.Size(51, 13);
-            this.lbl_IdDisqueria.TabIndex = 17;
-            this.lbl_IdDisqueria.Text = "Disqueria";
-            // 
-            // lbl_IdCompania
-            // 
-            this.lbl_IdCompania.AutoSize = true;
-            this.lbl_IdCompania.Location = new System.Drawing.Point(69, 128);
-            this.lbl_IdCompania.Name = "lbl_IdCompania";
-            this.lbl_IdCompania.Size = new System.Drawing.Size(54, 13);
-            this.lbl_IdCompania.TabIndex = 18;
-            this.lbl_IdCompania.Text = "Compañia";
-            // 
-            // cbx_IdDisqueria
-            // 
-            this.cbx_IdDisqueria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_IdDisqueria.FormattingEnabled = true;
-            this.cbx_IdDisqueria.Location = new System.Drawing.Point(129, 98);
-            this.cbx_IdDisqueria.Name = "cbx_IdDisqueria";
-            this.cbx_IdDisqueria.Size = new System.Drawing.Size(174, 21);
-            this.cbx_IdDisqueria.TabIndex = 19;
-            // 
-            // cbx_IdCompania
-            // 
-            this.cbx_IdCompania.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_IdCompania.FormattingEnabled = true;
-            this.cbx_IdCompania.Location = new System.Drawing.Point(129, 125);
-            this.cbx_IdCompania.Name = "cbx_IdCompania";
-            this.cbx_IdCompania.Size = new System.Drawing.Size(174, 21);
-            this.cbx_IdCompania.TabIndex = 20;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(235, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 13);
-            this.label5.TabIndex = 22;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Id Album";
-            // 
-            // tbx_IdAlbum
-            // 
-            this.tbx_IdAlbum.Location = new System.Drawing.Point(129, 19);
-            this.tbx_IdAlbum.Name = "tbx_IdAlbum";
-            this.tbx_IdAlbum.Size = new System.Drawing.Size(100, 20);
-            this.tbx_IdAlbum.TabIndex = 20;
             // 
             // frm_Principal
             // 

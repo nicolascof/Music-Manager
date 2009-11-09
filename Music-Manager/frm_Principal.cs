@@ -38,6 +38,7 @@ namespace Music_Manager
         private void frm_Principal_Load(object sender, EventArgs e)
         {
             EnableBoxes(false);
+            lbl_PosicionArreglo.Visible = false;
         }
 
         private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
@@ -200,7 +201,7 @@ namespace Music_Manager
 
                 if (dato != -1)
                 {
-                    tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum;
+                    tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum.ToString();
                     cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero());
                     cbx_Genero.SelectedIndex = 0;
                     cbx_IdDisqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria());
