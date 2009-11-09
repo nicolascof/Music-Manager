@@ -20,7 +20,10 @@ INSERT INTO grupo (descripcion, id_compania, cant_integrantes, solista_conjunto)
 VALUES ('Depeche Mode', 4, 3, 0)
 
 INSERT INTO album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, costo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
-VALUES ( 2, 2, 4, 2, 1, 'Sound of the Universe', 60.00, '15/09/2008', '09/06/2009', 13, 60, 'Ultimo disco de Depeche mode')
+VALUES ( 2, 7, 4, 2, 1, 'Sound of the Universe', 60.00, '15/09/2008', '09/06/2009', 13, 60, 'Ultimo disco de Depeche mode')
+
+INSERT INTO album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, costo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
+VALUES ( 2, 7, 4, 2, 1, 'Playing the Angel', 10.00, '15/10/2006', '01/02/2007', 15, 75, 'Disco del año 2006-2007 - Temas recomendados: Suffer Well')
 
 -- COMPANIAS
 
