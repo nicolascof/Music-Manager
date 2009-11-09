@@ -827,6 +827,7 @@
             this.tsmi_AdministradorDatos_Desconectar.Name = "tsmi_AdministradorDatos_Desconectar";
             this.tsmi_AdministradorDatos_Desconectar.Size = new System.Drawing.Size(221, 22);
             this.tsmi_AdministradorDatos_Desconectar.Text = "Desconectar";
+            this.tsmi_AdministradorDatos_Desconectar.Click += new System.EventHandler(this.tsmi_AdministradorDatos_Desconectar_Click);
             // 
             // frm_Principal
             // 

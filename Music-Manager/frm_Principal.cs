@@ -91,7 +91,7 @@ namespace Music_Manager
                             TreeNode rn_Solistas = tv_Grupo.Nodes.Add("Solistas");
 
                             int cantidadAlbums;
-
+                            
                             while (oSql.DataReader1.Read())
                             {
                                 oGrupo[cantidadGrupos] = new Grupo((int)oSql.DataReader1["cant_albums"]);
@@ -109,13 +109,13 @@ namespace Music_Manager
                                 {
                                     rn_Conjuntos.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
                                 }
-                                    
-                                cantidadAlbums = 0;
-
-                                oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].Descripcion);
 
                                 using (oSql.DataReader2)
                                 {
+                                    oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].Descripcion);
+
+                                    cantidadAlbums = 0;
+
                                     while (oSql.DataReader2.Read())
                                     {
                                         oGrupo[cantidadGrupos].OAlbum[cantidadAlbums] = new Album();
@@ -134,19 +134,25 @@ namespace Music_Manager
                                         ++cantidadAlbums;
                                     }
                                 }
-
-                                oSql.DataReader2.Close();
-
+                                
                                 ++cantidadGrupos;
+                                //oSql.DataReader2.Close();
                             }
-
+                            
                             oSql.DataReader1.Close();
 
                             tsl_Consultas.Enabled = true;
+                            tsmi_AdministradorDatos_Conectar.Enabled = false;
                         }
                     }
                 }
             }
+        }
+
+        private void tsmi_AdministradorDatos_Desconectar_Click(object sender, EventArgs e)
+        {
+            oSql.Conexion.Close();
+            tsmi_AdministradorDatos_Conectar.Enabled = true;
         }
 
         /* NAME: tv_Grupo_AfterSelect 

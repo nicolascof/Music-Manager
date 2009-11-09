@@ -117,7 +117,7 @@ namespace Music_Manager
 
         public string MostrarGenero ()
         {
-            string[] arregloGenero = { "Jazz", "Rock", "Pop", "Heavy Metal", "Dead Metal", "Grunge" };
+            string[] arregloGenero = { "Jazz", "Rock", "Pop", "Heavy Metal", "Dead Metal", "Grunge", "ElectroPop"};
 
             return arregloGenero[IdGenero];
         }
