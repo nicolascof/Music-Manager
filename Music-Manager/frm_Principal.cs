@@ -63,6 +63,8 @@ namespace Music_Manager
 
         private void tsmi_AdministradorDatos_Conectar_Click(object sender, EventArgs e)
         {
+            tv_Grupo.Nodes.Clear();
+
             frm_ConectarBaseDeDatos ofrm_ConectarBaseDeDatos = new frm_ConectarBaseDeDatos();
             ofrm_ConectarBaseDeDatos.ShowDialog();
 
@@ -154,6 +156,8 @@ namespace Music_Manager
         private void tsmi_AdministradorDatos_Desconectar_Click(object sender, EventArgs e)
         {
             oSql.Conexion.Close();
+            tsslConexion.Image = global::Music_Manager.Properties.Resources.DeleteDatabase;
+            tsslConexion.Text = "Desconectado";
             tsmi_AdministradorDatos_Conectar.Enabled = true;
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
         }
