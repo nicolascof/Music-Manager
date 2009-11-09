@@ -30,6 +30,7 @@ TreeView : tv
 RootNode : rn
 RichTextBox : rtbx
 DateTimePicker : dtp
+TabControl : tabc
 
 - Actualizar repositorio del servidor con el local
 

@@ -39,6 +39,8 @@ namespace Music_Manager
         {
             EnableBoxes(false);
             lbl_PosicionArreglo.Visible = false;
+            tsl_Consultas.Enabled = false;
+            tab_Consultas.Enabled = false;
         }
 
         private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
@@ -53,9 +55,9 @@ namespace Music_Manager
         }
 
         private void tsl_Consultas_Click(object sender, EventArgs e)
-        { 
-            frm_ConsultasSQL frm_consultasSQL = new frm_ConsultasSQL();
-            frm_consultasSQL.Show();
+        {
+            tab_Consultas.Enabled = true;
+            tabc_Principal.SelectedTab = tab_Consultas;
         }
 
         private void tsmi_AdministradorDatos_Conectar_Click(object sender, EventArgs e)
@@ -139,6 +141,8 @@ namespace Music_Manager
                             }
 
                             oSql.DataReader1.Close();
+
+                            tsl_Consultas.Enabled = true;
                         }
                     }
                 }
@@ -314,27 +318,39 @@ namespace Music_Manager
             switch (cbx_SeleccionConsulta.SelectedIndex)
             {
                 case 0:
-                    label1.Visible = true;
-                    label1.Text = "Nombre Grupo";
-                    textBox1.Visible = true;
+                    VisibleGroupBoxesConsultas(false);
+                    gbx_Consulta01.Visible = true;
+                    gbx_Consulta01.Focus();
                     break;
                 case 1:
-                    label1.Visible = true;
-                    label1.Text = "Genero";
-                    textBox1.Visible = true;
+                    VisibleGroupBoxesConsultas(false);
+                    gbx_Consulta02.Visible = true;
+                    gbx_Consulta02.Focus();
                     break;
                 case 2:
-                    label1.Visible = true;
-                    label1.Text = "Año";
-                    textBox1.Visible = true;
+                    VisibleGroupBoxesConsultas(false);
+                    gbx_Consulta03.Visible = true;
+                    gbx_Consulta03.Focus();
                     break;
                 case 3:
-                    label1.Visible = true;
-                    label1.Text = "Nombre Grupo";
-                    textBox1.Visible = true;
-                    label2.Visible = true;
-                    label2.Text = "Desde";
+                    VisibleGroupBoxesConsultas(false);
+                    gbx_Consulta04.Visible = true;
+                    gbx_Consulta04.Focus();
                     break;
+            }
+        }
+
+        /* NAME: VisibleGroupBoxesConsultas
+         * DESCRIPTION: hace visible los groupbox
+         * PARAMETERS: bool
+         * RETURNS: void
+         */
+        private void VisibleGroupBoxesConsultas (bool b)
+        {
+            foreach (Control obj in this.gbx_Consultas.Controls)
+            {
+                if (obj is GroupBox)
+                    obj.Visible = b;
             }
         }
     }
