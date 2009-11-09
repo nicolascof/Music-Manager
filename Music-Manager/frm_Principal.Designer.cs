@@ -489,7 +489,6 @@
             this.gbx_Grupo.TabIndex = 10;
             this.gbx_Grupo.TabStop = false;
             this.gbx_Grupo.Text = "Conjunto / Solista";
-            this.gbx_Grupo.Enter += new System.EventHandler(this.gbx_Grupo_Enter);
             // 
             // lbl_PosicionArreglo
             // 
