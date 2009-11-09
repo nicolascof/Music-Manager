@@ -370,5 +370,30 @@ namespace Music_Manager
                     obj.Visible = b;
             }
         }
+
+        /* NAME: btn_Ejecutar
+         * DESCRIPTION: ejecuto la consulta
+         * PARAMETERS: object, EventArgs
+         * RETURNS: void
+         */
+        private void btn_Ejecutar_Click(object sender, EventArgs e)
+        {
+            /*
+            dataGridView1.DataSource = null;
+
+            conexion.ConnectionString = stringConexion;
+            conexion.Open();
+
+            command.CommandText = textBox1.Text;
+            command.Connection = conexion;
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            dataAdapter.Fill(dataSet);
+
+            conexion.Close();
+
+            dataGridView1.DataSource = dataSet.Tables[0];
+            */
+        }
     }
 }

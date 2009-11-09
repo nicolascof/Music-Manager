@@ -34,6 +34,7 @@
             this.tsmi_Archivo_Cerrar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddb_AdministradorDatos = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmi_AdministradorDatos_Conectar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_AdministradorDatos_Desconectar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsl_Consultas = new System.Windows.Forms.ToolStripButton();
             this.tsl_Buscar = new System.Windows.Forms.ToolStripLabel();
             this.tsl_AcercaDe = new System.Windows.Forms.ToolStripButton();
@@ -78,30 +79,29 @@
             this.tabc_Principal = new System.Windows.Forms.TabControl();
             this.tab_Consultas = new System.Windows.Forms.TabPage();
             this.gbx_Consultas = new System.Windows.Forms.GroupBox();
-            this.tbx_Resultado = new System.Windows.Forms.TextBox();
-            this.btn_Ejecutar = new System.Windows.Forms.Button();
-            this.tbx_Consulta_NombreGrupo = new System.Windows.Forms.TextBox();
-            this.lbl_Consulta_NombreGrupo = new System.Windows.Forms.Label();
-            this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
-            this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tbx_Consulta_Genero = new System.Windows.Forms.TextBox();
-            this.lbl_Consulta_Genero = new System.Windows.Forms.Label();
+            this.gbx_Consulta03 = new System.Windows.Forms.GroupBox();
             this.tbx_Consulta_Anio = new System.Windows.Forms.TextBox();
             this.lbl_Consulta_Anio = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gbx_Consulta02 = new System.Windows.Forms.GroupBox();
+            this.tbx_Consulta_Genero = new System.Windows.Forms.TextBox();
+            this.lbl_Consulta_Genero = new System.Windows.Forms.Label();
+            this.gbx_Consulta04 = new System.Windows.Forms.GroupBox();
             this.tbx_Consulta_NombreGrupo2 = new System.Windows.Forms.TextBox();
             this.lbl_Consulta_NombreGrupo2 = new System.Windows.Forms.Label();
-            this.dtp_Consulta_FechaHasta = new System.Windows.Forms.DateTimePicker();
-            this.tbx_Consulta_Anio2 = new System.Windows.Forms.TextBox();
-            this.lbl_Consulta_Anio2 = new System.Windows.Forms.Label();
-            this.dtp_Consulta_FechaDesde = new System.Windows.Forms.DateTimePicker();
-            this.lbl_Consulta_FechaDesde = new System.Windows.Forms.Label();
             this.lbl_Consulta_FechaHasta = new System.Windows.Forms.Label();
+            this.dtp_Consulta_FechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.lbl_Consulta_FechaDesde = new System.Windows.Forms.Label();
+            this.tbx_Consulta_Anio2 = new System.Windows.Forms.TextBox();
+            this.dtp_Consulta_FechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.lbl_Consulta_Anio2 = new System.Windows.Forms.Label();
             this.gbx_Consulta01 = new System.Windows.Forms.GroupBox();
-            this.gbx_Consulta02 = new System.Windows.Forms.GroupBox();
-            this.gbx_Consulta03 = new System.Windows.Forms.GroupBox();
-            this.gbx_Consulta04 = new System.Windows.Forms.GroupBox();
-            this.tsmi_AdministradorDatos_Desconectar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbx_Consulta_NombreGrupo = new System.Windows.Forms.TextBox();
+            this.lbl_Consulta_NombreGrupo = new System.Windows.Forms.Label();
+            this.tbx_Resultado = new System.Windows.Forms.TextBox();
+            this.btn_Ejecutar = new System.Windows.Forms.Button();
+            this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
+            this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Info.SuspendLayout();
@@ -110,11 +110,11 @@
             this.tabc_Principal.SuspendLayout();
             this.tab_Consultas.SuspendLayout();
             this.gbx_Consultas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.gbx_Consulta01.SuspendLayout();
-            this.gbx_Consulta02.SuspendLayout();
             this.gbx_Consulta03.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.gbx_Consulta02.SuspendLayout();
             this.gbx_Consulta04.SuspendLayout();
+            this.gbx_Consulta01.SuspendLayout();
             this.SuspendLayout();
             // 
             // tv_Grupo
@@ -175,6 +175,14 @@
             this.tsmi_AdministradorDatos_Conectar.Size = new System.Drawing.Size(221, 22);
             this.tsmi_AdministradorDatos_Conectar.Text = "Conectar con Base de Datos";
             this.tsmi_AdministradorDatos_Conectar.Click += new System.EventHandler(this.tsmi_AdministradorDatos_Conectar_Click);
+            // 
+            // tsmi_AdministradorDatos_Desconectar
+            // 
+            this.tsmi_AdministradorDatos_Desconectar.Image = global::Music_Manager.Properties.Resources.DeleteDatabase;
+            this.tsmi_AdministradorDatos_Desconectar.Name = "tsmi_AdministradorDatos_Desconectar";
+            this.tsmi_AdministradorDatos_Desconectar.Size = new System.Drawing.Size(221, 22);
+            this.tsmi_AdministradorDatos_Desconectar.Text = "Desconectar";
+            this.tsmi_AdministradorDatos_Desconectar.Click += new System.EventHandler(this.tsmi_AdministradorDatos_Desconectar_Click);
             // 
             // tsl_Consultas
             // 
@@ -601,6 +609,182 @@
             this.gbx_Consultas.TabStop = false;
             this.gbx_Consultas.Text = "Consultas";
             // 
+            // gbx_Consulta03
+            // 
+            this.gbx_Consulta03.Controls.Add(this.tbx_Consulta_Anio);
+            this.gbx_Consulta03.Controls.Add(this.lbl_Consulta_Anio);
+            this.gbx_Consulta03.Location = new System.Drawing.Point(6, 46);
+            this.gbx_Consulta03.Name = "gbx_Consulta03";
+            this.gbx_Consulta03.Size = new System.Drawing.Size(586, 79);
+            this.gbx_Consulta03.TabIndex = 16;
+            this.gbx_Consulta03.TabStop = false;
+            this.gbx_Consulta03.Text = "Consulta03";
+            this.gbx_Consulta03.Visible = false;
+            // 
+            // tbx_Consulta_Anio
+            // 
+            this.tbx_Consulta_Anio.Location = new System.Drawing.Point(124, 28);
+            this.tbx_Consulta_Anio.Name = "tbx_Consulta_Anio";
+            this.tbx_Consulta_Anio.Size = new System.Drawing.Size(219, 20);
+            this.tbx_Consulta_Anio.TabIndex = 8;
+            // 
+            // lbl_Consulta_Anio
+            // 
+            this.lbl_Consulta_Anio.AutoSize = true;
+            this.lbl_Consulta_Anio.Location = new System.Drawing.Point(92, 31);
+            this.lbl_Consulta_Anio.Name = "lbl_Consulta_Anio";
+            this.lbl_Consulta_Anio.Size = new System.Drawing.Size(26, 13);
+            this.lbl_Consulta_Anio.TabIndex = 7;
+            this.lbl_Consulta_Anio.Text = "Año";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 157);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(586, 345);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // gbx_Consulta02
+            // 
+            this.gbx_Consulta02.Controls.Add(this.tbx_Consulta_Genero);
+            this.gbx_Consulta02.Controls.Add(this.lbl_Consulta_Genero);
+            this.gbx_Consulta02.Location = new System.Drawing.Point(6, 46);
+            this.gbx_Consulta02.Name = "gbx_Consulta02";
+            this.gbx_Consulta02.Size = new System.Drawing.Size(586, 79);
+            this.gbx_Consulta02.TabIndex = 15;
+            this.gbx_Consulta02.TabStop = false;
+            this.gbx_Consulta02.Text = "Consulta02";
+            this.gbx_Consulta02.Visible = false;
+            // 
+            // tbx_Consulta_Genero
+            // 
+            this.tbx_Consulta_Genero.Location = new System.Drawing.Point(124, 28);
+            this.tbx_Consulta_Genero.Name = "tbx_Consulta_Genero";
+            this.tbx_Consulta_Genero.Size = new System.Drawing.Size(219, 20);
+            this.tbx_Consulta_Genero.TabIndex = 6;
+            // 
+            // lbl_Consulta_Genero
+            // 
+            this.lbl_Consulta_Genero.AutoSize = true;
+            this.lbl_Consulta_Genero.Location = new System.Drawing.Point(76, 31);
+            this.lbl_Consulta_Genero.Name = "lbl_Consulta_Genero";
+            this.lbl_Consulta_Genero.Size = new System.Drawing.Size(42, 13);
+            this.lbl_Consulta_Genero.TabIndex = 5;
+            this.lbl_Consulta_Genero.Text = "Genero";
+            // 
+            // gbx_Consulta04
+            // 
+            this.gbx_Consulta04.Controls.Add(this.tbx_Consulta_NombreGrupo2);
+            this.gbx_Consulta04.Controls.Add(this.lbl_Consulta_NombreGrupo2);
+            this.gbx_Consulta04.Controls.Add(this.lbl_Consulta_FechaHasta);
+            this.gbx_Consulta04.Controls.Add(this.dtp_Consulta_FechaHasta);
+            this.gbx_Consulta04.Controls.Add(this.lbl_Consulta_FechaDesde);
+            this.gbx_Consulta04.Controls.Add(this.tbx_Consulta_Anio2);
+            this.gbx_Consulta04.Controls.Add(this.dtp_Consulta_FechaDesde);
+            this.gbx_Consulta04.Controls.Add(this.lbl_Consulta_Anio2);
+            this.gbx_Consulta04.Location = new System.Drawing.Point(6, 46);
+            this.gbx_Consulta04.Name = "gbx_Consulta04";
+            this.gbx_Consulta04.Size = new System.Drawing.Size(586, 79);
+            this.gbx_Consulta04.TabIndex = 16;
+            this.gbx_Consulta04.TabStop = false;
+            this.gbx_Consulta04.Text = "Consulta04";
+            this.gbx_Consulta04.Visible = false;
+            // 
+            // tbx_Consulta_NombreGrupo2
+            // 
+            this.tbx_Consulta_NombreGrupo2.Location = new System.Drawing.Point(124, 19);
+            this.tbx_Consulta_NombreGrupo2.Name = "tbx_Consulta_NombreGrupo2";
+            this.tbx_Consulta_NombreGrupo2.Size = new System.Drawing.Size(219, 20);
+            this.tbx_Consulta_NombreGrupo2.TabIndex = 12;
+            // 
+            // lbl_Consulta_NombreGrupo2
+            // 
+            this.lbl_Consulta_NombreGrupo2.AutoSize = true;
+            this.lbl_Consulta_NombreGrupo2.Location = new System.Drawing.Point(42, 22);
+            this.lbl_Consulta_NombreGrupo2.Name = "lbl_Consulta_NombreGrupo2";
+            this.lbl_Consulta_NombreGrupo2.Size = new System.Drawing.Size(76, 13);
+            this.lbl_Consulta_NombreGrupo2.TabIndex = 11;
+            this.lbl_Consulta_NombreGrupo2.Text = "Nombre Grupo";
+            // 
+            // lbl_Consulta_FechaHasta
+            // 
+            this.lbl_Consulta_FechaHasta.AutoSize = true;
+            this.lbl_Consulta_FechaHasta.Location = new System.Drawing.Point(218, 50);
+            this.lbl_Consulta_FechaHasta.Name = "lbl_Consulta_FechaHasta";
+            this.lbl_Consulta_FechaHasta.Size = new System.Drawing.Size(33, 13);
+            this.lbl_Consulta_FechaHasta.TabIndex = 16;
+            this.lbl_Consulta_FechaHasta.Text = "hasta";
+            // 
+            // dtp_Consulta_FechaHasta
+            // 
+            this.dtp_Consulta_FechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_Consulta_FechaHasta.Location = new System.Drawing.Point(257, 46);
+            this.dtp_Consulta_FechaHasta.Name = "dtp_Consulta_FechaHasta";
+            this.dtp_Consulta_FechaHasta.Size = new System.Drawing.Size(86, 20);
+            this.dtp_Consulta_FechaHasta.TabIndex = 13;
+            // 
+            // lbl_Consulta_FechaDesde
+            // 
+            this.lbl_Consulta_FechaDesde.AutoSize = true;
+            this.lbl_Consulta_FechaDesde.Location = new System.Drawing.Point(49, 50);
+            this.lbl_Consulta_FechaDesde.Name = "lbl_Consulta_FechaDesde";
+            this.lbl_Consulta_FechaDesde.Size = new System.Drawing.Size(69, 13);
+            this.lbl_Consulta_FechaDesde.TabIndex = 15;
+            this.lbl_Consulta_FechaDesde.Text = "Fecha desde";
+            // 
+            // tbx_Consulta_Anio2
+            // 
+            this.tbx_Consulta_Anio2.Location = new System.Drawing.Point(419, 19);
+            this.tbx_Consulta_Anio2.Name = "tbx_Consulta_Anio2";
+            this.tbx_Consulta_Anio2.Size = new System.Drawing.Size(86, 20);
+            this.tbx_Consulta_Anio2.TabIndex = 18;
+            // 
+            // dtp_Consulta_FechaDesde
+            // 
+            this.dtp_Consulta_FechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_Consulta_FechaDesde.Location = new System.Drawing.Point(124, 46);
+            this.dtp_Consulta_FechaDesde.Name = "dtp_Consulta_FechaDesde";
+            this.dtp_Consulta_FechaDesde.Size = new System.Drawing.Size(86, 20);
+            this.dtp_Consulta_FechaDesde.TabIndex = 14;
+            // 
+            // lbl_Consulta_Anio2
+            // 
+            this.lbl_Consulta_Anio2.AutoSize = true;
+            this.lbl_Consulta_Anio2.Location = new System.Drawing.Point(387, 22);
+            this.lbl_Consulta_Anio2.Name = "lbl_Consulta_Anio2";
+            this.lbl_Consulta_Anio2.Size = new System.Drawing.Size(26, 13);
+            this.lbl_Consulta_Anio2.TabIndex = 17;
+            this.lbl_Consulta_Anio2.Text = "Año";
+            // 
+            // gbx_Consulta01
+            // 
+            this.gbx_Consulta01.Controls.Add(this.tbx_Consulta_NombreGrupo);
+            this.gbx_Consulta01.Controls.Add(this.lbl_Consulta_NombreGrupo);
+            this.gbx_Consulta01.Location = new System.Drawing.Point(6, 46);
+            this.gbx_Consulta01.Name = "gbx_Consulta01";
+            this.gbx_Consulta01.Size = new System.Drawing.Size(586, 79);
+            this.gbx_Consulta01.TabIndex = 14;
+            this.gbx_Consulta01.TabStop = false;
+            this.gbx_Consulta01.Text = "Consulta01";
+            this.gbx_Consulta01.Visible = false;
+            // 
+            // tbx_Consulta_NombreGrupo
+            // 
+            this.tbx_Consulta_NombreGrupo.Location = new System.Drawing.Point(124, 28);
+            this.tbx_Consulta_NombreGrupo.Name = "tbx_Consulta_NombreGrupo";
+            this.tbx_Consulta_NombreGrupo.Size = new System.Drawing.Size(219, 20);
+            this.tbx_Consulta_NombreGrupo.TabIndex = 4;
+            // 
+            // lbl_Consulta_NombreGrupo
+            // 
+            this.lbl_Consulta_NombreGrupo.AutoSize = true;
+            this.lbl_Consulta_NombreGrupo.Location = new System.Drawing.Point(42, 31);
+            this.lbl_Consulta_NombreGrupo.Name = "lbl_Consulta_NombreGrupo";
+            this.lbl_Consulta_NombreGrupo.Size = new System.Drawing.Size(76, 13);
+            this.lbl_Consulta_NombreGrupo.TabIndex = 3;
+            this.lbl_Consulta_NombreGrupo.Text = "Nombre Grupo";
+            // 
             // tbx_Resultado
             // 
             this.tbx_Resultado.BackColor = System.Drawing.SystemColors.Control;
@@ -620,22 +804,7 @@
             this.btn_Ejecutar.TabIndex = 11;
             this.btn_Ejecutar.Text = "Ejecutar";
             this.btn_Ejecutar.UseVisualStyleBackColor = true;
-            // 
-            // tbx_Consulta_NombreGrupo
-            // 
-            this.tbx_Consulta_NombreGrupo.Location = new System.Drawing.Point(124, 28);
-            this.tbx_Consulta_NombreGrupo.Name = "tbx_Consulta_NombreGrupo";
-            this.tbx_Consulta_NombreGrupo.Size = new System.Drawing.Size(219, 20);
-            this.tbx_Consulta_NombreGrupo.TabIndex = 4;
-            // 
-            // lbl_Consulta_NombreGrupo
-            // 
-            this.lbl_Consulta_NombreGrupo.AutoSize = true;
-            this.lbl_Consulta_NombreGrupo.Location = new System.Drawing.Point(42, 31);
-            this.lbl_Consulta_NombreGrupo.Name = "lbl_Consulta_NombreGrupo";
-            this.lbl_Consulta_NombreGrupo.Size = new System.Drawing.Size(76, 13);
-            this.lbl_Consulta_NombreGrupo.TabIndex = 3;
-            this.lbl_Consulta_NombreGrupo.Text = "Nombre Grupo";
+            this.btn_Ejecutar.Click += new System.EventHandler(this.btn_Ejecutar_Click);
             // 
             // lbl_SeleccionConsulta
             // 
@@ -660,174 +829,6 @@
             this.cbx_SeleccionConsulta.Size = new System.Drawing.Size(381, 21);
             this.cbx_SeleccionConsulta.TabIndex = 1;
             this.cbx_SeleccionConsulta.SelectedIndexChanged += new System.EventHandler(this.cbx_SeleccionConsulta_SelectedIndexChanged);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 157);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(586, 345);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // tbx_Consulta_Genero
-            // 
-            this.tbx_Consulta_Genero.Location = new System.Drawing.Point(124, 28);
-            this.tbx_Consulta_Genero.Name = "tbx_Consulta_Genero";
-            this.tbx_Consulta_Genero.Size = new System.Drawing.Size(219, 20);
-            this.tbx_Consulta_Genero.TabIndex = 6;
-            // 
-            // lbl_Consulta_Genero
-            // 
-            this.lbl_Consulta_Genero.AutoSize = true;
-            this.lbl_Consulta_Genero.Location = new System.Drawing.Point(76, 31);
-            this.lbl_Consulta_Genero.Name = "lbl_Consulta_Genero";
-            this.lbl_Consulta_Genero.Size = new System.Drawing.Size(42, 13);
-            this.lbl_Consulta_Genero.TabIndex = 5;
-            this.lbl_Consulta_Genero.Text = "Genero";
-            // 
-            // tbx_Consulta_Anio
-            // 
-            this.tbx_Consulta_Anio.Location = new System.Drawing.Point(124, 28);
-            this.tbx_Consulta_Anio.Name = "tbx_Consulta_Anio";
-            this.tbx_Consulta_Anio.Size = new System.Drawing.Size(219, 20);
-            this.tbx_Consulta_Anio.TabIndex = 8;
-            // 
-            // lbl_Consulta_Anio
-            // 
-            this.lbl_Consulta_Anio.AutoSize = true;
-            this.lbl_Consulta_Anio.Location = new System.Drawing.Point(92, 31);
-            this.lbl_Consulta_Anio.Name = "lbl_Consulta_Anio";
-            this.lbl_Consulta_Anio.Size = new System.Drawing.Size(26, 13);
-            this.lbl_Consulta_Anio.TabIndex = 7;
-            this.lbl_Consulta_Anio.Text = "Año";
-            // 
-            // tbx_Consulta_NombreGrupo2
-            // 
-            this.tbx_Consulta_NombreGrupo2.Location = new System.Drawing.Point(124, 19);
-            this.tbx_Consulta_NombreGrupo2.Name = "tbx_Consulta_NombreGrupo2";
-            this.tbx_Consulta_NombreGrupo2.Size = new System.Drawing.Size(219, 20);
-            this.tbx_Consulta_NombreGrupo2.TabIndex = 12;
-            // 
-            // lbl_Consulta_NombreGrupo2
-            // 
-            this.lbl_Consulta_NombreGrupo2.AutoSize = true;
-            this.lbl_Consulta_NombreGrupo2.Location = new System.Drawing.Point(42, 22);
-            this.lbl_Consulta_NombreGrupo2.Name = "lbl_Consulta_NombreGrupo2";
-            this.lbl_Consulta_NombreGrupo2.Size = new System.Drawing.Size(76, 13);
-            this.lbl_Consulta_NombreGrupo2.TabIndex = 11;
-            this.lbl_Consulta_NombreGrupo2.Text = "Nombre Grupo";
-            // 
-            // dtp_Consulta_FechaHasta
-            // 
-            this.dtp_Consulta_FechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_Consulta_FechaHasta.Location = new System.Drawing.Point(257, 46);
-            this.dtp_Consulta_FechaHasta.Name = "dtp_Consulta_FechaHasta";
-            this.dtp_Consulta_FechaHasta.Size = new System.Drawing.Size(86, 20);
-            this.dtp_Consulta_FechaHasta.TabIndex = 13;
-            // 
-            // tbx_Consulta_Anio2
-            // 
-            this.tbx_Consulta_Anio2.Location = new System.Drawing.Point(419, 19);
-            this.tbx_Consulta_Anio2.Name = "tbx_Consulta_Anio2";
-            this.tbx_Consulta_Anio2.Size = new System.Drawing.Size(86, 20);
-            this.tbx_Consulta_Anio2.TabIndex = 18;
-            // 
-            // lbl_Consulta_Anio2
-            // 
-            this.lbl_Consulta_Anio2.AutoSize = true;
-            this.lbl_Consulta_Anio2.Location = new System.Drawing.Point(387, 22);
-            this.lbl_Consulta_Anio2.Name = "lbl_Consulta_Anio2";
-            this.lbl_Consulta_Anio2.Size = new System.Drawing.Size(26, 13);
-            this.lbl_Consulta_Anio2.TabIndex = 17;
-            this.lbl_Consulta_Anio2.Text = "Año";
-            // 
-            // dtp_Consulta_FechaDesde
-            // 
-            this.dtp_Consulta_FechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_Consulta_FechaDesde.Location = new System.Drawing.Point(124, 46);
-            this.dtp_Consulta_FechaDesde.Name = "dtp_Consulta_FechaDesde";
-            this.dtp_Consulta_FechaDesde.Size = new System.Drawing.Size(86, 20);
-            this.dtp_Consulta_FechaDesde.TabIndex = 14;
-            // 
-            // lbl_Consulta_FechaDesde
-            // 
-            this.lbl_Consulta_FechaDesde.AutoSize = true;
-            this.lbl_Consulta_FechaDesde.Location = new System.Drawing.Point(49, 50);
-            this.lbl_Consulta_FechaDesde.Name = "lbl_Consulta_FechaDesde";
-            this.lbl_Consulta_FechaDesde.Size = new System.Drawing.Size(69, 13);
-            this.lbl_Consulta_FechaDesde.TabIndex = 15;
-            this.lbl_Consulta_FechaDesde.Text = "Fecha desde";
-            // 
-            // lbl_Consulta_FechaHasta
-            // 
-            this.lbl_Consulta_FechaHasta.AutoSize = true;
-            this.lbl_Consulta_FechaHasta.Location = new System.Drawing.Point(218, 50);
-            this.lbl_Consulta_FechaHasta.Name = "lbl_Consulta_FechaHasta";
-            this.lbl_Consulta_FechaHasta.Size = new System.Drawing.Size(33, 13);
-            this.lbl_Consulta_FechaHasta.TabIndex = 16;
-            this.lbl_Consulta_FechaHasta.Text = "hasta";
-            // 
-            // gbx_Consulta01
-            // 
-            this.gbx_Consulta01.Controls.Add(this.tbx_Consulta_NombreGrupo);
-            this.gbx_Consulta01.Controls.Add(this.lbl_Consulta_NombreGrupo);
-            this.gbx_Consulta01.Location = new System.Drawing.Point(6, 46);
-            this.gbx_Consulta01.Name = "gbx_Consulta01";
-            this.gbx_Consulta01.Size = new System.Drawing.Size(586, 79);
-            this.gbx_Consulta01.TabIndex = 14;
-            this.gbx_Consulta01.TabStop = false;
-            this.gbx_Consulta01.Text = "Consulta01";
-            this.gbx_Consulta01.Visible = false;
-            // 
-            // gbx_Consulta02
-            // 
-            this.gbx_Consulta02.Controls.Add(this.tbx_Consulta_Genero);
-            this.gbx_Consulta02.Controls.Add(this.lbl_Consulta_Genero);
-            this.gbx_Consulta02.Location = new System.Drawing.Point(6, 46);
-            this.gbx_Consulta02.Name = "gbx_Consulta02";
-            this.gbx_Consulta02.Size = new System.Drawing.Size(586, 79);
-            this.gbx_Consulta02.TabIndex = 15;
-            this.gbx_Consulta02.TabStop = false;
-            this.gbx_Consulta02.Text = "Consulta02";
-            this.gbx_Consulta02.Visible = false;
-            // 
-            // gbx_Consulta03
-            // 
-            this.gbx_Consulta03.Controls.Add(this.tbx_Consulta_Anio);
-            this.gbx_Consulta03.Controls.Add(this.lbl_Consulta_Anio);
-            this.gbx_Consulta03.Location = new System.Drawing.Point(6, 46);
-            this.gbx_Consulta03.Name = "gbx_Consulta03";
-            this.gbx_Consulta03.Size = new System.Drawing.Size(586, 79);
-            this.gbx_Consulta03.TabIndex = 16;
-            this.gbx_Consulta03.TabStop = false;
-            this.gbx_Consulta03.Text = "Consulta03";
-            this.gbx_Consulta03.Visible = false;
-            // 
-            // gbx_Consulta04
-            // 
-            this.gbx_Consulta04.Controls.Add(this.tbx_Consulta_NombreGrupo2);
-            this.gbx_Consulta04.Controls.Add(this.lbl_Consulta_NombreGrupo2);
-            this.gbx_Consulta04.Controls.Add(this.lbl_Consulta_FechaHasta);
-            this.gbx_Consulta04.Controls.Add(this.dtp_Consulta_FechaHasta);
-            this.gbx_Consulta04.Controls.Add(this.lbl_Consulta_FechaDesde);
-            this.gbx_Consulta04.Controls.Add(this.tbx_Consulta_Anio2);
-            this.gbx_Consulta04.Controls.Add(this.dtp_Consulta_FechaDesde);
-            this.gbx_Consulta04.Controls.Add(this.lbl_Consulta_Anio2);
-            this.gbx_Consulta04.Location = new System.Drawing.Point(6, 46);
-            this.gbx_Consulta04.Name = "gbx_Consulta04";
-            this.gbx_Consulta04.Size = new System.Drawing.Size(586, 79);
-            this.gbx_Consulta04.TabIndex = 16;
-            this.gbx_Consulta04.TabStop = false;
-            this.gbx_Consulta04.Text = "Consulta04";
-            this.gbx_Consulta04.Visible = false;
-            // 
-            // tsmi_AdministradorDatos_Desconectar
-            // 
-            this.tsmi_AdministradorDatos_Desconectar.Image = global::Music_Manager.Properties.Resources.DeleteDatabase;
-            this.tsmi_AdministradorDatos_Desconectar.Name = "tsmi_AdministradorDatos_Desconectar";
-            this.tsmi_AdministradorDatos_Desconectar.Size = new System.Drawing.Size(221, 22);
-            this.tsmi_AdministradorDatos_Desconectar.Text = "Desconectar";
-            this.tsmi_AdministradorDatos_Desconectar.Click += new System.EventHandler(this.tsmi_AdministradorDatos_Desconectar_Click);
             // 
             // frm_Principal
             // 
@@ -858,15 +859,15 @@
             this.tab_Consultas.ResumeLayout(false);
             this.gbx_Consultas.ResumeLayout(false);
             this.gbx_Consultas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.gbx_Consulta01.ResumeLayout(false);
-            this.gbx_Consulta01.PerformLayout();
-            this.gbx_Consulta02.ResumeLayout(false);
-            this.gbx_Consulta02.PerformLayout();
             this.gbx_Consulta03.ResumeLayout(false);
             this.gbx_Consulta03.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.gbx_Consulta02.ResumeLayout(false);
+            this.gbx_Consulta02.PerformLayout();
             this.gbx_Consulta04.ResumeLayout(false);
             this.gbx_Consulta04.PerformLayout();
+            this.gbx_Consulta01.ResumeLayout(false);
+            this.gbx_Consulta01.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
