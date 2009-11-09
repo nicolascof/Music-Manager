@@ -9,6 +9,15 @@ SET titulo = 'Reckless',
 	duracion_album = 38
 WHERE id_album = 3
 
+insert into generos (descricpion)
+values ('Electropop')
+
+insert into grupo (descripcion, id_compania, cant_integrantes, solista_conjunto)
+values ('Depeche Mode', 4, 3, 0)
+
+insert into album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
+values ( 2, 2, 4, 2, 1, 'Sound of the Universe', '15/09/2008', '09/06/2009', 13, 60, 'Ultimo disco de Depeche mode')
+
 -- COMPANIAS
 
 SELECT * FROM companias
@@ -67,7 +76,9 @@ ALTER PROCEDURE sp_SeleccionAlbumPorGrupo
 	@nombreGrupo nvarchar(25)
 AS
 	SELECT *
-	FROM album AS A, grupo AS G
+	FROM album AS A
+		INNER JOIN grupo AS G
+			ON A.id_grupo = G.id_grupo
 	WHERE A.id_grupo IN (
 		SELECT G.id_grupo
 		FROM grupo AS G 
