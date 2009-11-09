@@ -119,21 +119,21 @@ namespace Music_Manager
         {
             string[] arregloGenero = { "Jazz", "Rock", "Pop", "Heavy Metal", "Dead Metal", "Grunge", "ElectroPop"};
 
-            return arregloGenero[IdGenero];
+            return arregloGenero[IdGenero-1];
         }
 
         public string MostrarDisqueria ()
         {
             string[] arregloDisqueria = { "Eden", "Musimundo" };
 
-            return arregloDisqueria[IdDisqueria];
+            return arregloDisqueria[IdDisqueria-1];
         }
 
         public string MostrarCompania ()
         {
             string[] arregloCompania = { "Sony BMG", "BGM", "Warner Music Group", "EMI", "Universal Music Group" };
 
-            return arregloCompania[IdCompania];
+            return arregloCompania[IdCompania-1];
         }
 
         /*

@@ -110,10 +110,10 @@ namespace Music_Manager
                                     rn_Conjuntos.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
                                 }
 
+                                oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].Descripcion);
+
                                 using (oSql.DataReader2)
                                 {
-                                    oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].Descripcion);
-
                                     cantidadAlbums = 0;
 
                                     while (oSql.DataReader2.Read())
@@ -136,9 +136,9 @@ namespace Music_Manager
                                 }
                                 
                                 ++cantidadGrupos;
-                                //oSql.DataReader2.Close();
                             }
-                            
+
+                            oSql.DataReader2.Close();
                             oSql.DataReader1.Close();
 
                             tsl_Consultas.Enabled = true;

@@ -18,6 +18,10 @@ values ('Depeche Mode', 4, 3, 0)
 insert into album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
 values ( 2, 2, 4, 2, 1, 'Sound of the Universe', '15/09/2008', '09/06/2009', 13, 60, 'Ultimo disco de Depeche mode')
 
+update album
+set costo = 60
+where id_album = 5
+
 -- COMPANIAS
 
 SELECT * FROM companias

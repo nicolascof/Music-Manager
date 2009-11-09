@@ -60,8 +60,8 @@ namespace Music_Manager
         public Sql()
         {
             Conexion = new SqlConnection();
-            Command1 = new SqlCommand();
-            Command2 = new SqlCommand();
+            //Command1 = new SqlCommand();
+            //Command2 = new SqlCommand();
             DataReader1 = null;
             DataReader2 = null;
             Consulta = null;
@@ -110,6 +110,8 @@ namespace Music_Manager
          */
         public bool sp_SeleccionNombreGrupo ()
         {
+            Command1 = new SqlCommand();
+
             Command1.CommandText = "sp_SeleccionNombreGrupo";
             Command1.CommandType = CommandType.StoredProcedure;
 
@@ -133,6 +135,8 @@ namespace Music_Manager
          */
         public bool sp_SeleccionAlbumPorGrupo (string nombreGrupo)
         {
+            Command2 = new SqlCommand();
+
             SqlParameter parametro = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar);
             parametro.Value = nombreGrupo;
 
