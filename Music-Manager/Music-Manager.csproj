@@ -58,12 +58,6 @@
     <Compile Include="frm_ConectarBD.Designer.cs">
       <DependentUpon>frm_ConectarBD.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_ConsultasSQL.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_ConsultasSQL.Designer.cs">
-      <DependentUpon>frm_ConsultasSQL.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,10 +73,6 @@
     <EmbeddedResource Include="frm_ConectarBD.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frm_ConectarBD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_ConsultasSQL.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frm_ConsultasSQL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Principal.resx">
       <SubType>Designer</SubType>
