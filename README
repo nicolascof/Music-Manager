@@ -56,3 +56,16 @@ git push origin master
 - Ver estado de modificaciones a nivel local
 
 git status
+
+- Indicaciones sobre consultas de Laboratorio
+
+ABM GENEROS
+
+Consulta 1:
+OK
+Consulta 2:
+Falta definir el ingreso por teclado
+Consulta 3:
+Reemplazar por una consulta que tenga una subconsulta en el WHERE, con al menos 2 tablas en la consulta principal
+Consulta 4:
+Composicion pura con al menos 4 tablas y mostrando datos de todas las tablas. Sin group by, sin subconsultas. El usuario decide si ingresa un rango de fechas de lanzamiento o parte  del nombre del album (titulo)
