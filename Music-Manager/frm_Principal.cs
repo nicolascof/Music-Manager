@@ -41,6 +41,7 @@ namespace Music_Manager
             lbl_PosicionArreglo.Visible = false;
             tsl_Consultas.Enabled = false;
             tab_Consultas.Enabled = false;
+            tsmi_AdministradorDatos_Desconectar.Enabled = false;
         }
 
         private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
@@ -134,15 +135,16 @@ namespace Music_Manager
                                         ++cantidadAlbums;
                                     }
                                 }
-                                
+
                                 ++cantidadGrupos;
                             }
 
-                            oSql.DataReader2.Close();
                             oSql.DataReader1.Close();
+                            oSql.DataReader2.Close();
 
                             tsl_Consultas.Enabled = true;
                             tsmi_AdministradorDatos_Conectar.Enabled = false;
+                            tsmi_AdministradorDatos_Desconectar.Enabled = true;
                         }
                     }
                 }
@@ -153,6 +155,7 @@ namespace Music_Manager
         {
             oSql.Conexion.Close();
             tsmi_AdministradorDatos_Conectar.Enabled = true;
+            tsmi_AdministradorDatos_Desconectar.Enabled = false;
         }
 
         /* NAME: tv_Grupo_AfterSelect 
@@ -211,12 +214,16 @@ namespace Music_Manager
 
                 if (dato != -1)
                 {
+                    cbx_Genero.Items.Clear();
+                    cbx_IdDisqueria.Items.Clear();
+                    cbx_IdCompania.Items.Clear();
+
                     tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum.ToString();
-                    cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero());
+                    cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero(oGrupo[posicion].OAlbum[dato].IdGenero));
                     cbx_Genero.SelectedIndex = 0;
-                    cbx_IdDisqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria());
+                    cbx_IdDisqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria(oGrupo[posicion].OAlbum[dato].IdDisqueria));
                     cbx_IdDisqueria.SelectedIndex = 0;
-                    cbx_IdCompania.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarCompania());
+                    cbx_IdCompania.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarCompania(oGrupo[posicion].OAlbum[dato].IdCompania));
                     cbx_IdCompania.SelectedIndex = 0;
                     dtp_FechaTerminado.Value = oGrupo[posicion].OAlbum[dato].FechaTerminado;
                     dtp_FechaLanzamiento.Value = oGrupo[posicion].OAlbum[dato].FechaLanzamiento;

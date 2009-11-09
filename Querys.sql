@@ -1,5 +1,7 @@
 USE cd 
 
+-- BRYAN ADAMS
+
 UPDATE album
 SET titulo = 'Reckless',
 	costo = 45.98,
@@ -9,18 +11,16 @@ SET titulo = 'Reckless',
 	duracion_album = 38
 WHERE id_album = 3
 
-insert into generos (descricpion)
-values ('Electropop')
+-- DEPECHE MODE
 
-insert into grupo (descripcion, id_compania, cant_integrantes, solista_conjunto)
-values ('Depeche Mode', 4, 3, 0)
+INSERT INTO generos (descricpion)
+VALUES ('Electropop')
 
-insert into album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
-values ( 2, 2, 4, 2, 1, 'Sound of the Universe', '15/09/2008', '09/06/2009', 13, 60, 'Ultimo disco de Depeche mode')
+INSERT INTO grupo (descripcion, id_compania, cant_integrantes, solista_conjunto)
+VALUES ('Depeche Mode', 4, 3, 0)
 
-update album
-set costo = 60
-where id_album = 5
+INSERT INTO album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, costo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
+VALUES ( 2, 2, 4, 2, 1, 'Sound of the Universe', 60.00, '15/09/2008', '09/06/2009', 13, 60, 'Ultimo disco de Depeche mode')
 
 -- COMPANIAS
 
