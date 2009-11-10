@@ -74,7 +74,6 @@
             this.tbx_IdGrupo = new System.Windows.Forms.TextBox();
             this.lbl_CantidadIntegrantes = new System.Windows.Forms.Label();
             this.tbx_CantidadIntegrantes = new System.Windows.Forms.TextBox();
-            this.tbx_GrupoNombre = new System.Windows.Forms.TextBox();
             this.lbl_Grupo_Nombre = new System.Windows.Forms.Label();
             this.tabc_Principal = new System.Windows.Forms.TabControl();
             this.tab_Consultas = new System.Windows.Forms.TabPage();
@@ -103,6 +102,7 @@
             this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
             this.btn_Eliminar = new System.Windows.Forms.Button();
+            this.cbx_GrupoNombre = new System.Windows.Forms.ComboBox();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Info.SuspendLayout();
@@ -505,12 +505,12 @@
             // 
             // gbx_Grupo
             // 
+            this.gbx_Grupo.Controls.Add(this.cbx_GrupoNombre);
             this.gbx_Grupo.Controls.Add(this.lbl_PosicionArreglo);
             this.gbx_Grupo.Controls.Add(this.lbl_IdGrupo);
             this.gbx_Grupo.Controls.Add(this.tbx_IdGrupo);
             this.gbx_Grupo.Controls.Add(this.lbl_CantidadIntegrantes);
             this.gbx_Grupo.Controls.Add(this.tbx_CantidadIntegrantes);
-            this.gbx_Grupo.Controls.Add(this.tbx_GrupoNombre);
             this.gbx_Grupo.Controls.Add(this.lbl_Grupo_Nombre);
             this.gbx_Grupo.Location = new System.Drawing.Point(6, 6);
             this.gbx_Grupo.Name = "gbx_Grupo";
@@ -558,13 +558,6 @@
             this.tbx_CantidadIntegrantes.Name = "tbx_CantidadIntegrantes";
             this.tbx_CantidadIntegrantes.Size = new System.Drawing.Size(211, 20);
             this.tbx_CantidadIntegrantes.TabIndex = 10;
-            // 
-            // tbx_GrupoNombre
-            // 
-            this.tbx_GrupoNombre.Location = new System.Drawing.Point(129, 45);
-            this.tbx_GrupoNombre.Name = "tbx_GrupoNombre";
-            this.tbx_GrupoNombre.Size = new System.Drawing.Size(211, 20);
-            this.tbx_GrupoNombre.TabIndex = 9;
             // 
             // lbl_Grupo_Nombre
             // 
@@ -845,6 +838,15 @@
             this.btn_Eliminar.UseVisualStyleBackColor = true;
             this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
+            // cbx_GrupoNombre
+            // 
+            this.cbx_GrupoNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_GrupoNombre.FormattingEnabled = true;
+            this.cbx_GrupoNombre.Location = new System.Drawing.Point(129, 45);
+            this.cbx_GrupoNombre.Name = "cbx_GrupoNombre";
+            this.cbx_GrupoNombre.Size = new System.Drawing.Size(211, 21);
+            this.cbx_GrupoNombre.TabIndex = 20;
+            // 
             // frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -902,7 +904,6 @@
         private System.Windows.Forms.TabPage tab_Info;
         private System.Windows.Forms.GroupBox gbx_Grupo;
         private System.Windows.Forms.TextBox tbx_CantidadIntegrantes;
-        private System.Windows.Forms.TextBox tbx_GrupoNombre;
         private System.Windows.Forms.Label lbl_Grupo_Nombre;
         private System.Windows.Forms.TabControl tabc_Principal;
         private System.Windows.Forms.GroupBox gbx_Album;
@@ -965,6 +966,7 @@
         private System.Windows.Forms.GroupBox gbx_Consulta01;
         private System.Windows.Forms.ToolStripMenuItem tsmi_AdministradorDatos_Desconectar;
         private System.Windows.Forms.Button btn_Eliminar;
+        private System.Windows.Forms.ComboBox cbx_GrupoNombre;
     }
 }
 

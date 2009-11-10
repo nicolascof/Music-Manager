@@ -213,7 +213,7 @@ namespace Music_Manager
                    11 @duracionAlbum int,
                    12 @observaciones nvarchar(80)
                 */
-                SqlParameter[] parametro = new SqlParameter[13];
+                SqlParameter[] parametro = new SqlParameter[12];
 
                 parametro[0] = new SqlParameter("@idGenero", SqlDbType.Int);
                 parametro[0].Value = idGenero;
@@ -277,7 +277,69 @@ namespace Music_Manager
         {
             try
             {
+                Command1 = new SqlCommand();
 
+                /*  @idAlbum int,
+	                @idGenero int,
+	                @idDisqueria int,
+	                @idCompania int,
+	                @idGrupo int,
+	                @variosArtistas bit,
+	                @titulo nvarchar(50),
+	                @costo decimal,
+	                @fechaTerminado datetime,
+	                @fechaLanzamiento datetime,
+	                @cantidadTemas int,
+	                @duracionAlbum int,
+	                @observaciones nvarchar(80)
+                */
+                SqlParameter[] parametro = new SqlParameter[13];
+
+                parametro[0] = new SqlParameter("@idAlbum", SqlDbType.Int);
+                parametro[0].Value = idAlbum;
+
+                parametro[1] = new SqlParameter("@idGenero", SqlDbType.Int);
+                parametro[1].Value = idGenero;
+
+                parametro[2] = new SqlParameter("@idDisqueria", SqlDbType.Int);
+                parametro[2].Value = idDisqueria;
+
+                parametro[3] = new SqlParameter("@idCompania", SqlDbType.Int);
+                parametro[3].Value = idCompania;
+
+                parametro[4] = new SqlParameter("@idGrupo", SqlDbType.Int);
+                parametro[4].Value = idGrupo;
+
+                parametro[5] = new SqlParameter("@variosArtistas", SqlDbType.Bit);
+                parametro[5].Value = variosArtistas;
+
+                parametro[6] = new SqlParameter("@titulo", SqlDbType.NVarChar, 50);
+                parametro[6].Value = titulo;
+
+                parametro[7] = new SqlParameter("@costo", SqlDbType.Decimal);
+                parametro[7].Value = costo;
+
+                parametro[8] = new SqlParameter("@fechaTerminado", SqlDbType.DateTime);
+                parametro[8].Value = fechaTerminado;
+
+                parametro[9] = new SqlParameter("@fechaLanzamiento", SqlDbType.DateTime);
+                parametro[9].Value = fechaLanzamiento;
+
+                parametro[10] = new SqlParameter("@cantidadTemas", SqlDbType.Int);
+                parametro[10].Value = cantidadTemas;
+
+                parametro[11] = new SqlParameter("@duracionAlbum", SqlDbType.Int);
+                parametro[11].Value = duracionAlbum;
+
+                parametro[12] = new SqlParameter("@observaciones", SqlDbType.NVarChar, 80);
+                parametro[12].Value = observaciones;
+
+                Command1.CommandText = "sp_AgregarAlbum";
+                Command1.CommandType = CommandType.StoredProcedure;
+                Command1.Parameters.AddRange(parametro);
+
+                Command1.Connection = Conexion;
+                Command1.ExecuteNonQuery();
             }
             catch (SqlException)
             {

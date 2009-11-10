@@ -191,7 +191,8 @@ namespace Music_Manager
                 if (dato != -1)
                 {
                     tbx_IdGrupo.Text = oGrupo[dato].IdGrupo.ToString();
-                    tbx_GrupoNombre.Text = oGrupo[dato].Descripcion;
+                    cbx_GrupoNombre.Items.Add(oGrupo[dato].Descripcion);
+                    cbx_GrupoNombre.SelectedIndex = 0;
                     tbx_CantidadIntegrantes.Text = oGrupo[dato].CantidadIntegrantes.ToString();
                     lbl_PosicionArreglo.Text = dato.ToString();
 
@@ -201,13 +202,27 @@ namespace Music_Manager
                     }
 
                     cbx_Titulo.Enabled = true;
-
                     cbx_Titulo.SelectedIndex = 0;
+
+                    btn_Eliminar.Enabled = true;
+                    btn_Editar.Enabled = true;
+                    btn_Agregar.Enabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Grupo No Encontrado", "Grupo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            else
+            {
+                CleanBoxes();
+
+                EnableBoxes(false);
+
+                btn_Eliminar.Enabled = false;
+                btn_Editar.Enabled = false;
+                btn_Agregar.Enabled = false;
+                btn_Grabar.Enabled = false;
             }
         }
 
@@ -244,8 +259,6 @@ namespace Music_Manager
                     tbx_Duracion.Text = oGrupo[posicion].OAlbum[dato].DuracionAlbum.ToString();
                     tbx_Costo.Text = oGrupo[posicion].OAlbum[dato].Costo.ToString();
                     rtbx_Observaciones.Text = oGrupo[posicion].OAlbum[dato].Obsevaciones;
-
-                    btn_Eliminar.Enabled = true;
                 }
                 else
                 {
@@ -307,7 +320,7 @@ namespace Music_Manager
         {
             foreach (Control obj in this.gbx_Grupo.Controls)
             {
-                if (obj is TextBox)
+                if (obj is TextBox || obj is ComboBox)
                     obj.Enabled = b;
             }
 
@@ -327,7 +340,7 @@ namespace Music_Manager
         {
             foreach (Control obj in this.gbx_Grupo.Controls)
             {
-                if (obj is TextBox)
+                if (obj is TextBox || obj is ComboBox)
                     obj.Text = null;
             }
 
@@ -338,6 +351,7 @@ namespace Music_Manager
             }
 
             lbl_PosicionArreglo.Text = null;
+            cbx_GrupoNombre.Items.Clear();
             cbx_Titulo.Items.Clear();
         }
 
@@ -348,22 +362,22 @@ namespace Music_Manager
                 case 0:
                     VisibleGroupBoxesConsultas(false);
                     gbx_Consulta01.Visible = true;
-                    gbx_Consulta01.Focus();
+                    //gbx_Consulta01.Focus();
                     break;
                 case 1:
                     VisibleGroupBoxesConsultas(false);
                     gbx_Consulta02.Visible = true;
-                    gbx_Consulta02.Focus();
+                    //gbx_Consulta02.Focus();
                     break;
                 case 2:
                     VisibleGroupBoxesConsultas(false);
                     gbx_Consulta03.Visible = true;
-                    gbx_Consulta03.Focus();
+                    //gbx_Consulta03.Focus();
                     break;
                 case 3:
                     VisibleGroupBoxesConsultas(false);
                     gbx_Consulta04.Visible = true;
-                    gbx_Consulta04.Focus();
+                    //gbx_Consulta04.Focus();
                     break;
             }
         }
@@ -409,7 +423,7 @@ namespace Music_Manager
 
         private void btn_Eliminar_Click (object sender, EventArgs e)
         {
-            if (MessageBox.Show("Esta seguro de eliminar el album " + cbx_Titulo.SelectedItem.ToString() + " del Grupo " + tbx_GrupoNombre.Text, 
+            if (MessageBox.Show("Esta seguro de eliminar el album " + cbx_Titulo.SelectedItem.ToString() + " del Grupo " + cbx_GrupoNombre.SelectedItem.ToString(), 
                 "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 if (!oSql.sp_EliminacionAlbum(int.Parse(tbx_IdAlbum.Text)))
@@ -432,12 +446,26 @@ namespace Music_Manager
 
         private void btn_Editar_Click (object sender, EventArgs e)
         {
+            EnableBoxes(true);
 
+            tbx_IdGrupo.Enabled = false;
+            cbx_GrupoNombre.Enabled = false;
+            tbx_CantidadIntegrantes.Enabled = false;
+            tbx_IdAlbum.Enabled = false;
+
+            cbx_Titulo.DropDownStyle = ComboBoxStyle.DropDown;
+
+            btn_Eliminar.Enabled = false;
+            btn_Agregar.Enabled = false;
+            btn_Editar.Enabled = false;
         }
 
         private void btn_Grabar_Click (object sender, EventArgs e)
         {
-
+            oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+                int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.SelectedItem.ToString(),
+                decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
+                int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
         }
     }
 }
