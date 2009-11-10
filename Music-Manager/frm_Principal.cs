@@ -41,6 +41,10 @@ namespace Music_Manager
             tsl_Consultas.Enabled = false;
             tab_Consultas.Enabled = false;
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
+            btn_Eliminar.Enabled = false;
+            btn_Editar.Enabled = false;
+            btn_Agregar.Enabled = false;
+            btn_Grabar.Enabled = false;
         }
 
         private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
@@ -240,6 +244,8 @@ namespace Music_Manager
                     tbx_Duracion.Text = oGrupo[posicion].OAlbum[dato].DuracionAlbum.ToString();
                     tbx_Costo.Text = oGrupo[posicion].OAlbum[dato].Costo.ToString();
                     rtbx_Observaciones.Text = oGrupo[posicion].OAlbum[dato].Obsevaciones;
+
+                    btn_Eliminar.Enabled = true;
                 }
                 else
                 {
