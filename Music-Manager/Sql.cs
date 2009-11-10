@@ -305,7 +305,7 @@ namespace Music_Manager
                 parametro[12] = new SqlParameter("@observaciones", SqlDbType.NVarChar, 80);
                 parametro[12].Value = observaciones;
 
-                Command1.CommandText = "sp_AgregarAlbum";
+                Command1.CommandText = "sp_ModificarAlbum";
                 Command1.CommandType = CommandType.StoredProcedure;
                 Command1.Parameters.AddRange(parametro);
 

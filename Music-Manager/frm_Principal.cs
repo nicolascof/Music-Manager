@@ -178,6 +178,8 @@ namespace Music_Manager
         {
             int dato;
 
+            cbx_Titulo.DropDownStyle = ComboBoxStyle.DropDownList;
+
             if (tv_Grupo.SelectedNode.Name != "")
             {
                 CleanBoxes();
