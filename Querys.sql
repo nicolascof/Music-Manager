@@ -20,10 +20,10 @@ INSERT INTO grupo (descripcion, id_compania, cant_integrantes, solista_conjunto)
 VALUES ('Depeche Mode', 4, 3, 0)
 
 INSERT INTO album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, costo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
-VALUES ( 2, 7, 4, 2, 1, 'Sound of the Universe', 60.00, '15/09/2008', '09/06/2009', 13, 60, 'Ultimo disco de Depeche mode')
+VALUES ( 7, 2, 4, 2, 1, 'Sound of the Universe', 60.00, '15/09/2008', '09/06/2009', 13, 60, 'Ultimo disco de Depeche mode')
 
 INSERT INTO album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, costo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
-VALUES ( 2, 7, 4, 2, 1, 'Playing the Angel', 10.00, '15/10/2006', '01/02/2007', 15, 75, 'Disco del año 2006-2007 - Temas recomendados: Suffer Well')
+VALUES ( 7, 2, 4, 2, 1, 'Playing the Angel', 10.00, '15/10/2006', '01/02/2007', 15, 75, 'Disco del año 2006-2007 - Temas recomendados: Suffer Well')
 
 -- COMPANIAS
 
@@ -94,14 +94,73 @@ AS
 
 EXEC sp_SeleccionAlbumPorGrupo 'adams'
 
--- Seleccion de datos del album
+-- Eliminacion de un album 
 
-CREATE 
-ALTER PROCEDURE sp_SeleccionAlbum
-	@nombreAlbum nvarchar(25)
+SELECT * FROM album
+
+CREATE PROCEDURE sp_EliminacionAlbum
+	@idAlbum int
 AS
-	SELECT *
-	FROM album AS A
-	WHERE A.titulo LIKE '%' + @nombreAlbum + '%'
+	DELETE FROM album
+	WHERE id_album = @idAlbum
 
-EXEC sp_SeleccionAlbum 'verano'
+EXEC sp_EliminacionAlbum 6
+
+-- Agregar un album
+
+SELECT * FROM album
+
+CREATE PROCEDURE sp_AgregarAlbum
+	@idGenero int,
+	@idDisqueria int,
+	@idCompania int,
+	@idGrupo int,
+	@variosArtistas bit,
+	@titulo nvarchar(50),
+	@costo decimal,
+	@fechaTerminado datetime,
+	@fechaLanzamiento datetime,
+	@cantidadTemas int,
+	@duracionAlbum int,
+	@observaciones nvarchar(80)
+AS
+	INSERT INTO album (id_genero, id_disqueria, id_compania, id_grupo, varios_artistas, titulo, costo, fecha_terminado, fecha_lanzamiento, cant_temas, duracion_album, observaciones)
+	VALUES ( @idGenero, @idDisqueria, @idCompania, @idGrupo, @variosArtistas, @titulo, @costo, @fechaTerminado, @fechaLanzamiento, @cantidadTemas, @duracionAlbum, @observaciones)
+
+EXEC sp_AgregarAlbum 7, 2, 4, 2, 1, 'Exciter', 30.00, '01/12/2000','14/05/2001', 13, 56, 'Es el décimo álbum del grupo inglés de música electrónica'
+
+-- Modificar un Album
+
+SELECT * FROM album
+
+CREATE PROCEDURE sp_ModificarAlbum
+	@idAlbum int,
+	@idGenero int,
+	@idDisqueria int,
+	@idCompania int,
+	@idGrupo int,
+	@variosArtistas bit,
+	@titulo nvarchar(50),
+	@costo decimal,
+	@fechaTerminado datetime,
+	@fechaLanzamiento datetime,
+	@cantidadTemas int,
+	@duracionAlbum int,
+	@observaciones nvarchar(80)
+AS
+	UPDATE album
+	SET id_genero = @idGenero, 
+		id_disqueria = @idDisqueria, 
+		id_compania = @idCompania, 
+		id_grupo = @idGrupo, 
+		varios_artistas = @variosArtistas, 
+		titulo = @titulo, 
+		costo = @costo, 
+		fecha_terminado = @fechaTerminado, 
+		fecha_lanzamiento = @fechaLanzamiento, 
+		cant_temas = @cantidadTemas, 
+		duracion_album = @duracionAlbum, 
+		observaciones = @observaciones
+	WHERE id_album = @idAlbum
+
+EXEC sp_ModificarAlbum 8, 7, 2, 4, 2, 1, 'Exciter', 30.00, '01/12/2000','14/05/2001', 13, 56, 'Es el décimo álbum del grupo inglés de música electrónica'
