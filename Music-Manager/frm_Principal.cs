@@ -22,6 +22,7 @@ namespace Music_Manager
         Sql oSql;
         Grupo[] oGrupo;
         int cantidadGrupos;
+        string botonEditarAgregar;
 
         public frm_Principal ()
         {
@@ -33,11 +34,12 @@ namespace Music_Manager
 
             oSql = new Sql();
             oGrupo = new Grupo[50];
+            botonEditarAgregar = null;
         }
 
         private void frm_Principal_Load(object sender, EventArgs e)
         {
-            iniciar();
+            Iniciar();
         }
 
         private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
@@ -164,7 +166,7 @@ namespace Music_Manager
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
             CleanBoxes();
             tv_Grupo.Nodes.Clear();
-            iniciar();
+            Iniciar();
         }
 
         /* NAME: tv_Grupo_AfterSelect 
@@ -436,36 +438,30 @@ namespace Music_Manager
         }
 
         private void btn_Agregar_Click (object sender, EventArgs e)
-        {    
-            if (tbx_Costo.Text == "" || tbx_CantidadTemas.Text == "" || tbx_Duracion.Text == "" || cbx_Titulo.Text == "")
+        {
+            foreach (Control obj in this.gbx_Album.Controls)
             {
-                MessageBox.Show("Lene los casilleros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (obj is TextBox || obj is ComboBox || obj is RichTextBox)
+                    obj.Text = null;
             }
-            else if (!Regex.Match(tbx_CantidadTemas.Text, @"^[0-9]*$").Success)
-            {
-                MessageBox.Show("Verifique la cantidad de Temas del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (!Regex.Match(tbx_Duracion.Text, @"^[0-9]*$").Success)
-            {
-                MessageBox.Show("Verifique le Duracion del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (!Regex.Match(tbx_Costo.Text, @"^[0-9]*$").Success)
-            {
-                MessageBox.Show("Verifique el Costo del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (!oSql.buscarRegistro(Convert.ToInt32(tbx_IdAlbum.Text)))
-            {
-                MessageBox.Show("Error: album ya existe", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
-                    int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.Text,
-                    decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
-                    int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
 
-                CargarClases();
-            }
+            cbx_Titulo.Items.Clear();
+
+            EnableBoxes(true);
+
+            tbx_IdGrupo.Enabled = false;
+            cbx_GrupoNombre.Enabled = false;
+            tbx_CantidadIntegrantes.Enabled = false;
+            tbx_IdAlbum.Enabled = false;
+
+            cbx_Titulo.DropDownStyle = ComboBoxStyle.DropDown;
+
+            btn_Eliminar.Enabled = false;
+            btn_Agregar.Enabled = false;
+            btn_Editar.Enabled = false;
+            btn_Grabar.Enabled = true;
+
+            botonEditarAgregar = "agregar";
         }
 
         private void btn_Editar_Click (object sender, EventArgs e)
@@ -482,6 +478,9 @@ namespace Music_Manager
             btn_Eliminar.Enabled = false;
             btn_Agregar.Enabled = false;
             btn_Editar.Enabled = false;
+            btn_Grabar.Enabled = true;
+
+            botonEditarAgregar = "editar";
         }
 
         private void btn_Grabar_Click(object sender, EventArgs e)
@@ -504,18 +503,39 @@ namespace Music_Manager
             }
             else
             {
-                oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
-                int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.SelectedItem.ToString(),
-                decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
-                int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
+                MessageBox.Show("Editar: " + "editar".CompareTo(botonEditarAgregar).ToString() + " " + "Agregar: " +
+                    "agregar".CompareTo(botonEditarAgregar).ToString());
+
+                if ("editar".CompareTo(botonEditarAgregar) == 0)
+                {
+                    oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+                        int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.SelectedItem.ToString(),
+                        decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
+                        int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
+                }
+
+                if ("agregar".CompareTo(botonEditarAgregar) == 0)
+                {
+                    oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+                        int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.Text,
+                        decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
+                        int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
+                }
+
+                CleanBoxes();
+
+                EnableBoxes(false);
+
+                cbx_Titulo.DropDownStyle = ComboBoxStyle.DropDownList;
 
                 CargarClases();
             }
         }
 
-        private void iniciar()
+        private void Iniciar ()
         {
             EnableBoxes(false);
+
             lbl_PosicionArreglo.Visible = false;
             tsl_Consultas.Enabled = false;
             tab_Consultas.Enabled = false;

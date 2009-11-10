@@ -60,8 +60,6 @@ namespace Music_Manager
         public Sql()
         {
             Conexion = new SqlConnection();
-            //Command1 = new SqlCommand();
-            //Command2 = new SqlCommand();
             DataReader1 = null;
             DataReader2 = null;
             Consulta = null;
@@ -200,19 +198,6 @@ namespace Music_Manager
             {
                 Command1 = new SqlCommand();
 
-                /* 1 @idGenero int,
-                   2 @idDisqueria int,
-                   3 @idCompania int,
-                   4 @idGrupo int,
-                   5 @variosArtistas bit,
-                   6 @titulo nvarchar(50),
-                   7 @costo decimal,
-                   8 @fechaTerminado datetime,
-                   9 @fechaLanzamiento datetime,
-                   10 @cantidadTemas int,
-                   11 @duracionAlbum int,
-                   12 @observaciones nvarchar(80)
-                */
                 SqlParameter[] parametro = new SqlParameter[12];
 
                 parametro[0] = new SqlParameter("@idGenero", SqlDbType.Int);
@@ -279,20 +264,6 @@ namespace Music_Manager
             {
                 Command1 = new SqlCommand();
 
-                /*  @idAlbum int,
-	                @idGenero int,
-	                @idDisqueria int,
-	                @idCompania int,
-	                @idGrupo int,
-	                @variosArtistas bit,
-	                @titulo nvarchar(50),
-	                @costo decimal,
-	                @fechaTerminado datetime,
-	                @fechaLanzamiento datetime,
-	                @cantidadTemas int,
-	                @duracionAlbum int,
-	                @observaciones nvarchar(80)
-                */
                 SqlParameter[] parametro = new SqlParameter[13];
 
                 parametro[0] = new SqlParameter("@idAlbum", SqlDbType.Int);
@@ -350,35 +321,35 @@ namespace Music_Manager
         }
 
         //Consultas de laboratorio
-        public void sp_Consulta01(string nombreGrupo)
+        public bool sp_Consulta01(string nombreGrupo)
         {
-            //@nombreGrupo
-            //try
-            //{
-            Command2 = new SqlCommand();
-            SqlParameter parametro = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar, 25);
-            parametro.SqlValue = nombreGrupo;
+            try
+            {
+                Command2 = new SqlCommand();
 
-            Command2.CommandText = "sp_Consulta01";
-            Command2.CommandType = CommandType.StoredProcedure;
-            Command2.Parameters.Add(parametro);
+                SqlParameter parametro = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar, 25);
+                parametro.Value = nombreGrupo;
 
-            Command2.Connection = Conexion;
-            DataReader2 = Command2.ExecuteReader();
-            /*}
+                Command2.CommandText = "sp_Consulta01";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.Add(parametro);
+
+                Command2.Connection = Conexion;
+                DataReader2 = Command2.ExecuteReader();
+            }
             catch (SqlException)
             {
                 return false;
             }
-            return true;*/
+            return true;
         }
 
         public bool sp_Consulta02(string generoDescripcion)
         {
-            //@generoDescripcion
             try
             {
                 Command2 = new SqlCommand();
+
                 SqlParameter parametro = new SqlParameter("@generoDescripcion", SqlDbType.NVarChar, 25);
                 parametro.Value = generoDescripcion;
 
@@ -399,10 +370,10 @@ namespace Music_Manager
 
         public bool sp_Consulta03(int anio)
         {
-            //@anio int
             try
             {
                 Command2 = new SqlCommand();
+
                 SqlParameter parametro = new SqlParameter("@anio", SqlDbType.Int);
                 parametro.Value = anio;
 
@@ -423,15 +394,10 @@ namespace Music_Manager
 
         public bool sp_Consulta04(string nombreGrupo, DateTime fechaInicial, DateTime fechaFinal, int duracionAlbum)
         {
-            /*
-             * 	@nombreGrupo nvarchar(25),
-	         *  @fechaInicial datetime,
-	         *  @fechaFinal datetime,
-	         *  @duracionAlbum int
-             */
             try
             {
                 Command2 = new SqlCommand();
+
                 SqlParameter[] parametro = new SqlParameter[4];
 
                 parametro[0] = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar, 25);
@@ -458,25 +424,6 @@ namespace Music_Manager
                 return false;
             }
 
-            return true;
-        }
-
-        public bool buscarRegistro(int idAlbum)
-        {
-            try
-            {
-                Command1 = new SqlCommand();
-
-                Command1.CommandType = CommandType.StoredProcedure;
-                Command1.CommandText = "sp_idAlbum";
-
-                Command1.Connection = Conexion;
-                DataReader1 = Command1.ExecuteReader();
-            }
-            catch (SqlException)
-            {
-                return false;
-            }
             return true;
         }
     }
