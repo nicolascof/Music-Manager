@@ -37,15 +37,7 @@ namespace Music_Manager
 
         private void frm_Principal_Load(object sender, EventArgs e)
         {
-            EnableBoxes(false);
-            lbl_PosicionArreglo.Visible = false;
-            tsl_Consultas.Enabled = false;
-            tab_Consultas.Enabled = false;
-            tsmi_AdministradorDatos_Desconectar.Enabled = false;
-            btn_Eliminar.Enabled = false;
-            btn_Editar.Enabled = false;
-            btn_Agregar.Enabled = false;
-            btn_Grabar.Enabled = false;
+            iniciar();
         }
 
         private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
@@ -170,6 +162,9 @@ namespace Music_Manager
             tsslConexion.Text = "Desconectado";
             tsmi_AdministradorDatos_Conectar.Enabled = true;
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
+            CleanBoxes();
+            tv_Grupo.Nodes.Clear();
+            iniciar();
         }
 
         /* NAME: tv_Grupo_AfterSelect 
@@ -458,6 +453,10 @@ namespace Music_Manager
             {
                 MessageBox.Show("Verifique el Costo del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else if (!oSql.buscarRegistro(Convert.ToInt32(tbx_IdAlbum.Text)))
+            {
+                MessageBox.Show("Error: album ya existe", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
@@ -512,6 +511,19 @@ namespace Music_Manager
 
                 CargarClases();
             }
+        }
+
+        private void iniciar()
+        {
+            EnableBoxes(false);
+            lbl_PosicionArreglo.Visible = false;
+            tsl_Consultas.Enabled = false;
+            tab_Consultas.Enabled = false;
+            tsmi_AdministradorDatos_Desconectar.Enabled = false;
+            btn_Eliminar.Enabled = false;
+            btn_Editar.Enabled = false;
+            btn_Agregar.Enabled = false;
+            btn_Grabar.Enabled = false;
         }
     }
 }

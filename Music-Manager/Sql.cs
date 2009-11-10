@@ -348,5 +348,136 @@ namespace Music_Manager
 
             return true;
         }
+
+        //Consultas de laboratorio
+        public void sp_Consulta01(string nombreGrupo)
+        {
+            //@nombreGrupo
+            //try
+            //{
+            Command2 = new SqlCommand();
+            SqlParameter parametro = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar, 25);
+            parametro.SqlValue = nombreGrupo;
+
+            Command2.CommandText = "sp_Consulta01";
+            Command2.CommandType = CommandType.StoredProcedure;
+            Command2.Parameters.Add(parametro);
+
+            Command2.Connection = Conexion;
+            DataReader2 = Command2.ExecuteReader();
+            /*}
+            catch (SqlException)
+            {
+                return false;
+            }
+            return true;*/
+        }
+
+        public bool sp_Consulta02(string generoDescripcion)
+        {
+            //@generoDescripcion
+            try
+            {
+                Command2 = new SqlCommand();
+                SqlParameter parametro = new SqlParameter("@generoDescripcion", SqlDbType.NVarChar, 25);
+                parametro.Value = generoDescripcion;
+
+                Command2.CommandText = "sp_Consulta02";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.Add(parametro);
+
+                Command2.Connection = Conexion;
+                DataReader2 = Command2.ExecuteReader();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool sp_Consulta03(int anio)
+        {
+            //@anio int
+            try
+            {
+                Command2 = new SqlCommand();
+                SqlParameter parametro = new SqlParameter("@anio", SqlDbType.Int);
+                parametro.Value = anio;
+
+                Command2.CommandText = "sp_Consulta03";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.Add(parametro);
+
+                Command2.Connection = Conexion;
+                DataReader2 = Command2.ExecuteReader();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool sp_Consulta04(string nombreGrupo, DateTime fechaInicial, DateTime fechaFinal, int duracionAlbum)
+        {
+            /*
+             * 	@nombreGrupo nvarchar(25),
+	         *  @fechaInicial datetime,
+	         *  @fechaFinal datetime,
+	         *  @duracionAlbum int
+             */
+            try
+            {
+                Command2 = new SqlCommand();
+                SqlParameter[] parametro = new SqlParameter[4];
+
+                parametro[0] = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar, 25);
+                parametro[0].Value = nombreGrupo;
+
+                parametro[1] = new SqlParameter("@fechaInicial", SqlDbType.DateTime);
+                parametro[1].Value = fechaInicial;
+
+                parametro[2] = new SqlParameter("@fechaFinal", SqlDbType.DateTime);
+                parametro[2].Value = fechaFinal;
+
+                parametro[3] = new SqlParameter("@duracionAlbum", SqlDbType.Int);
+                parametro[3].Value = duracionAlbum;
+
+                Command2.CommandText = "sp_Consulta04";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.AddRange(parametro);
+
+                Command2.Connection = Conexion;
+                DataReader2 = Command2.ExecuteReader();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool buscarRegistro(int idAlbum)
+        {
+            try
+            {
+                Command1 = new SqlCommand();
+
+                Command1.CommandType = CommandType.StoredProcedure;
+                Command1.CommandText = "sp_idAlbum";
+
+                Command1.Connection = Conexion;
+                DataReader1 = Command1.ExecuteReader();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

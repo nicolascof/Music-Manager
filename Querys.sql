@@ -168,3 +168,50 @@ AS
 	WHERE id_album = @idAlbum
 
 EXEC sp_ModificarAlbum 8, 7, 2, 4, 2, 1, 'Exciter', 30.00, '01/12/2000','14/05/2001', 13, 56, 'Es el décimo álbum del grupo inglés de música electrónica'
+
+-- ABM Generos  
+SELECT * FROM generos
+
+-- Agregar un Genero
+
+CREATE PROCEDURE sp_AgregarGenero
+	@descripcion nvarchar(30)
+AS
+	INSERT INTO generos (descricpion)
+	VALUES ( @descripcion)
+
+EXEC sp_AgregarGenero 'Blues'  
+
+-- Eliminacion de un Genero 
+
+CREATE PROCEDURE sp_EliminacionGenero
+	@idGenero int
+AS
+	DELETE FROM generos
+	WHERE id_genero = @idGenero
+
+EXEC sp_EliminacionGenero 9
+
+-- Modificar un Genero
+
+CREATE PROCEDURE sp_ModificarGenero
+	@idGenero int,
+	@descripcion nvarchar(30)
+AS
+	UPDATE generos
+	SET descricpion = @descripcion
+	WHERE id_genero = @idGenero
+
+EXEC sp_ModificarGenero 10, 'Blues'
+
+select * from album
+
+-- verificacion de ID_ALBUM
+CREATE PROCEDURE sp_idAlbum
+	@id_album int
+AS
+	SELECT	id_album
+	FROM	album
+	WHERE	id_album = @id_album
+
+EXEC sp_idAlbum 3
