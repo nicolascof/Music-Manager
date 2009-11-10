@@ -440,8 +440,32 @@ namespace Music_Manager
         }
 
         private void btn_Agregar_Click (object sender, EventArgs e)
-        {
+        {    
+            if (tbx_Costo.Text == "" || tbx_CantidadTemas.Text == "" || tbx_Duracion.Text == "" || cbx_Titulo.Text == "")
+            {
+                MessageBox.Show("Lene los casilleros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (!Regex.Match(tbx_CantidadTemas.Text, @"^[0-9]*$").Success)
+            {
+                MessageBox.Show("Verifique la cantidad de Temas del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (!Regex.Match(tbx_Duracion.Text, @"^[0-9]*$").Success)
+            {
+                MessageBox.Show("Verifique le Duracion del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (!Regex.Match(tbx_Costo.Text, @"^[0-9]*$").Success)
+            {
+                MessageBox.Show("Verifique el Costo del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+                    int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.Text,
+                    decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
+                    int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
 
+                CargarClases();
+            }
         }
 
         private void btn_Editar_Click (object sender, EventArgs e)
@@ -460,12 +484,33 @@ namespace Music_Manager
             btn_Editar.Enabled = false;
         }
 
-        private void btn_Grabar_Click (object sender, EventArgs e)
+        private void btn_Grabar_Click(object sender, EventArgs e)
         {
-            oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+            if (tbx_Costo.Text == "" || tbx_CantidadTemas.Text == "" || tbx_Duracion.Text == "")
+            {
+                MessageBox.Show("Lene los casilleros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (!Regex.Match(tbx_CantidadTemas.Text, @"^[0-9]*$").Success)
+            {
+                MessageBox.Show("Verifique la cantidad de Temas del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (!Regex.Match(tbx_Duracion.Text, @"^[0-9]*$").Success)
+            {
+                MessageBox.Show("Verifique le Duracion del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (!Regex.Match(tbx_Costo.Text, @"^[0-9]*$").Success)
+            {
+                MessageBox.Show("Verifique el Costo del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
                 int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.SelectedItem.ToString(),
                 decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
                 int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
+
+                CargarClases();
+            }
         }
     }
 }
