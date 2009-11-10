@@ -41,6 +41,7 @@
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.tsslConexion = new System.Windows.Forms.ToolStripStatusLabel();
             this.tab_Info = new System.Windows.Forms.TabPage();
+            this.btn_Eliminar = new System.Windows.Forms.Button();
             this.btn_Agregar = new System.Windows.Forms.Button();
             this.btn_Grabar = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@
             this.lbl_Titulo = new System.Windows.Forms.Label();
             this.cbx_Genero = new System.Windows.Forms.ComboBox();
             this.gbx_Grupo = new System.Windows.Forms.GroupBox();
+            this.cbx_GrupoNombre = new System.Windows.Forms.ComboBox();
             this.lbl_PosicionArreglo = new System.Windows.Forms.Label();
             this.lbl_IdGrupo = new System.Windows.Forms.Label();
             this.tbx_IdGrupo = new System.Windows.Forms.TextBox();
@@ -101,8 +103,7 @@
             this.btn_Ejecutar = new System.Windows.Forms.Button();
             this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
-            this.btn_Eliminar = new System.Windows.Forms.Button();
-            this.cbx_GrupoNombre = new System.Windows.Forms.ComboBox();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Info.SuspendLayout();
@@ -229,6 +230,7 @@
             // 
             // tab_Info
             // 
+            this.tab_Info.Controls.Add(this.btn_Cancelar);
             this.tab_Info.Controls.Add(this.btn_Eliminar);
             this.tab_Info.Controls.Add(this.btn_Agregar);
             this.tab_Info.Controls.Add(this.btn_Grabar);
@@ -244,9 +246,19 @@
             this.tab_Info.Text = "Informacion";
             this.tab_Info.UseVisualStyleBackColor = true;
             // 
+            // btn_Eliminar
+            // 
+            this.btn_Eliminar.Location = new System.Drawing.Point(205, 489);
+            this.btn_Eliminar.Name = "btn_Eliminar";
+            this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Eliminar.TabIndex = 15;
+            this.btn_Eliminar.Text = "Eliminar";
+            this.btn_Eliminar.UseVisualStyleBackColor = true;
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
+            // 
             // btn_Agregar
             // 
-            this.btn_Agregar.Location = new System.Drawing.Point(367, 489);
+            this.btn_Agregar.Location = new System.Drawing.Point(286, 489);
             this.btn_Agregar.Name = "btn_Agregar";
             this.btn_Agregar.Size = new System.Drawing.Size(75, 23);
             this.btn_Agregar.TabIndex = 14;
@@ -266,7 +278,7 @@
             // 
             // btn_Editar
             // 
-            this.btn_Editar.Location = new System.Drawing.Point(448, 489);
+            this.btn_Editar.Location = new System.Drawing.Point(367, 489);
             this.btn_Editar.Name = "btn_Editar";
             this.btn_Editar.Size = new System.Drawing.Size(75, 23);
             this.btn_Editar.TabIndex = 12;
@@ -518,6 +530,15 @@
             this.gbx_Grupo.TabIndex = 10;
             this.gbx_Grupo.TabStop = false;
             this.gbx_Grupo.Text = "Conjunto / Solista";
+            // 
+            // cbx_GrupoNombre
+            // 
+            this.cbx_GrupoNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_GrupoNombre.FormattingEnabled = true;
+            this.cbx_GrupoNombre.Location = new System.Drawing.Point(129, 45);
+            this.cbx_GrupoNombre.Name = "cbx_GrupoNombre";
+            this.cbx_GrupoNombre.Size = new System.Drawing.Size(211, 21);
+            this.cbx_GrupoNombre.TabIndex = 20;
             // 
             // lbl_PosicionArreglo
             // 
@@ -828,24 +849,15 @@
             this.cbx_SeleccionConsulta.TabIndex = 1;
             this.cbx_SeleccionConsulta.SelectedIndexChanged += new System.EventHandler(this.cbx_SeleccionConsulta_SelectedIndexChanged);
             // 
-            // btn_Eliminar
+            // btn_Cancelar
             // 
-            this.btn_Eliminar.Location = new System.Drawing.Point(286, 489);
-            this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Eliminar.TabIndex = 15;
-            this.btn_Eliminar.Text = "Eliminar";
-            this.btn_Eliminar.UseVisualStyleBackColor = true;
-            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
-            // 
-            // cbx_GrupoNombre
-            // 
-            this.cbx_GrupoNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_GrupoNombre.FormattingEnabled = true;
-            this.cbx_GrupoNombre.Location = new System.Drawing.Point(129, 45);
-            this.cbx_GrupoNombre.Name = "cbx_GrupoNombre";
-            this.cbx_GrupoNombre.Size = new System.Drawing.Size(211, 21);
-            this.cbx_GrupoNombre.TabIndex = 20;
+            this.btn_Cancelar.Location = new System.Drawing.Point(448, 489);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancelar.TabIndex = 16;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // frm_Principal
             // 
@@ -967,6 +979,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmi_AdministradorDatos_Desconectar;
         private System.Windows.Forms.Button btn_Eliminar;
         private System.Windows.Forms.ComboBox cbx_GrupoNombre;
+        private System.Windows.Forms.Button btn_Cancelar;
     }
 }
 

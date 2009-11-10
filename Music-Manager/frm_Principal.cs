@@ -222,6 +222,7 @@ namespace Music_Manager
                 btn_Eliminar.Enabled = false;
                 btn_Editar.Enabled = false;
                 btn_Agregar.Enabled = false;
+                btn_Cancelar.Enabled = false;
                 btn_Grabar.Enabled = false;
             }
         }
@@ -446,6 +447,7 @@ namespace Music_Manager
             btn_Eliminar.Enabled = false;
             btn_Agregar.Enabled = false;
             btn_Editar.Enabled = false;
+            btn_Cancelar.Enabled = true;
             btn_Grabar.Enabled = true;
 
             botonEditarAgregar = "agregar";
@@ -465,9 +467,22 @@ namespace Music_Manager
             btn_Eliminar.Enabled = false;
             btn_Agregar.Enabled = false;
             btn_Editar.Enabled = false;
+            btn_Cancelar.Enabled = true;
             btn_Grabar.Enabled = true;
 
             botonEditarAgregar = "editar";
+        }
+
+        private void btn_Cancelar_Click (object sender, EventArgs e)
+        {
+            CleanBoxes();
+
+            EnableBoxes(false);
+
+            btn_Cancelar.Enabled = false;
+            btn_Grabar.Enabled = false;
+
+            CargarClases();
         }
 
         private void btn_Grabar_Click(object sender, EventArgs e)
@@ -541,6 +556,7 @@ namespace Music_Manager
             btn_Eliminar.Enabled = false;
             btn_Editar.Enabled = false;
             btn_Agregar.Enabled = false;
+            btn_Cancelar.Enabled = false;
             btn_Grabar.Enabled = false;
         }
     }
