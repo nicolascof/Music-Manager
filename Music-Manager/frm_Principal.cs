@@ -32,7 +32,6 @@ namespace Music_Manager
 
             oSql = new Sql();
             oGrupo = new Grupo[50];
-            cantidadGrupos = 0;
         }
 
         private void frm_Principal_Load(object sender, EventArgs e)
@@ -63,8 +62,6 @@ namespace Music_Manager
 
         private void tsmi_AdministradorDatos_Conectar_Click(object sender, EventArgs e)
         {
-            tv_Grupo.Nodes.Clear();
-
             frm_ConectarBaseDeDatos ofrm_ConectarBaseDeDatos = new frm_ConectarBaseDeDatos();
             ofrm_ConectarBaseDeDatos.ShowDialog();
 
@@ -84,74 +81,82 @@ namespace Music_Manager
                         tsslConexion.Image = global::Music_Manager.Properties.Resources.WebDatabase;
                         tsslConexion.Text = "Conectado";
 
-                        if (!oSql.sp_SeleccionNombreGrupo())
-                        {
-                            MessageBox.Show("Error en la consulta", "Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            TreeNode rn_Conjuntos = tv_Grupo.Nodes.Add("Conjuntos");
-                            TreeNode rn_Solistas = tv_Grupo.Nodes.Add("Solistas");
-
-                            int cantidadAlbums;
-                            
-                            while (oSql.DataReader1.Read())
-                            {
-                                oGrupo[cantidadGrupos] = new Grupo((int)oSql.DataReader1["cant_albums"]);
-                                oGrupo[cantidadGrupos].IdGrupo = (int)oSql.DataReader1["id_grupo"];
-                                oGrupo[cantidadGrupos].Descripcion = (string)oSql.DataReader1["descripcion"];
-                                oGrupo[cantidadGrupos].IdCompania = (int)oSql.DataReader1["id_compania"];
-                                oGrupo[cantidadGrupos].CantidadIntegrantes = (byte)oSql.DataReader1["cant_integrantes"];
-                                oGrupo[cantidadGrupos].SolistaConjunto = (bool)oSql.DataReader1["solista_conjunto"];
-
-                                if (oGrupo[cantidadGrupos].SolistaConjunto == true)
-                                {
-                                    rn_Solistas.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
-                                }
-                                else
-                                {
-                                    rn_Conjuntos.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
-                                }
-
-                                oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].Descripcion);
-
-                                using (oSql.DataReader2)
-                                {
-                                    cantidadAlbums = 0;
-
-                                    while (oSql.DataReader2.Read())
-                                    {
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums] = new Album();
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdAlbum = (int)oSql.DataReader2["id_album"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdGenero = (int)oSql.DataReader2["id_genero"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdDisqueria = (int)oSql.DataReader2["id_disqueria"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdCompania = (int)oSql.DataReader2["id_compania"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdGrupo = (int)oSql.DataReader2["id_grupo"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Titulo = (string)oSql.DataReader2["titulo"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Costo = (decimal)oSql.DataReader2["costo"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].FechaTerminado = (DateTime)oSql.DataReader2["fecha_terminado"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].FechaLanzamiento = (DateTime)oSql.DataReader2["fecha_lanzamiento"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].CantidadTemas = (int)oSql.DataReader2["cant_temas"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].DuracionAlbum = (int)oSql.DataReader2["duracion_album"];
-                                        oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Obsevaciones = (string)oSql.DataReader2["observaciones"];
-                                        ++cantidadAlbums;
-                                    }
-                                }
-
-                                ++cantidadGrupos;
-                            }
-
-                            oSql.DataReader1.Close();
-                            oSql.DataReader2.Close();
-
-                            tsl_Consultas.Enabled = true;
-                            tsmi_AdministradorDatos_Conectar.Enabled = false;
-                            tsmi_AdministradorDatos_Desconectar.Enabled = true;
-                        }
+                        CargarClases();
                     }
                 }
             }
         }
+
+        private void CargarClases ()
+        {
+            int cantidadAlbums;
+            cantidadGrupos = 0;
+
+            tv_Grupo.Nodes.Clear();
+
+            if (!oSql.sp_SeleccionNombreGrupo())
+            {
+                MessageBox.Show("Error en la consulta", "Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                TreeNode rn_Conjuntos = tv_Grupo.Nodes.Add("Conjuntos");
+                TreeNode rn_Solistas = tv_Grupo.Nodes.Add("Solistas");
+
+                while (oSql.DataReader1.Read())
+                {
+                    oGrupo[cantidadGrupos] = new Grupo((int) oSql.DataReader1["cant_albums"]);
+                    oGrupo[cantidadGrupos].IdGrupo = (int) oSql.DataReader1["id_grupo"];
+                    oGrupo[cantidadGrupos].Descripcion = (string) oSql.DataReader1["descripcion"];
+                    oGrupo[cantidadGrupos].IdCompania = (int) oSql.DataReader1["id_compania"];
+                    oGrupo[cantidadGrupos].CantidadIntegrantes = (byte) oSql.DataReader1["cant_integrantes"];
+                    oGrupo[cantidadGrupos].SolistaConjunto = (bool) oSql.DataReader1["solista_conjunto"];
+
+                    if (oGrupo[cantidadGrupos].SolistaConjunto == true)
+                    {
+                        rn_Solistas.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
+                    }
+                    else
+                    {
+                        rn_Conjuntos.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
+                    }
+
+                    oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].Descripcion);
+
+                    using (oSql.DataReader2)
+                    {
+                        cantidadAlbums = 0;
+
+                        while (oSql.DataReader2.Read())
+                        {
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums] = new Album();
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdAlbum = (int) oSql.DataReader2["id_album"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdGenero = (int) oSql.DataReader2["id_genero"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdDisqueria = (int) oSql.DataReader2["id_disqueria"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdCompania = (int) oSql.DataReader2["id_compania"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].IdGrupo = (int) oSql.DataReader2["id_grupo"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Titulo = (string) oSql.DataReader2["titulo"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Costo = (decimal) oSql.DataReader2["costo"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].FechaTerminado = (DateTime) oSql.DataReader2["fecha_terminado"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].FechaLanzamiento = (DateTime) oSql.DataReader2["fecha_lanzamiento"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].CantidadTemas = (int) oSql.DataReader2["cant_temas"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].DuracionAlbum = (int) oSql.DataReader2["duracion_album"];
+                            oGrupo[cantidadGrupos].OAlbum[cantidadAlbums].Obsevaciones = (string) oSql.DataReader2["observaciones"];
+                            ++cantidadAlbums;
+                        }
+                    }
+
+                    ++cantidadGrupos;
+                }
+
+                oSql.DataReader1.Close();
+                oSql.DataReader2.Close();
+
+                tsl_Consultas.Enabled = true;
+                tsmi_AdministradorDatos_Conectar.Enabled = false;
+                tsmi_AdministradorDatos_Desconectar.Enabled = true;
+            }
+        } // Fin CargarClases
 
         private void tsmi_AdministradorDatos_Desconectar_Click(object sender, EventArgs e)
         {
@@ -372,7 +377,7 @@ namespace Music_Manager
         }
 
         /* NAME: btn_Ejecutar
-         * DESCRIPTION: ejecuto la consulta
+         * DESCRIPTION: ejecuto la consulta (Laboratorio II)
          * PARAMETERS: object, EventArgs
          * RETURNS: void
          */
@@ -394,6 +399,39 @@ namespace Music_Manager
 
             dataGridView1.DataSource = dataSet.Tables[0];
             */
+        }
+
+        private void btn_Eliminar_Click (object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Esta seguro de eliminar el album " + cbx_Titulo.SelectedItem.ToString() + " del Grupo " + tbx_GrupoNombre.Text, 
+                "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                if (!oSql.sp_EliminacionAlbum(int.Parse(tbx_IdAlbum.Text)))
+                {
+                    MessageBox.Show("Error en la eliminacion del album", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    CleanBoxes();
+
+                    CargarClases();
+                }
+            }
+        }
+
+        private void btn_Agregar_Click (object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Editar_Click (object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Grabar_Click (object sender, EventArgs e)
+        {
+
         }
     }
 }

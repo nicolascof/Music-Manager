@@ -102,6 +102,7 @@
             this.btn_Ejecutar = new System.Windows.Forms.Button();
             this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
+            this.btn_Eliminar = new System.Windows.Forms.Button();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Info.SuspendLayout();
@@ -111,7 +112,7 @@
             this.tab_Consultas.SuspendLayout();
             this.gbx_Consultas.SuspendLayout();
             this.gbx_Consulta03.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
             this.gbx_Consulta02.SuspendLayout();
             this.gbx_Consulta04.SuspendLayout();
             this.gbx_Consulta01.SuspendLayout();
@@ -228,6 +229,7 @@
             // 
             // tab_Info
             // 
+            this.tab_Info.Controls.Add(this.btn_Eliminar);
             this.tab_Info.Controls.Add(this.btn_Agregar);
             this.tab_Info.Controls.Add(this.btn_Grabar);
             this.tab_Info.Controls.Add(this.btn_Editar);
@@ -250,6 +252,7 @@
             this.btn_Agregar.TabIndex = 14;
             this.btn_Agregar.Text = "Agregar";
             this.btn_Agregar.UseVisualStyleBackColor = true;
+            this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
             // 
             // btn_Grabar
             // 
@@ -259,6 +262,7 @@
             this.btn_Grabar.TabIndex = 13;
             this.btn_Grabar.Text = "Grabar";
             this.btn_Grabar.UseVisualStyleBackColor = true;
+            this.btn_Grabar.Click += new System.EventHandler(this.btn_Grabar_Click);
             // 
             // btn_Editar
             // 
@@ -268,6 +272,7 @@
             this.btn_Editar.TabIndex = 12;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = true;
+            this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
             // 
             // gbx_Album
             // 
@@ -830,6 +835,16 @@
             this.cbx_SeleccionConsulta.TabIndex = 1;
             this.cbx_SeleccionConsulta.SelectedIndexChanged += new System.EventHandler(this.cbx_SeleccionConsulta_SelectedIndexChanged);
             // 
+            // btn_Eliminar
+            // 
+            this.btn_Eliminar.Location = new System.Drawing.Point(286, 489);
+            this.btn_Eliminar.Name = "btn_Eliminar";
+            this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Eliminar.TabIndex = 15;
+            this.btn_Eliminar.Text = "Eliminar";
+            this.btn_Eliminar.UseVisualStyleBackColor = true;
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
+            // 
             // frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -840,7 +855,7 @@
             this.Controls.Add(this.tv_Grupo);
             this.Controls.Add(this.tabc_Principal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -861,7 +876,7 @@
             this.gbx_Consultas.PerformLayout();
             this.gbx_Consulta03.ResumeLayout(false);
             this.gbx_Consulta03.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
             this.gbx_Consulta02.ResumeLayout(false);
             this.gbx_Consulta02.PerformLayout();
             this.gbx_Consulta04.ResumeLayout(false);
@@ -949,6 +964,7 @@
         private System.Windows.Forms.GroupBox gbx_Consulta02;
         private System.Windows.Forms.GroupBox gbx_Consulta01;
         private System.Windows.Forms.ToolStripMenuItem tsmi_AdministradorDatos_Desconectar;
+        private System.Windows.Forms.Button btn_Eliminar;
     }
 }
 

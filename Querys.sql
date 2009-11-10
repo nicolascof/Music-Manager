@@ -2,6 +2,10 @@ USE cd
 
 -- BRYAN ADAMS
 
+UPDATE grupo
+SET descripcion = 'Bryan Adams'
+WHERE id_grupo = 1
+
 UPDATE album
 SET titulo = 'Reckless',
 	costo = 45.98,
@@ -44,7 +48,7 @@ VALUES ('Musimundo')
 SELECT * FROM generos
 
 INSERT INTO generos
-VALUES ('GRUNGE')
+VALUES ('Grunge')
 
 -- PROCEDIMIENTOS ALMACENADOS
 
