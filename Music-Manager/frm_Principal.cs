@@ -403,22 +403,7 @@ namespace Music_Manager
          */
         private void btn_Ejecutar_Click(object sender, EventArgs e)
         {
-            /*
-            dataGridView1.DataSource = null;
-
-            conexion.ConnectionString = stringConexion;
-            conexion.Open();
-
-            command.CommandText = textBox1.Text;
-            command.Connection = conexion;
-
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-            dataAdapter.Fill(dataSet);
-
-            conexion.Close();
-
-            dataGridView1.DataSource = dataSet.Tables[0];
-            */
+           // Consulta de Laboratorio II
         }
 
         private void btn_Eliminar_Click (object sender, EventArgs e)
@@ -505,32 +490,43 @@ namespace Music_Manager
             }
             else
             {
-                MessageBox.Show("Editar: " + "editar".CompareTo(botonEditarAgregar).ToString() + " " + "Agregar: " +
-                    "agregar".CompareTo(botonEditarAgregar).ToString());
-
                 if ("editar".CompareTo(botonEditarAgregar) == 0)
                 {
-                    oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+                    if (!oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
                         int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.SelectedItem.ToString(),
                         decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
-                        int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
+                        int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text))
+                    {
+                        MessageBox.Show("Error al modificar album", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        CleanBoxes();
+
+                        EnableBoxes(false);
+
+                        CargarClases();
+                    }
                 }
 
                 if ("agregar".CompareTo(botonEditarAgregar) == 0)
                 {
-                    oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+                    if (!oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
                         int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.Text,
                         decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
-                        int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text);
+                        int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text))
+                    {
+                        MessageBox.Show("Error al agregar album", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        CleanBoxes();
+
+                        EnableBoxes(false);
+
+                        CargarClases();
+                    }
                 }
-
-                CleanBoxes();
-
-                EnableBoxes(false);
-
-                cbx_Titulo.DropDownStyle = ComboBoxStyle.DropDownList;
-
-                CargarClases();
             }
         }
 

@@ -320,7 +320,7 @@ namespace Music_Manager
             return true;
         }
 
-        //Consultas de laboratorio
+        // Consultas de laboratorio
         public bool sp_Consulta01(string nombreGrupo)
         {
             try
