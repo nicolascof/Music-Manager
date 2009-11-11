@@ -53,12 +53,6 @@ namespace Music_Manager
             ofrm_AcercaDe.Show();
         }
 
-        private void tsl_Consultas_Click(object sender, EventArgs e)
-        {
-            tab_Consultas.Enabled = true;
-            tabc_Principal.SelectedTab = tab_Consultas;
-        }
-
         private void tsmi_AdministradorDatos_Conectar_Click(object sender, EventArgs e)
         {
             frm_ConectarBaseDeDatos ofrm_ConectarBaseDeDatos = new frm_ConectarBaseDeDatos();
@@ -356,33 +350,6 @@ namespace Music_Manager
             cbx_Titulo.Items.Clear();
         }
 
-        private void cbx_SeleccionConsulta_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cbx_SeleccionConsulta.SelectedIndex)
-            {
-                case 0:
-                    VisibleGroupBoxesConsultas(false);
-                    gbx_Consulta01.Visible = true;
-                    //gbx_Consulta01.Focus();
-                    break;
-                case 1:
-                    VisibleGroupBoxesConsultas(false);
-                    gbx_Consulta02.Visible = true;
-                    //gbx_Consulta02.Focus();
-                    break;
-                case 2:
-                    VisibleGroupBoxesConsultas(false);
-                    gbx_Consulta03.Visible = true;
-                    //gbx_Consulta03.Focus();
-                    break;
-                case 3:
-                    VisibleGroupBoxesConsultas(false);
-                    gbx_Consulta04.Visible = true;
-                    //gbx_Consulta04.Focus();
-                    break;
-            }
-        }
-
         /* NAME: VisibleGroupBoxesConsultas
          * DESCRIPTION: hace visible los groupbox
          * PARAMETERS: bool
@@ -395,16 +362,6 @@ namespace Music_Manager
                 if (obj is GroupBox)
                     obj.Visible = b;
             }
-        }
-
-        /* NAME: btn_Ejecutar
-         * DESCRIPTION: ejecuto la consulta (Laboratorio II)
-         * PARAMETERS: object, EventArgs
-         * RETURNS: void
-         */
-        private void btn_Ejecutar_Click(object sender, EventArgs e)
-        {
-           // Consulta de Laboratorio II
         }
 
         private void btn_Eliminar_Click (object sender, EventArgs e)
@@ -549,6 +506,8 @@ namespace Music_Manager
         {
             EnableBoxes(false);
 
+            tsl_Buscar.Enabled = false;
+
             lbl_PosicionArreglo.Visible = false;
             tsl_Consultas.Enabled = false;
             tab_Consultas.Enabled = false;
@@ -558,6 +517,102 @@ namespace Music_Manager
             btn_Agregar.Enabled = false;
             btn_Cancelar.Enabled = false;
             btn_Grabar.Enabled = false;
+        }
+
+        //####################################################################
+        //############  LABORATORIO ##########################################
+        //####################################################################
+
+        private void tsl_Consultas_Click (object sender, EventArgs e)
+        {
+            tab_Consultas.Enabled = true;
+            tabc_Principal.SelectedTab = tab_Consultas;
+            tabc_Consultas.Enabled = false;
+        }
+
+        private void cbx_SeleccionConsulta_SelectedIndexChanged (object sender, EventArgs e)
+        {
+            tabc_Consultas.Enabled = true;
+
+            switch (cbx_SeleccionConsulta.SelectedIndex)
+            {
+                case 0:
+                    tabc_Consultas.SelectedTab = tab_Consulta01;
+                    break;
+                case 1:
+                    tabc_Consultas.SelectedTab = tab_Consulta02;
+                    break;
+                case 2:
+                    tabc_Consultas.SelectedTab = tab_Consulta03;
+                    break;
+                case 3:
+                    tabc_Consultas.SelectedTab = tab_Consulta04;
+                    break;
+                case 4:
+                    tabc_Consultas.SelectedTab = tab_Generos;
+                    break;
+            }
+        }
+
+        /* NAME: btn_Ejecutar
+         * DESCRIPTION: ejecuto la consulta (Laboratorio II)
+         * PARAMETERS: object, EventArgs
+         * RETURNS: void
+         */
+        private void btn_Ejecutar_Click (object sender, EventArgs e)
+        {
+            if (tabc_Consultas.SelectedTab == tab_Consulta01)
+            {
+                if (!oSql.sp_Consulta01(tbx_Consulta_NombreGrupo.Text))
+                {
+                    MessageBox.Show("Error Consulta01", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dgv_Consultas.DataSource = null;
+                    dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+                }
+            }
+            else if (tabc_Consultas.SelectedTab == tab_Consulta02)
+            {
+                if (!oSql.sp_Consulta02(tbx_Consulta_Genero.Text))
+                {
+                    MessageBox.Show("Error Consulta02", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dgv_Consultas.DataSource = null;
+                    dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+                }
+            }
+            else if (tabc_Consultas.SelectedTab == tab_Consulta03)
+            {
+                if (!oSql.sp_Consulta03(int.Parse(tbx_Consulta_Anio.Text)))
+                {
+                    MessageBox.Show("Error Consulta03", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dgv_Consultas.DataSource = null;
+                    dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+                }
+            }
+            else if (tabc_Consultas.SelectedTab == tab_Consulta04)
+            {
+                if (!oSql.sp_Consulta04(tbx_Consulta_NombreGrupo2.Text, dtp_Consulta_FechaDesde.Value.Date,
+                    dtp_Consulta_FechaHasta.Value.Date, int.Parse(tbx_Consulta_DuracionAlbum.Text)))
+                {
+                    MessageBox.Show("Error Consulta04", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dgv_Consultas.DataSource = null;
+                    dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+                }
+            }
+            else if (tabc_Consultas.SelectedTab == tab_Generos)
+            {
+            }
         }
     }
 }

@@ -19,8 +19,8 @@ namespace Music_Manager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frm_Principal());
-
+            Application.Run(new frm_Principal());
+            /*
             frm_Splash ofrm_Splash = new frm_Splash();
 
             oTimer.Tick += new EventHandler(TimerPick);
@@ -42,6 +42,7 @@ namespace Music_Manager
                     break;
                 }
             }
+            */
         }
 
         static void TimerPick (Object sender, EventArgs e)

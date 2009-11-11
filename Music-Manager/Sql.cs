@@ -13,6 +13,8 @@ namespace Music_Manager
         private SqlCommand command2;
         private SqlDataReader dataReader1;
         private SqlDataReader dataReader2;
+        private SqlDataAdapter dataAdapter;
+        private DataSet dataSet1;
         private string stringConexion, consulta;
 
         public SqlConnection Conexion
@@ -43,6 +45,18 @@ namespace Music_Manager
         {
             set { dataReader2 = value; }
             get { return dataReader2; }
+        }
+
+        private SqlDataAdapter DataAdapter
+        {
+            set { dataAdapter = value; }
+            get { return dataAdapter; }
+        }
+
+        public DataSet DataSet1
+        {
+            set { dataSet1 = value; }
+            get { return dataSet1; }
         }
 
         public string StringConexion
@@ -335,7 +349,11 @@ namespace Music_Manager
                 Command2.Parameters.Add(parametro);
 
                 Command2.Connection = Conexion;
-                DataReader2 = Command2.ExecuteReader();
+
+                DataSet1 = new DataSet();
+
+                DataAdapter = new SqlDataAdapter(Command2);
+                DataAdapter.Fill(DataSet1);
             }
             catch (SqlException)
             {
@@ -358,7 +376,11 @@ namespace Music_Manager
                 Command2.Parameters.Add(parametro);
 
                 Command2.Connection = Conexion;
-                DataReader2 = Command2.ExecuteReader();
+
+                DataSet1 = new DataSet();
+
+                DataAdapter = new SqlDataAdapter(Command2);
+                DataAdapter.Fill(DataSet1);
             }
             catch (SqlException)
             {
@@ -382,7 +404,11 @@ namespace Music_Manager
                 Command2.Parameters.Add(parametro);
 
                 Command2.Connection = Conexion;
-                DataReader2 = Command2.ExecuteReader();
+
+                DataSet1 = new DataSet();
+
+                DataAdapter = new SqlDataAdapter(Command2);
+                DataAdapter.Fill(DataSet1);
             }
             catch (SqlException)
             {
@@ -417,7 +443,11 @@ namespace Music_Manager
                 Command2.Parameters.AddRange(parametro);
 
                 Command2.Connection = Conexion;
-                DataReader2 = Command2.ExecuteReader();
+
+                DataSet1 = new DataSet();
+
+                DataAdapter = new SqlDataAdapter(Command2);
+                DataAdapter.Fill(DataSet1);
             }
             catch (SqlException)
             {
