@@ -502,15 +502,27 @@ namespace Music_Manager
             }
         }
 
+        private void tabc_Principal_SelectedIndexChanged (object sender, EventArgs e)
+        {
+            if (tabc_Principal.SelectedTab == tab_Info)
+            {
+                tabc_Principal.TabPages.Remove(tab_Consultas);
+                tab_Consultas.Enabled = false;
+                tsl_Consultas.Enabled = true;
+            }
+        }
+
         private void Iniciar ()
         {
             EnableBoxes(false);
 
             tsl_Buscar.Enabled = false;
 
+            tabc_Principal.TabPages.Remove(tab_Consultas);
+            tab_Consultas.Enabled = false;
+
             lbl_PosicionArreglo.Visible = false;
             tsl_Consultas.Enabled = false;
-            tab_Consultas.Enabled = false;
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
             btn_Eliminar.Enabled = false;
             btn_Editar.Enabled = false;
@@ -525,6 +537,8 @@ namespace Music_Manager
 
         private void tsl_Consultas_Click (object sender, EventArgs e)
         {
+            tsl_Consultas.Enabled = false;
+            tabc_Principal.TabPages.Add(tab_Consultas);
             tab_Consultas.Enabled = true;
             tabc_Principal.SelectedTab = tab_Consultas;
             tabc_Consultas.Enabled = false;

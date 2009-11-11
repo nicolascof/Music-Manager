@@ -165,7 +165,7 @@
             // 
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(105, 22);
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
             this.tsmi_Archivo_Cerrar.Text = "Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.tsmi_Archivo_Cerrar_Click);
             // 
@@ -619,6 +619,7 @@
             this.tabc_Principal.SelectedIndex = 0;
             this.tabc_Principal.Size = new System.Drawing.Size(618, 546);
             this.tabc_Principal.TabIndex = 2;
+            this.tabc_Principal.SelectedIndexChanged += new System.EventHandler(this.tabc_Principal_SelectedIndexChanged);
             // 
             // tab_Consultas
             // 
