@@ -753,6 +753,7 @@
             // 
             this.tbx_Resultado.BackColor = System.Drawing.SystemColors.Control;
             this.tbx_Resultado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbx_Resultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.tbx_Resultado.ForeColor = System.Drawing.Color.Red;
             this.tbx_Resultado.Location = new System.Drawing.Point(6, 154);
             this.tbx_Resultado.Name = "tbx_Resultado";

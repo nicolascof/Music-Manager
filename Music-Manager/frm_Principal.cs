@@ -572,8 +572,10 @@ namespace Music_Manager
                     dgv_Consultas.DataSource = null;
                     dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
 
-                    if (dgv_Consultas.RowCount == 0)
-                        tbx_Resultado.Text = "hola mundo";
+                    if (dgv_Consultas.Rows.Count - 1 == 0)
+                        tbx_Resultado.Text = "Ningun Resultado Encontrado";
+                    else
+                        tbx_Resultado.Text = (dgv_Consultas.Rows.Count - 1) + " Resultados Encontrados";
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Consulta02)
