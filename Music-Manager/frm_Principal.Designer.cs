@@ -27,6 +27,7 @@
         /// </summary>
         private void InitializeComponent ()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Principal));
             this.tv_Grupo = new System.Windows.Forms.TreeView();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
@@ -111,6 +112,7 @@
             this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
             this.cbx_Consulta_DuracionAlbum = new System.Windows.Forms.ComboBox();
+            this.errorp_Consulta = new System.Windows.Forms.ErrorProvider(this.components);
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Info.SuspendLayout();
@@ -127,6 +129,7 @@
             this.tab_Consulta04.SuspendLayout();
             this.tab_Generos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.dgv_Consultas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.errorp_Consulta)).BeginInit();
             this.SuspendLayout();
             // 
             // tv_Grupo
@@ -688,6 +691,7 @@
             this.tbx_Consulta_NombreGrupo.Name = "tbx_Consulta_NombreGrupo";
             this.tbx_Consulta_NombreGrupo.Size = new System.Drawing.Size(219, 20);
             this.tbx_Consulta_NombreGrupo.TabIndex = 4;
+            this.tbx_Consulta_NombreGrupo.Validating += new System.ComponentModel.CancelEventHandler(this.tbx_Consulta_NombreGrupo_Validating);
             // 
             // lbl_Consulta_NombreGrupo
             // 
@@ -716,6 +720,7 @@
             this.tbx_Consulta_Genero.Name = "tbx_Consulta_Genero";
             this.tbx_Consulta_Genero.Size = new System.Drawing.Size(219, 20);
             this.tbx_Consulta_Genero.TabIndex = 6;
+            this.tbx_Consulta_Genero.Validating += new System.ComponentModel.CancelEventHandler(this.tbx_Consulta_Genero_Validating);
             // 
             // lbl_Consulta_Genero
             // 
@@ -743,6 +748,7 @@
             this.tbx_Consulta_Anio.Name = "tbx_Consulta_Anio";
             this.tbx_Consulta_Anio.Size = new System.Drawing.Size(219, 20);
             this.tbx_Consulta_Anio.TabIndex = 8;
+            this.tbx_Consulta_Anio.Validating += new System.ComponentModel.CancelEventHandler(this.tbx_Consulta_Anio_Validating);
             // 
             // lbl_Consulta_Anio
             // 
@@ -773,7 +779,7 @@
             // lbl_Consulta_DuracionAlbum
             // 
             this.lbl_Consulta_DuracionAlbum.AutoSize = true;
-            this.lbl_Consulta_DuracionAlbum.Location = new System.Drawing.Point(367, 21);
+            this.lbl_Consulta_DuracionAlbum.Location = new System.Drawing.Point(357, 20);
             this.lbl_Consulta_DuracionAlbum.Name = "lbl_Consulta_DuracionAlbum";
             this.lbl_Consulta_DuracionAlbum.Size = new System.Drawing.Size(82, 13);
             this.lbl_Consulta_DuracionAlbum.TabIndex = 18;
@@ -781,15 +787,16 @@
             // 
             // tbx_Consulta_NombreGrupo2
             // 
-            this.tbx_Consulta_NombreGrupo2.Location = new System.Drawing.Point(120, 18);
+            this.tbx_Consulta_NombreGrupo2.Location = new System.Drawing.Point(104, 17);
             this.tbx_Consulta_NombreGrupo2.Name = "tbx_Consulta_NombreGrupo2";
             this.tbx_Consulta_NombreGrupo2.Size = new System.Drawing.Size(219, 20);
             this.tbx_Consulta_NombreGrupo2.TabIndex = 12;
+            this.tbx_Consulta_NombreGrupo2.Validating += new System.ComponentModel.CancelEventHandler(this.tbx_Consulta_NombreGrupo2_Validating);
             // 
             // lbl_Consulta_NombreGrupo2
             // 
             this.lbl_Consulta_NombreGrupo2.AutoSize = true;
-            this.lbl_Consulta_NombreGrupo2.Location = new System.Drawing.Point(38, 21);
+            this.lbl_Consulta_NombreGrupo2.Location = new System.Drawing.Point(22, 20);
             this.lbl_Consulta_NombreGrupo2.Name = "lbl_Consulta_NombreGrupo2";
             this.lbl_Consulta_NombreGrupo2.Size = new System.Drawing.Size(76, 13);
             this.lbl_Consulta_NombreGrupo2.TabIndex = 11;
@@ -798,7 +805,7 @@
             // lbl_Consulta_FechaHasta
             // 
             this.lbl_Consulta_FechaHasta.AutoSize = true;
-            this.lbl_Consulta_FechaHasta.Location = new System.Drawing.Point(214, 48);
+            this.lbl_Consulta_FechaHasta.Location = new System.Drawing.Point(198, 47);
             this.lbl_Consulta_FechaHasta.Name = "lbl_Consulta_FechaHasta";
             this.lbl_Consulta_FechaHasta.Size = new System.Drawing.Size(33, 13);
             this.lbl_Consulta_FechaHasta.TabIndex = 16;
@@ -807,7 +814,7 @@
             // dtp_Consulta_FechaDesde
             // 
             this.dtp_Consulta_FechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_Consulta_FechaDesde.Location = new System.Drawing.Point(120, 44);
+            this.dtp_Consulta_FechaDesde.Location = new System.Drawing.Point(104, 43);
             this.dtp_Consulta_FechaDesde.Name = "dtp_Consulta_FechaDesde";
             this.dtp_Consulta_FechaDesde.Size = new System.Drawing.Size(86, 20);
             this.dtp_Consulta_FechaDesde.TabIndex = 14;
@@ -815,7 +822,7 @@
             // dtp_Consulta_FechaHasta
             // 
             this.dtp_Consulta_FechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_Consulta_FechaHasta.Location = new System.Drawing.Point(253, 44);
+            this.dtp_Consulta_FechaHasta.Location = new System.Drawing.Point(237, 43);
             this.dtp_Consulta_FechaHasta.Name = "dtp_Consulta_FechaHasta";
             this.dtp_Consulta_FechaHasta.Size = new System.Drawing.Size(86, 20);
             this.dtp_Consulta_FechaHasta.TabIndex = 13;
@@ -823,7 +830,7 @@
             // lbl_Consulta_FechaDesde
             // 
             this.lbl_Consulta_FechaDesde.AutoSize = true;
-            this.lbl_Consulta_FechaDesde.Location = new System.Drawing.Point(45, 48);
+            this.lbl_Consulta_FechaDesde.Location = new System.Drawing.Point(29, 47);
             this.lbl_Consulta_FechaDesde.Name = "lbl_Consulta_FechaDesde";
             this.lbl_Consulta_FechaDesde.Size = new System.Drawing.Size(69, 13);
             this.lbl_Consulta_FechaDesde.TabIndex = 15;
@@ -943,6 +950,7 @@
             // 
             // cbx_Consulta_DuracionAlbum
             // 
+            this.cbx_Consulta_DuracionAlbum.FormatString = "N0";
             this.cbx_Consulta_DuracionAlbum.FormattingEnabled = true;
             this.cbx_Consulta_DuracionAlbum.Items.AddRange(new object[] {
             "30",
@@ -955,10 +963,15 @@
             "100",
             "110",
             "120"});
-            this.cbx_Consulta_DuracionAlbum.Location = new System.Drawing.Point(455, 18);
+            this.cbx_Consulta_DuracionAlbum.Location = new System.Drawing.Point(445, 17);
             this.cbx_Consulta_DuracionAlbum.Name = "cbx_Consulta_DuracionAlbum";
             this.cbx_Consulta_DuracionAlbum.Size = new System.Drawing.Size(100, 21);
             this.cbx_Consulta_DuracionAlbum.TabIndex = 19;
+            this.cbx_Consulta_DuracionAlbum.Validating += new System.ComponentModel.CancelEventHandler(this.cbx_Consulta_DuracionAlbum_Validating);
+            // 
+            // errorp_Consulta
+            // 
+            this.errorp_Consulta.ContainerControl = this;
             // 
             // frm_Principal
             // 
@@ -1002,6 +1015,7 @@
             this.tab_Generos.ResumeLayout(false);
             this.tab_Generos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize) (this.dgv_Consultas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.errorp_Consulta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1092,6 +1106,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pbx_Consultas;
         private System.Windows.Forms.ComboBox cbx_Consulta_DuracionAlbum;
+        private System.Windows.Forms.ErrorProvider errorp_Consulta;
     }
 }
 

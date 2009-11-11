@@ -502,16 +502,6 @@ namespace Music_Manager
             }
         }
 
-        private void tabc_Principal_SelectedIndexChanged (object sender, EventArgs e)
-        {
-            if (tabc_Principal.SelectedTab == tab_Info)
-            {
-                tabc_Principal.TabPages.Remove(tab_Consultas);
-                tab_Consultas.Enabled = false;
-                tsl_Consultas.Enabled = true;
-            }
-        }
-
         private void Iniciar ()
         {
             EnableBoxes(false);
@@ -535,6 +525,23 @@ namespace Music_Manager
         //############  LABORATORIO ##########################################
         //####################################################################
 
+        private void tabc_Principal_SelectedIndexChanged (object sender, EventArgs e)
+        {
+            if (tabc_Principal.SelectedTab == tab_Info)
+            {
+                tabc_Principal.TabPages.Remove(tab_Consultas);
+                tab_Consultas.Enabled = false;
+                tsl_Consultas.Enabled = true;
+
+                tabc_Consultas.SelectedTab = tab_Consulta01;
+
+                cbx_SeleccionConsulta.SelectedIndex = -1;
+                LimpiarConsultas();
+
+                errorp_Consulta.Clear();
+            }
+        }
+
         private void tsl_Consultas_Click (object sender, EventArgs e)
         {
             tsl_Consultas.Enabled = false;
@@ -542,11 +549,13 @@ namespace Music_Manager
             tab_Consultas.Enabled = true;
             tabc_Principal.SelectedTab = tab_Consultas;
             tabc_Consultas.Enabled = false;
+            btn_Ejecutar.Enabled = false;
         }
 
         private void cbx_SeleccionConsulta_SelectedIndexChanged (object sender, EventArgs e)
         {
             tabc_Consultas.Enabled = true;
+            btn_Ejecutar.Enabled = true;
 
             switch (cbx_SeleccionConsulta.SelectedIndex)
             {
@@ -577,47 +586,59 @@ namespace Music_Manager
         {
             if (tabc_Consultas.SelectedTab == tab_Consulta01)
             {
-                if (!oSql.sp_Consulta01(tbx_Consulta_NombreGrupo.Text))
+                if (ValidacionNombreGrupo())
                 {
-                    MessageBox.Show("Error Consulta01", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MostrarDataGridView();
+                    if (!oSql.sp_Consulta01(tbx_Consulta_NombreGrupo.Text))
+                    {
+                        MessageBox.Show("Error Consulta01", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MostrarDataGridView();
+                    }
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Consulta02)
             {
-                if (!oSql.sp_Consulta02(tbx_Consulta_Genero.Text))
+                if (ValidacionGenero())
                 {
-                    MessageBox.Show("Error Consulta02", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MostrarDataGridView();
+                    if (!oSql.sp_Consulta02(tbx_Consulta_Genero.Text))
+                    {
+                        MessageBox.Show("Error Consulta02", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MostrarDataGridView();
+                    }
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Consulta03)
             {
-                if (!oSql.sp_Consulta03(int.Parse(tbx_Consulta_Anio.Text)))
+                if (ValidacionAnio())
                 {
-                    MessageBox.Show("Error Consulta03", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MostrarDataGridView();
+                    if (!oSql.sp_Consulta03(int.Parse(tbx_Consulta_Anio.Text)))
+                    {
+                        MessageBox.Show("Error Consulta03", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MostrarDataGridView();
+                    }
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Consulta04)
             {
-                if (!oSql.sp_Consulta04(tbx_Consulta_NombreGrupo2.Text, dtp_Consulta_FechaDesde.Value.Date,
-                    dtp_Consulta_FechaHasta.Value.Date, int.Parse(cbx_Consulta_DuracionAlbum.SelectedItem.ToString())))
+                if (ValidacionNombreGrupo2() && ValidacionDuracionAlbum())
                 {
-                    MessageBox.Show("Error Consulta04", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MostrarDataGridView();
+                    if (!oSql.sp_Consulta04(tbx_Consulta_NombreGrupo2.Text, dtp_Consulta_FechaDesde.Value.Date,
+                        dtp_Consulta_FechaHasta.Value.Date, int.Parse(cbx_Consulta_DuracionAlbum.SelectedItem.ToString())))
+                    {
+                        MessageBox.Show("Error Consulta04", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MostrarDataGridView();
+                    }
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Generos)
@@ -653,6 +674,116 @@ namespace Music_Manager
         private void tabc_Consultas_SelectedIndexChanged (object sender, EventArgs e)
         {
             LimpiarConsultas();
+        }
+
+        private void tbx_Consulta_NombreGrupo_Validating (object sender, CancelEventArgs e)
+        {
+            ValidacionNombreGrupo();
+        }
+
+        private bool ValidacionNombreGrupo ()
+        {
+            bool b = true;
+
+            if (tbx_Consulta_NombreGrupo.Text == "")
+            {
+                errorp_Consulta.SetError(tbx_Consulta_NombreGrupo, "Ingrese Nombre Grupo");
+                b = false;
+            }
+            else
+            {
+                errorp_Consulta.SetError(tbx_Consulta_NombreGrupo, "");
+            }
+
+            return b;
+        }
+
+        private void tbx_Consulta_Anio_Validating (object sender, CancelEventArgs e)
+        {
+            ValidacionAnio();
+        }
+
+        private bool ValidacionAnio ()
+        {
+            bool b = true;
+
+            if (tbx_Consulta_Anio.Text == "")
+            {
+                errorp_Consulta.SetError(tbx_Consulta_Anio, "Ingrese Año - Ej. 1988");
+                b = false;
+            }
+            else
+            {
+                errorp_Consulta.SetError(tbx_Consulta_Anio, "");
+            }
+
+            return b;
+        }
+
+        private void tbx_Consulta_Genero_Validating (object sender, CancelEventArgs e)
+        {
+            ValidacionGenero();
+        }
+
+        private bool ValidacionGenero ()
+        {
+            bool b = true;
+
+            if (tbx_Consulta_Genero.Text == "")
+            {
+                errorp_Consulta.SetError(tbx_Consulta_Genero, "Ingrese Genero");
+                b = false;
+            }
+            else
+            {
+                errorp_Consulta.SetError(tbx_Consulta_Genero, "");
+            }
+
+            return b;
+        }
+
+        private void tbx_Consulta_NombreGrupo2_Validating (object sender, CancelEventArgs e)
+        {
+            ValidacionNombreGrupo2();
+        }
+
+        private bool ValidacionNombreGrupo2 ()
+        {
+            bool b = true;
+
+            if (tbx_Consulta_NombreGrupo2.Text == "")
+            {
+                errorp_Consulta.SetError(tbx_Consulta_NombreGrupo2, "Ingrese Nombre Grupo");
+                b = false;
+            }
+            else
+            {
+                errorp_Consulta.SetError(tbx_Consulta_NombreGrupo2, "");
+            }
+
+            return b;
+        }
+
+        private void cbx_Consulta_DuracionAlbum_Validating (object sender, CancelEventArgs e)
+        {
+            ValidacionDuracionAlbum();
+        }
+
+        private bool ValidacionDuracionAlbum ()
+        {
+            bool b = true;
+
+            if (cbx_Consulta_DuracionAlbum.SelectedItem == null)
+            {
+                errorp_Consulta.SetError(cbx_Consulta_DuracionAlbum, "Ingrese Nombre Grupo");
+                b = false;
+            }
+            else
+            {
+                errorp_Consulta.SetError(cbx_Consulta_DuracionAlbum, "");
+            }
+
+            return b;
         }
     }
 }
