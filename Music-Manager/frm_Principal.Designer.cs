@@ -648,9 +648,9 @@
             // 
             // pbx_Consultas
             // 
-            this.pbx_Consultas.Location = new System.Drawing.Point(561, 16);
+            this.pbx_Consultas.Location = new System.Drawing.Point(565, 17);
             this.pbx_Consultas.Name = "pbx_Consultas";
-            this.pbx_Consultas.Size = new System.Drawing.Size(31, 24);
+            this.pbx_Consultas.Size = new System.Drawing.Size(27, 23);
             this.pbx_Consultas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbx_Consultas.TabIndex = 18;
             this.pbx_Consultas.TabStop = false;
@@ -910,9 +910,9 @@
             // 
             // btn_Ejecutar
             // 
-            this.btn_Ejecutar.Location = new System.Drawing.Point(480, 17);
+            this.btn_Ejecutar.Location = new System.Drawing.Point(490, 17);
             this.btn_Ejecutar.Name = "btn_Ejecutar";
-            this.btn_Ejecutar.Size = new System.Drawing.Size(84, 23);
+            this.btn_Ejecutar.Size = new System.Drawing.Size(75, 23);
             this.btn_Ejecutar.TabIndex = 11;
             this.btn_Ejecutar.Text = "Ejecutar";
             this.btn_Ejecutar.UseVisualStyleBackColor = true;
@@ -939,7 +939,7 @@
             "ABM Generos"});
             this.cbx_SeleccionConsulta.Location = new System.Drawing.Point(130, 19);
             this.cbx_SeleccionConsulta.Name = "cbx_SeleccionConsulta";
-            this.cbx_SeleccionConsulta.Size = new System.Drawing.Size(344, 21);
+            this.cbx_SeleccionConsulta.Size = new System.Drawing.Size(354, 21);
             this.cbx_SeleccionConsulta.TabIndex = 1;
             this.cbx_SeleccionConsulta.SelectedIndexChanged += new System.EventHandler(this.cbx_SeleccionConsulta_SelectedIndexChanged);
             // 
