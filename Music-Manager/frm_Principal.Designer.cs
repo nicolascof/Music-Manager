@@ -808,6 +808,7 @@
             this.tabc_Consultas.SelectedIndex = 0;
             this.tabc_Consultas.Size = new System.Drawing.Size(586, 102);
             this.tabc_Consultas.TabIndex = 17;
+            this.tabc_Consultas.SelectedIndexChanged += new System.EventHandler(this.tabc_Consultas_SelectedIndexChanged);
             // 
             // tab_Consulta01
             // 

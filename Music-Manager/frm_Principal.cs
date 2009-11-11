@@ -569,13 +569,7 @@ namespace Music_Manager
                 }
                 else
                 {
-                    dgv_Consultas.DataSource = null;
-                    dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
-
-                    if (dgv_Consultas.Rows.Count - 1 == 0)
-                        tbx_Resultado.Text = "Ningun Resultado Encontrado";
-                    else
-                        tbx_Resultado.Text = (dgv_Consultas.Rows.Count - 1) + " Resultados Encontrados";
+                    MostrarDataGridView();
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Consulta02)
@@ -586,8 +580,7 @@ namespace Music_Manager
                 }
                 else
                 {
-                    dgv_Consultas.DataSource = null;
-                    dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+                    MostrarDataGridView();
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Consulta03)
@@ -598,8 +591,7 @@ namespace Music_Manager
                 }
                 else
                 {
-                    dgv_Consultas.DataSource = null;
-                    dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+                    MostrarDataGridView();
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Consulta04)
@@ -611,13 +603,34 @@ namespace Music_Manager
                 }
                 else
                 {
-                    dgv_Consultas.DataSource = null;
-                    dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+                    MostrarDataGridView();
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Generos)
             {
             }
+        }
+
+        private void MostrarDataGridView ()
+        {
+            //dgv_Consultas.DataSource = null;
+            dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+
+            if (dgv_Consultas.Rows.Count - 1 == 0)
+                tbx_Resultado.Text = "Ningun Resultado Encontrado";
+            else
+                tbx_Resultado.Text = (dgv_Consultas.Rows.Count - 1) + " Resultados Encontrados";
+        }
+
+        private void LimpiarConsultas ()
+        {
+            dgv_Consultas.DataSource = null;
+            tbx_Resultado.Text = null;
+        }
+
+        private void tabc_Consultas_SelectedIndexChanged (object sender, EventArgs e)
+        {
+            LimpiarConsultas();
         }
     }
 }
