@@ -94,6 +94,7 @@
             this.tbx_Consulta_Anio = new System.Windows.Forms.TextBox();
             this.lbl_Consulta_Anio = new System.Windows.Forms.Label();
             this.tab_Consulta04 = new System.Windows.Forms.TabPage();
+            this.cbx_Consulta_DuracionAlbum = new System.Windows.Forms.ComboBox();
             this.lbl_Consulta_DuracionAlbum = new System.Windows.Forms.Label();
             this.tbx_Consulta_NombreGrupo2 = new System.Windows.Forms.TextBox();
             this.lbl_Consulta_NombreGrupo2 = new System.Windows.Forms.Label();
@@ -102,16 +103,13 @@
             this.dtp_Consulta_FechaHasta = new System.Windows.Forms.DateTimePicker();
             this.lbl_Consulta_FechaDesde = new System.Windows.Forms.Label();
             this.tab_Generos = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.cbx_Consulta_SeleccionABM = new System.Windows.Forms.ComboBox();
+            this.cbx_Consulta_GenerosDescripcion = new System.Windows.Forms.ComboBox();
             this.dgv_Consultas = new System.Windows.Forms.DataGridView();
             this.tbx_Resultado = new System.Windows.Forms.TextBox();
             this.btn_Ejecutar = new System.Windows.Forms.Button();
             this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
-            this.cbx_Consulta_DuracionAlbum = new System.Windows.Forms.ComboBox();
             this.errorp_Consulta = new System.Windows.Forms.ErrorProvider(this.components);
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -776,6 +774,27 @@
             this.tab_Consulta04.Text = "Consulta04";
             this.tab_Consulta04.UseVisualStyleBackColor = true;
             // 
+            // cbx_Consulta_DuracionAlbum
+            // 
+            this.cbx_Consulta_DuracionAlbum.FormatString = "N0";
+            this.cbx_Consulta_DuracionAlbum.FormattingEnabled = true;
+            this.cbx_Consulta_DuracionAlbum.Items.AddRange(new object[] {
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100",
+            "110",
+            "120"});
+            this.cbx_Consulta_DuracionAlbum.Location = new System.Drawing.Point(445, 17);
+            this.cbx_Consulta_DuracionAlbum.Name = "cbx_Consulta_DuracionAlbum";
+            this.cbx_Consulta_DuracionAlbum.Size = new System.Drawing.Size(100, 21);
+            this.cbx_Consulta_DuracionAlbum.TabIndex = 19;
+            this.cbx_Consulta_DuracionAlbum.Validating += new System.ComponentModel.CancelEventHandler(this.cbx_Consulta_DuracionAlbum_Validating);
+            // 
             // lbl_Consulta_DuracionAlbum
             // 
             this.lbl_Consulta_DuracionAlbum.AutoSize = true;
@@ -838,10 +857,8 @@
             // 
             // tab_Generos
             // 
-            this.tab_Generos.Controls.Add(this.comboBox1);
-            this.tab_Generos.Controls.Add(this.radioButton3);
-            this.tab_Generos.Controls.Add(this.radioButton2);
-            this.tab_Generos.Controls.Add(this.radioButton1);
+            this.tab_Generos.Controls.Add(this.cbx_Consulta_SeleccionABM);
+            this.tab_Generos.Controls.Add(this.cbx_Consulta_GenerosDescripcion);
             this.tab_Generos.Location = new System.Drawing.Point(4, 22);
             this.tab_Generos.Name = "tab_Generos";
             this.tab_Generos.Size = new System.Drawing.Size(578, 76);
@@ -849,45 +866,29 @@
             this.tab_Generos.Text = "Generos";
             this.tab_Generos.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cbx_Consulta_SeleccionABM
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(392, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 3;
+            this.cbx_Consulta_SeleccionABM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_Consulta_SeleccionABM.FormattingEnabled = true;
+            this.cbx_Consulta_SeleccionABM.Items.AddRange(new object[] {
+            "Agregar",
+            "Eliminar",
+            "Modificar"});
+            this.cbx_Consulta_SeleccionABM.Location = new System.Drawing.Point(120, 30);
+            this.cbx_Consulta_SeleccionABM.Name = "cbx_Consulta_SeleccionABM";
+            this.cbx_Consulta_SeleccionABM.Size = new System.Drawing.Size(121, 21);
+            this.cbx_Consulta_SeleccionABM.TabIndex = 4;
+            this.cbx_Consulta_SeleccionABM.SelectedIndexChanged += new System.EventHandler(this.cbx_Consulta_SeleccionABM_SelectedIndexChanged);
             // 
-            // radioButton3
+            // cbx_Consulta_GenerosDescripcion
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(192, 18);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(101, 18);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(10, 18);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.cbx_Consulta_GenerosDescripcion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cbx_Consulta_GenerosDescripcion.FormattingEnabled = true;
+            this.cbx_Consulta_GenerosDescripcion.Location = new System.Drawing.Point(353, 30);
+            this.cbx_Consulta_GenerosDescripcion.Name = "cbx_Consulta_GenerosDescripcion";
+            this.cbx_Consulta_GenerosDescripcion.Size = new System.Drawing.Size(174, 21);
+            this.cbx_Consulta_GenerosDescripcion.TabIndex = 3;
+            this.cbx_Consulta_GenerosDescripcion.SelectedIndexChanged += new System.EventHandler(this.cbx_Consulta_GenerosDescripcion_SelectedIndexChanged);
             // 
             // dgv_Consultas
             // 
@@ -948,27 +949,6 @@
             this.cbx_SeleccionConsulta.TabIndex = 1;
             this.cbx_SeleccionConsulta.SelectedIndexChanged += new System.EventHandler(this.cbx_SeleccionConsulta_SelectedIndexChanged);
             // 
-            // cbx_Consulta_DuracionAlbum
-            // 
-            this.cbx_Consulta_DuracionAlbum.FormatString = "N0";
-            this.cbx_Consulta_DuracionAlbum.FormattingEnabled = true;
-            this.cbx_Consulta_DuracionAlbum.Items.AddRange(new object[] {
-            "30",
-            "40",
-            "50",
-            "60",
-            "70",
-            "80",
-            "90",
-            "100",
-            "110",
-            "120"});
-            this.cbx_Consulta_DuracionAlbum.Location = new System.Drawing.Point(445, 17);
-            this.cbx_Consulta_DuracionAlbum.Name = "cbx_Consulta_DuracionAlbum";
-            this.cbx_Consulta_DuracionAlbum.Size = new System.Drawing.Size(100, 21);
-            this.cbx_Consulta_DuracionAlbum.TabIndex = 19;
-            this.cbx_Consulta_DuracionAlbum.Validating += new System.ComponentModel.CancelEventHandler(this.cbx_Consulta_DuracionAlbum_Validating);
-            // 
             // errorp_Consulta
             // 
             this.errorp_Consulta.ContainerControl = this;
@@ -1013,7 +993,6 @@
             this.tab_Consulta04.ResumeLayout(false);
             this.tab_Consulta04.PerformLayout();
             this.tab_Generos.ResumeLayout(false);
-            this.tab_Generos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize) (this.dgv_Consultas)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.errorp_Consulta)).EndInit();
             this.ResumeLayout(false);
@@ -1100,13 +1079,11 @@
         private System.Windows.Forms.TabPage tab_Consulta04;
         private System.Windows.Forms.TabPage tab_Generos;
         private System.Windows.Forms.Label lbl_Consulta_DuracionAlbum;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbx_Consulta_GenerosDescripcion;
         private System.Windows.Forms.PictureBox pbx_Consultas;
         private System.Windows.Forms.ComboBox cbx_Consulta_DuracionAlbum;
         private System.Windows.Forms.ErrorProvider errorp_Consulta;
+        private System.Windows.Forms.ComboBox cbx_Consulta_SeleccionABM;
     }
 }
 

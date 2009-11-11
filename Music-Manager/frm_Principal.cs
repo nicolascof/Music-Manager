@@ -573,7 +573,28 @@ namespace Music_Manager
                     break;
                 case 4:
                     tabc_Consultas.SelectedTab = tab_Generos;
+                    oSql.sp_CargarGeneros();
+                    while (oSql.DataReader1.Read())
+                    {
+                        cbx_Consulta_GenerosDescripcion.Items.Add(Convert.ToString(oSql.DataReader1["descricpion"]));
+                    }
                     break;
+            }
+        }
+
+        private void cbx_Consulta_SeleccionABM_SelectedIndexChanged (object sender, EventArgs e)
+        {
+            if (cbx_Consulta_SeleccionABM.SelectedIndex == 0)
+            {
+                cbx_Consulta_GenerosDescripcion.DropDownStyle = ComboBoxStyle.Simple;
+            }
+            else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1)
+            {
+                cbx_Consulta_GenerosDescripcion.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2)
+            {
+                cbx_Consulta_GenerosDescripcion.DropDownStyle = ComboBoxStyle.DropDown;
             }
         }
 
@@ -643,7 +664,36 @@ namespace Music_Manager
             }
             else if (tabc_Consultas.SelectedTab == tab_Generos)
             {
+                if (cbx_Consulta_SeleccionABM.SelectedIndex == 0)
+                {
+                    oSql.sp_AgregarGenero(cbx_Consulta_GenerosDescripcion.Text);
+                    pbx_Consultas.Image = global::Music_Manager.Properties.Resources.GoodTick;
+                }
+                else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1)
+                {
+                    oSql.sp_DevolverIdGenero(cbx_Consulta_GenerosDescripcion.SelectedItem.ToString());
+
+                    while (oSql.DataReader1.Read())
+                    {
+                        int idgenero = Convert.ToInt32(oSql.DataReader1["id_genero"]);
+                        oSql.sp_EliminarGenero(idgenero);
+                    }
+                }
+                else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2)
+                {
+                    oSql.sp_DevolverIdGenero(seleccionCbx_Consulta_GenerosDescripcion);
+
+                    while (oSql.DataReader1.Read())
+                        oSql.sp_ModificarGenero(Convert.ToInt32(oSql.DataReader1["id_genero"]),
+                            cbx_Consulta_GenerosDescripcion.Text);
+                }
             }
+        }
+
+        string seleccionCbx_Consulta_GenerosDescripcion = null;
+        private void cbx_Consulta_GenerosDescripcion_SelectedIndexChanged (object sender, EventArgs e)
+        {
+            seleccionCbx_Consulta_GenerosDescripcion = cbx_Consulta_GenerosDescripcion.Text;
         }
 
         private void MostrarDataGridView ()

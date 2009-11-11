@@ -173,6 +173,15 @@ EXEC sp_ModificarAlbum 8, 7, 2, 4, 2, 1, 'Exciter', 30.00, '01/12/2000','14/05/2
 
 SELECT * FROM generos
 
+-- Cargar Generos
+
+CREATE PROCEDURE sp_CargarGeneros
+AS
+	SELECT descricpion
+	FROM generos
+
+EXEC sp_CargarGeneros
+
 -- Agregar un Genero
 
 CREATE PROCEDURE sp_AgregarGenero
@@ -185,7 +194,16 @@ EXEC sp_AgregarGenero 'Blues'
 
 -- Eliminacion de un Genero 
 
-CREATE PROCEDURE sp_EliminacionGenero
+CREATE PROCEDURE sp_DevolverIdGenero
+	@descripcion nvarchar(25)
+AS
+	SELECT id_genero
+	FROM generos
+	WHERE descricpion LIKE '%' + @descripcion + '%'
+
+EXEC sp_DevolverIdGenero punk
+
+CREATE PROCEDURE sp_EliminarGenero
 	@idGenero int
 AS
 	DELETE FROM generos

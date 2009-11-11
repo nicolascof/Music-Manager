@@ -456,5 +456,125 @@ namespace Music_Manager
 
             return true;
         }
+
+        // ABM
+        public bool sp_CargarGeneros ()
+        {
+            try
+            {
+                Command1 = new SqlCommand();
+
+                Command1.CommandText = "sp_CargarGeneros";
+                Command1.CommandType = CommandType.StoredProcedure;
+
+                Command1.Connection = Conexion;
+                DataReader1 = Command1.ExecuteReader();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool sp_AgregarGenero (string descripcion)
+        {
+            try
+            {
+
+                Command2 = new SqlCommand();
+                SqlParameter parametro = new SqlParameter("@descripcion", SqlDbType.NVarChar, 30);
+                parametro.Value = descripcion;
+
+                Command2.CommandText = "sp_AgregarGenero";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.Add(parametro);
+
+                Command2.Connection = Conexion;
+                Command2.ExecuteNonQuery();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool sp_EliminarGenero (int idGenero)
+        {
+            try
+            {
+                Command2 = new SqlCommand();
+
+                SqlParameter parametro = new SqlParameter("@idGenero", SqlDbType.Int);
+                parametro.Value = idGenero;
+
+                Command2.CommandText = "sp_EliminarGenero";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.Add(parametro);
+
+                Command2.Connection = Conexion;
+                Command2.ExecuteNonQuery();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool sp_DevolverIdGenero (string descripcion)
+        {
+            try
+            {
+                Command1 = new SqlCommand();
+
+                SqlParameter parametro = new SqlParameter("@descripcion", SqlDbType.NVarChar, 25);
+                parametro.Value = descripcion;
+
+                Command1.CommandText = "sp_DevolverIdGenero";
+                Command1.CommandType = CommandType.StoredProcedure;
+                Command1.Parameters.Add(parametro);
+
+                Command1.Connection = Conexion;
+                DataReader1 = Command1.ExecuteReader();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool sp_ModificarGenero (int idGenero, string descripcion)
+        {
+            try
+            {
+                Command2 = new SqlCommand();
+                SqlParameter[] parametro = new SqlParameter[2];
+
+                parametro[0] = new SqlParameter("@idGenero", SqlDbType.Int);
+                parametro[0].Value = idGenero;
+                parametro[1] = new SqlParameter("@descripcion", SqlDbType.NVarChar, 30);
+                parametro[1].Value = descripcion;
+
+                Command2.CommandText = "sp_ModificarGenero";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.AddRange(parametro);
+
+                Command2.Connection = Conexion;
+                Command2.ExecuteNonQuery();
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
