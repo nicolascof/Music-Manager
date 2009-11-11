@@ -649,6 +649,7 @@
             this.tbx_Consulta_Anio.Name = "tbx_Consulta_Anio";
             this.tbx_Consulta_Anio.Size = new System.Drawing.Size(219, 20);
             this.tbx_Consulta_Anio.TabIndex = 8;
+            this.tbx_Consulta_Anio.Enter += new System.EventHandler(this.btn_Ejecutar_Click);
             // 
             // lbl_Consulta_Anio
             // 
@@ -673,6 +674,7 @@
             this.tbx_Consulta_Genero.Name = "tbx_Consulta_Genero";
             this.tbx_Consulta_Genero.Size = new System.Drawing.Size(219, 20);
             this.tbx_Consulta_Genero.TabIndex = 6;
+            this.tbx_Consulta_Genero.Enter += new System.EventHandler(this.btn_Ejecutar_Click);
             // 
             // lbl_Consulta_Genero
             // 
@@ -739,6 +741,7 @@
             this.tbx_Consulta_NombreGrupo.Name = "tbx_Consulta_NombreGrupo";
             this.tbx_Consulta_NombreGrupo.Size = new System.Drawing.Size(219, 20);
             this.tbx_Consulta_NombreGrupo.TabIndex = 4;
+            this.tbx_Consulta_NombreGrupo.Enter += new System.EventHandler(this.btn_Ejecutar_Click);
             // 
             // lbl_Consulta_NombreGrupo
             // 
