@@ -94,7 +94,6 @@
             this.lbl_Consulta_Anio = new System.Windows.Forms.Label();
             this.tab_Consulta04 = new System.Windows.Forms.TabPage();
             this.lbl_Consulta_DuracionAlbum = new System.Windows.Forms.Label();
-            this.tbx_Consulta_DuracionAlbum = new System.Windows.Forms.TextBox();
             this.tbx_Consulta_NombreGrupo2 = new System.Windows.Forms.TextBox();
             this.lbl_Consulta_NombreGrupo2 = new System.Windows.Forms.Label();
             this.lbl_Consulta_FechaHasta = new System.Windows.Forms.Label();
@@ -111,6 +110,7 @@
             this.btn_Ejecutar = new System.Windows.Forms.Button();
             this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
+            this.cbx_Consulta_DuracionAlbum = new System.Windows.Forms.ComboBox();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Info.SuspendLayout();
@@ -165,7 +165,7 @@
             // 
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(105, 22);
             this.tsmi_Archivo_Cerrar.Text = "Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.tsmi_Archivo_Cerrar_Click);
             // 
@@ -755,8 +755,8 @@
             // 
             // tab_Consulta04
             // 
+            this.tab_Consulta04.Controls.Add(this.cbx_Consulta_DuracionAlbum);
             this.tab_Consulta04.Controls.Add(this.lbl_Consulta_DuracionAlbum);
-            this.tab_Consulta04.Controls.Add(this.tbx_Consulta_DuracionAlbum);
             this.tab_Consulta04.Controls.Add(this.tbx_Consulta_NombreGrupo2);
             this.tab_Consulta04.Controls.Add(this.lbl_Consulta_NombreGrupo2);
             this.tab_Consulta04.Controls.Add(this.lbl_Consulta_FechaHasta);
@@ -773,18 +773,11 @@
             // lbl_Consulta_DuracionAlbum
             // 
             this.lbl_Consulta_DuracionAlbum.AutoSize = true;
-            this.lbl_Consulta_DuracionAlbum.Location = new System.Drawing.Point(368, 21);
+            this.lbl_Consulta_DuracionAlbum.Location = new System.Drawing.Point(367, 21);
             this.lbl_Consulta_DuracionAlbum.Name = "lbl_Consulta_DuracionAlbum";
             this.lbl_Consulta_DuracionAlbum.Size = new System.Drawing.Size(82, 13);
             this.lbl_Consulta_DuracionAlbum.TabIndex = 18;
             this.lbl_Consulta_DuracionAlbum.Text = "Duración Album";
-            // 
-            // tbx_Consulta_DuracionAlbum
-            // 
-            this.tbx_Consulta_DuracionAlbum.Location = new System.Drawing.Point(456, 18);
-            this.tbx_Consulta_DuracionAlbum.Name = "tbx_Consulta_DuracionAlbum";
-            this.tbx_Consulta_DuracionAlbum.Size = new System.Drawing.Size(100, 20);
-            this.tbx_Consulta_DuracionAlbum.TabIndex = 17;
             // 
             // tbx_Consulta_NombreGrupo2
             // 
@@ -895,21 +888,21 @@
             this.dgv_Consultas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv_Consultas.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv_Consultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Consultas.Location = new System.Drawing.Point(6, 180);
+            this.dgv_Consultas.Location = new System.Drawing.Point(6, 169);
             this.dgv_Consultas.Name = "dgv_Consultas";
             this.dgv_Consultas.ReadOnly = true;
-            this.dgv_Consultas.Size = new System.Drawing.Size(586, 322);
+            this.dgv_Consultas.Size = new System.Drawing.Size(586, 333);
             this.dgv_Consultas.TabIndex = 0;
             // 
             // tbx_Resultado
             // 
             this.tbx_Resultado.BackColor = System.Drawing.SystemColors.Control;
-            this.tbx_Resultado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbx_Resultado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbx_Resultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.tbx_Resultado.ForeColor = System.Drawing.Color.Red;
-            this.tbx_Resultado.Location = new System.Drawing.Point(6, 154);
+            this.tbx_Resultado.Location = new System.Drawing.Point(6, 150);
             this.tbx_Resultado.Name = "tbx_Resultado";
-            this.tbx_Resultado.Size = new System.Drawing.Size(586, 20);
+            this.tbx_Resultado.Size = new System.Drawing.Size(586, 13);
             this.tbx_Resultado.TabIndex = 12;
             this.tbx_Resultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -947,6 +940,25 @@
             this.cbx_SeleccionConsulta.Size = new System.Drawing.Size(354, 21);
             this.cbx_SeleccionConsulta.TabIndex = 1;
             this.cbx_SeleccionConsulta.SelectedIndexChanged += new System.EventHandler(this.cbx_SeleccionConsulta_SelectedIndexChanged);
+            // 
+            // cbx_Consulta_DuracionAlbum
+            // 
+            this.cbx_Consulta_DuracionAlbum.FormattingEnabled = true;
+            this.cbx_Consulta_DuracionAlbum.Items.AddRange(new object[] {
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100",
+            "110",
+            "120"});
+            this.cbx_Consulta_DuracionAlbum.Location = new System.Drawing.Point(455, 18);
+            this.cbx_Consulta_DuracionAlbum.Name = "cbx_Consulta_DuracionAlbum";
+            this.cbx_Consulta_DuracionAlbum.Size = new System.Drawing.Size(100, 21);
+            this.cbx_Consulta_DuracionAlbum.TabIndex = 19;
             // 
             // frm_Principal
             // 
@@ -1074,12 +1086,12 @@
         private System.Windows.Forms.TabPage tab_Consulta04;
         private System.Windows.Forms.TabPage tab_Generos;
         private System.Windows.Forms.Label lbl_Consulta_DuracionAlbum;
-        private System.Windows.Forms.TextBox tbx_Consulta_DuracionAlbum;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pbx_Consultas;
+        private System.Windows.Forms.ComboBox cbx_Consulta_DuracionAlbum;
     }
 }
 

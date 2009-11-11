@@ -611,7 +611,7 @@ namespace Music_Manager
             else if (tabc_Consultas.SelectedTab == tab_Consulta04)
             {
                 if (!oSql.sp_Consulta04(tbx_Consulta_NombreGrupo2.Text, dtp_Consulta_FechaDesde.Value.Date,
-                    dtp_Consulta_FechaHasta.Value.Date, int.Parse(tbx_Consulta_DuracionAlbum.Text)))
+                    dtp_Consulta_FechaHasta.Value.Date, int.Parse(cbx_Consulta_DuracionAlbum.SelectedItem.ToString())))
                 {
                     MessageBox.Show("Error Consulta04", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

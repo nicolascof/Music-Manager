@@ -110,7 +110,7 @@ AS
 			WHEN 0 THEN CAST(DATEDIFF(day, A.fecha_lanzamiento, getdate()) AS nvarchar) + ' Dias'
 			ELSE CAST(DATEDIFF(year, A.fecha_lanzamiento, getdate()) AS nvarchar) + ' Años'
 		END[Antiguedad],
-		A.costo[Costo]
+		'U$D ' + CAST(A.costo AS nvarchar)[Costo]
 	FROM album AS A
 		INNER JOIN grupo AS G
 			ON A.id_grupo = G.id_grupo
