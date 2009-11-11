@@ -565,6 +565,7 @@ namespace Music_Manager
             {
                 if (!oSql.sp_Consulta01(tbx_Consulta_NombreGrupo.Text))
                 {
+                    pbx_Consultas.Image = global::Music_Manager.Properties.Resources.Error;
                     MessageBox.Show("Error Consulta01", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
@@ -576,6 +577,7 @@ namespace Music_Manager
             {
                 if (!oSql.sp_Consulta02(tbx_Consulta_Genero.Text))
                 {
+                    pbx_Consultas.Image = global::Music_Manager.Properties.Resources.Error;
                     MessageBox.Show("Error Consulta02", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
@@ -587,6 +589,7 @@ namespace Music_Manager
             {
                 if (!oSql.sp_Consulta03(int.Parse(tbx_Consulta_Anio.Text)))
                 {
+                    pbx_Consultas.Image = global::Music_Manager.Properties.Resources.Error;
                     MessageBox.Show("Error Consulta03", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
@@ -599,6 +602,7 @@ namespace Music_Manager
                 if (!oSql.sp_Consulta04(tbx_Consulta_NombreGrupo2.Text, dtp_Consulta_FechaDesde.Value.Date,
                     dtp_Consulta_FechaHasta.Value.Date, int.Parse(tbx_Consulta_DuracionAlbum.Text)))
                 {
+                    pbx_Consultas.Image = global::Music_Manager.Properties.Resources.Error;
                     MessageBox.Show("Error Consulta04", "Consultas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
@@ -613,6 +617,8 @@ namespace Music_Manager
 
         private void MostrarDataGridView ()
         {
+            pbx_Consultas.Image = global::Music_Manager.Properties.Resources.GoodTick;
+
             //dgv_Consultas.DataSource = null;
             dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
 
@@ -624,6 +630,8 @@ namespace Music_Manager
 
         private void LimpiarConsultas ()
         {
+            pbx_Consultas.Image = null;
+
             dgv_Consultas.DataSource = null;
             tbx_Resultado.Text = null;
         }

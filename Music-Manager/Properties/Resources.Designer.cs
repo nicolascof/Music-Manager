@@ -95,9 +95,23 @@ namespace Music_Manager.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Error {
+            get {
+                object obj = ResourceManager.GetObject("Error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Exit {
             get {
                 object obj = ResourceManager.GetObject("Exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap GoodTick {
+            get {
+                object obj = ResourceManager.GetObject("GoodTick", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
