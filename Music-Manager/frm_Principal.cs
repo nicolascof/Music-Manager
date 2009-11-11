@@ -571,6 +571,9 @@ namespace Music_Manager
                 {
                     dgv_Consultas.DataSource = null;
                     dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+
+                    if (dgv_Consultas.RowCount == 0)
+                        tbx_Resultado.Text = "hola mundo";
                 }
             }
             else if (tabc_Consultas.SelectedTab == tab_Consulta02)
