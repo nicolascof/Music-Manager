@@ -891,9 +891,13 @@
             // 
             // dgv_Consultas
             // 
+            this.dgv_Consultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_Consultas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgv_Consultas.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv_Consultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Consultas.Location = new System.Drawing.Point(6, 180);
             this.dgv_Consultas.Name = "dgv_Consultas";
+            this.dgv_Consultas.ReadOnly = true;
             this.dgv_Consultas.Size = new System.Drawing.Size(586, 322);
             this.dgv_Consultas.TabIndex = 0;
             // 
