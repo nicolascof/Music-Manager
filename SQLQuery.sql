@@ -92,7 +92,7 @@ AS
 		)
 	ORDER BY 1, 4
 
-EXEC sp_Consulta03 1985
+EXEC sp_Consulta03 2009
 	
 -- Calcula la antiguedad de los discos de un grupo
 -- El nombre del grupo, fechas y duracion son ingresado por programa

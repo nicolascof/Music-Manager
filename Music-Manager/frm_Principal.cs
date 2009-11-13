@@ -599,20 +599,12 @@ namespace Music_Manager
             }
             else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1) // Eliminar
             {
-                oSql.sp_CargarGeneros();
-                cbx_Consulta_Genero2.DataSource = oSql.DataSet1;
-                cbx_Consulta_Genero2.DisplayMember = "descricpion";
-                cbx_Consulta_Genero2.ValueMember = "generos.descricpion";
-                cbx_Consulta_Genero2.SelectedIndex = 0;
+                Actualizar_cbx_Consulta_Genero2();
                 cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDownList;
             }
             else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2) // Modificar
             {
-                oSql.sp_CargarGeneros();
-                cbx_Consulta_Genero2.DataSource = oSql.DataSet1;
-                cbx_Consulta_Genero2.DisplayMember = "descricpion";
-                cbx_Consulta_Genero2.ValueMember = "generos.descricpion";
-                cbx_Consulta_Genero2.SelectedIndex = 0;
+                Actualizar_cbx_Consulta_Genero2();
                 cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDown;
             }
         }
@@ -701,6 +693,7 @@ namespace Music_Manager
                         else
                         {
                             oSql.sp_CargarGeneros();
+                            Actualizar_cbx_Consulta_Genero2();
                             MostrarDataGridView();
                         }
                     }
@@ -718,6 +711,7 @@ namespace Music_Manager
                             else
                             {
                                 oSql.sp_CargarGeneros();
+                                Actualizar_cbx_Consulta_Genero2();
                                 MostrarDataGridView();
                             }
                         }
@@ -736,6 +730,7 @@ namespace Music_Manager
                             else
                             {
                                 oSql.sp_CargarGeneros();
+                                Actualizar_cbx_Consulta_Genero2();
                                 MostrarDataGridView();
                             }
                         }
@@ -751,6 +746,15 @@ namespace Music_Manager
             {
                 seleccionCbx_Consulta_GenerosDescripcion = cbx_Consulta_Genero2.SelectedValue.ToString();
             }
+        }
+
+        private void Actualizar_cbx_Consulta_Genero2 ()
+        {
+            oSql.sp_CargarGeneros();
+            cbx_Consulta_Genero2.DataSource = oSql.DataSet1;
+            cbx_Consulta_Genero2.DisplayMember = "descricpion";
+            cbx_Consulta_Genero2.ValueMember = "generos.descricpion";
+            cbx_Consulta_Genero2.SelectedIndex = 0;
         }
 
         private void MostrarDataGridView ()
