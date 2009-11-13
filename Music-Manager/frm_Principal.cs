@@ -735,12 +735,20 @@ namespace Music_Manager
         }
 
         string seleccionCbx_Consulta_GenerosDescripcion = null;
-        private void cbx_Consulta_GenerosDescripcion_SelectedIndexChanged (object sender, EventArgs e)
+        /*private void cbx_Consulta_GenerosDescripcion_SelectedIndexChanged (object sender, EventArgs e)
         {
             if (cbx_Consulta_Genero2.SelectedValue != null)
             {
                 seleccionCbx_Consulta_GenerosDescripcion = cbx_Consulta_Genero2.SelectedValue.ToString();
             }
+        }*/
+        private void cbx_Consulta_Genero2_SelectedValueChanged (object sender, EventArgs e)
+        {
+            /*if (cbx_Consulta_Genero2.GetItemText(cbx_Consulta_Genero2.Items[cbx_Consulta_Genero2.SelectedIndex]) != null)
+            {
+                seleccionCbx_Consulta_GenerosDescripcion = cbx_Consulta_Genero2.SelectedValue.ToString();
+            }*/
+            seleccionCbx_Consulta_GenerosDescripcion = cbx_Consulta_Genero2.GetItemText(cbx_Consulta_Genero2.Items[cbx_Consulta_Genero2.SelectedIndex]);
         }
 
         private void Actualizar_cbx_Consulta_Genero2 ()
