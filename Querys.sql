@@ -51,7 +51,7 @@ INSERT INTO generos
 VALUES ('Grunge')
 
 --#######################################################
---#### Consultas Laboratorio II #########################
+--## Programacion II ####################################
 --#######################################################
 
 -- Seleccion de nombres de grupos
@@ -100,7 +100,7 @@ AS
 
 EXEC sp_SeleccionAlbumPorGrupo 'adams'
 
--- Eliminacion de un album 
+-- Eliminacion de un album
 
 SELECT * FROM album
 
@@ -170,61 +170,3 @@ AS
 	WHERE id_album = @idAlbum
 
 EXEC sp_ModificarAlbum 8, 7, 2, 4, 2, 1, 'Exciter', 30.00, '01/12/2000','14/05/2001', 13, 56, 'Es el décimo álbum del grupo inglés de música electrónica'
-
---#######################################################
---#### ABM Generos ######################################
---####################################################### 
-
-SELECT * FROM generos
-
--- Cargar Generos
-
-CREATE PROCEDURE sp_CargarGeneros
-AS
-	SELECT descricpion
-	FROM generos
-
-EXEC sp_CargarGeneros
-
--- Agregar un Genero
-
-CREATE PROCEDURE sp_AgregarGenero
-	@descripcion nvarchar(30)
-AS
-	INSERT INTO generos (descricpion)
-	VALUES (@descripcion)
-
-EXEC sp_AgregarGenero 'Blues'  
-
--- Eliminacion de un Genero 
-
-CREATE PROCEDURE sp_EliminarGenero
-	@idGenero int
-AS
-	DELETE FROM generos
-	WHERE id_genero = @idGenero
-
-EXEC sp_EliminarGenero 1
-
--- Modificar un Genero
-
-CREATE PROCEDURE sp_ModificarGenero
-	@idGenero int,
-	@descripcion nvarchar(30)
-AS
-	UPDATE generos
-	SET descricpion = @descripcion
-	WHERE id_genero = @idGenero
-
-EXEC sp_ModificarGenero 10, 'Blues'
-
--- Devuelve idGenero
-
-CREATE PROCEDURE sp_DevolverIdGenero
-	@descripcion nvarchar(25)
-AS
-	SELECT id_genero
-	FROM generos
-	WHERE descricpion LIKE '%' + @descripcion + '%'
-
-EXEC sp_DevolverIdGenero punk

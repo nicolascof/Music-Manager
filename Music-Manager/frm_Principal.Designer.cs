@@ -900,7 +900,6 @@
             this.cbx_Consulta_SeleccionABM.Name = "cbx_Consulta_SeleccionABM";
             this.cbx_Consulta_SeleccionABM.Size = new System.Drawing.Size(121, 21);
             this.cbx_Consulta_SeleccionABM.TabIndex = 4;
-            this.cbx_Consulta_SeleccionABM.Validating += new System.ComponentModel.CancelEventHandler(this.cbx_Consulta_SeleccionABM_Validating);
             this.cbx_Consulta_SeleccionABM.SelectedIndexChanged += new System.EventHandler(this.cbx_Consulta_SeleccionABM_SelectedIndexChanged);
             // 
             // cbx_Consulta_Genero2

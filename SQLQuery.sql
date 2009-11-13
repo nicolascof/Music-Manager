@@ -1,5 +1,9 @@
 USE cd
 
+--#######################################################
+--## Consultas Laboratorio II ###########################
+--#######################################################
+
 -- 1. Ver las Disquerias y Companias con su respectivo Grupo
 -- El nombre del grupo es ingresado por programa
 
@@ -128,3 +132,61 @@ AS
 EXEC sp_Consulta04 null,'01/01/1983','01/01/1990',0
 EXEC sp_Consulta04 'adams',null,null,0
 EXEC sp_Consulta04 'depeche',null,null,0
+
+--#######################################################
+--## ABM Generos ########################################
+--####################################################### 
+
+SELECT * FROM generos
+
+-- Cargar Generos
+
+CREATE PROCEDURE sp_CargarGeneros
+AS
+	SELECT descricpion
+	FROM generos
+
+EXEC sp_CargarGeneros
+
+-- Agregar un Genero
+
+CREATE PROCEDURE sp_AgregarGenero
+	@descripcion nvarchar(30)
+AS
+	INSERT INTO generos (descricpion)
+	VALUES (@descripcion)
+
+EXEC sp_AgregarGenero 'Blues'  
+
+-- Eliminacion de un Genero 
+
+CREATE PROCEDURE sp_EliminarGenero
+	@idGenero int
+AS
+	DELETE FROM generos
+	WHERE id_genero = @idGenero
+
+EXEC sp_EliminarGenero 7
+
+-- Modificar un Genero
+
+CREATE PROCEDURE sp_ModificarGenero
+	@idGenero int,
+	@descripcion nvarchar(30)
+AS
+	UPDATE generos
+	SET descricpion = @descripcion
+	WHERE id_genero = @idGenero
+
+EXEC sp_ModificarGenero 7, 'ElectroPop'
+
+-- Devuelve idGenero
+
+CREATE PROCEDURE sp_DevolverIdGenero
+	@descripcion nvarchar(25)
+AS
+	SELECT id_genero
+	FROM generos
+	WHERE descricpion LIKE '%' + @descripcion + '%'
+
+EXEC sp_DevolverIdGenero punk

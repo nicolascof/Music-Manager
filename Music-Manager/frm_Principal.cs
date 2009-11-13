@@ -581,11 +581,6 @@ namespace Music_Manager
                     break;
                 case 4:
                     tabc_Consultas.SelectedTab = tab_Generos;
-                    oSql.sp_CargarGeneros();
-                    cbx_Consulta_Genero2.DataSource = oSql.DataSet1;
-                    cbx_Consulta_Genero2.DisplayMember = "descricpion";
-                    cbx_Consulta_Genero2.ValueMember = "generos.descricpion";
-                    cbx_Consulta_Genero2.SelectedIndex = -1;
                     cbx_Consulta_SeleccionABM.SelectedIndex = 0;
                     /*
                     while (oSql.DataReader1.Read())
@@ -598,16 +593,26 @@ namespace Music_Manager
 
         private void cbx_Consulta_SeleccionABM_SelectedIndexChanged (object sender, EventArgs e)
         {
-            if (cbx_Consulta_SeleccionABM.SelectedIndex == 0)
+            if (cbx_Consulta_SeleccionABM.SelectedIndex == 0) // Agregar
             {
                 cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.Simple;
             }
-            else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1)
+            else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1) // Eliminar
             {
+                oSql.sp_CargarGeneros();
+                cbx_Consulta_Genero2.DataSource = oSql.DataSet1;
+                cbx_Consulta_Genero2.DisplayMember = "descricpion";
+                cbx_Consulta_Genero2.ValueMember = "generos.descricpion";
+                cbx_Consulta_Genero2.SelectedIndex = 0;
                 cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-            else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2)
+            else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2) // Modificar
             {
+                oSql.sp_CargarGeneros();
+                cbx_Consulta_Genero2.DataSource = oSql.DataSet1;
+                cbx_Consulta_Genero2.DisplayMember = "descricpion";
+                cbx_Consulta_Genero2.ValueMember = "generos.descricpion";
+                cbx_Consulta_Genero2.SelectedIndex = 0;
                 cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDown;
             }
         }
@@ -682,12 +687,14 @@ namespace Music_Manager
             }
             else if (tabc_Consultas.SelectedTab == tab_Generos) // Eleccion del tab Generos
             {
-                if (ValidacionSeleccionABM() && ValidacionGenero2())
+                //cbx_Consulta_Genero2_Validating(null, null);
+                bool btmp = ValidacionGenero2();
+                if (btmp)
                 {
                     errorp_Consulta.Clear();
-                    if (cbx_Consulta_SeleccionABM.SelectedIndex == 0)
+                    if (cbx_Consulta_SeleccionABM.SelectedIndex == 0) // Agregar
                     {
-                        if (!oSql.sp_AgregarGenero(cbx_Consulta_Genero2.SelectedValue.ToString()))
+                        if (!oSql.sp_AgregarGenero(cbx_Consulta_Genero2.Text))
                         {
                             MessageBox.Show("Error Agregar Genero", "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -697,7 +704,7 @@ namespace Music_Manager
                             MostrarDataGridView();
                         }
                     }
-                    else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1)
+                    else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1) // Eliminar
                     {
                         oSql.sp_DevolverIdGenero(cbx_Consulta_Genero2.SelectedValue.ToString());
 
@@ -715,7 +722,7 @@ namespace Music_Manager
                             }
                         }
                     }
-                    else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2)
+                    else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2) // Modificar
                     {
                         oSql.sp_DevolverIdGenero(seleccionCbx_Consulta_GenerosDescripcion);
 
@@ -900,7 +907,7 @@ namespace Music_Manager
             bool b = true;
 
             //if (cbx_Consulta_Genero2.SelectedItem == null || cbx_Consulta_Genero2.Text == "" || cbx_Consulta_Genero2.ValueMember == null)
-            if (cbx_Consulta_Genero2.SelectedValue == null || cbx_Consulta_Genero2.Text == "" || cbx_Consulta_Genero2.SelectedItem == null)
+            if (cbx_Consulta_Genero2.Text == "" && cbx_Consulta_Genero2.SelectedValue == null && cbx_Consulta_Genero2.SelectedItem == null)
             {
                 errorp_Consulta.SetError(cbx_Consulta_Genero2, "Ingrese Genero");
                 b = false;
@@ -908,28 +915,6 @@ namespace Music_Manager
             else
             {
                 errorp_Consulta.SetError(cbx_Consulta_Genero2, "");
-            }
-
-            return b;
-        }
-
-        private void cbx_Consulta_SeleccionABM_Validating (object sender, CancelEventArgs e)
-        {
-            ValidacionSeleccionABM();
-        }
-
-        private bool ValidacionSeleccionABM ()
-        {
-            bool b = true;
-
-            if (cbx_Consulta_SeleccionABM.SelectedItem == null)
-            {
-                errorp_Consulta.SetError(cbx_Consulta_SeleccionABM, "Eliga un ABM");
-                b = false;
-            }
-            else
-            {
-                errorp_Consulta.SetError(cbx_Consulta_SeleccionABM, "");
             }
 
             return b;
