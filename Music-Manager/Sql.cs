@@ -527,7 +527,7 @@ namespace Music_Manager
             }
             catch (SqlException ex)
             {
-                stringError = ex.ToString();
+                stringError = ex.Message;
                 return false;
             }
 
