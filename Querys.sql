@@ -50,7 +50,9 @@ SELECT * FROM generos
 INSERT INTO generos
 VALUES ('Grunge')
 
--- PROCEDIMIENTOS ALMACENADOS
+--#######################################################
+--#### Consultas Laboratorio II #########################
+--#######################################################
 
 -- Seleccion de nombres de grupos
 
@@ -169,7 +171,9 @@ AS
 
 EXEC sp_ModificarAlbum 8, 7, 2, 4, 2, 1, 'Exciter', 30.00, '01/12/2000','14/05/2001', 13, 56, 'Es el décimo álbum del grupo inglés de música electrónica'
 
--- ABM Generos  
+--#######################################################
+--#### ABM Generos ######################################
+--####################################################### 
 
 SELECT * FROM generos
 
@@ -194,22 +198,13 @@ EXEC sp_AgregarGenero 'Blues'
 
 -- Eliminacion de un Genero 
 
-CREATE PROCEDURE sp_DevolverIdGenero
-	@descripcion nvarchar(25)
-AS
-	SELECT id_genero
-	FROM generos
-	WHERE descricpion LIKE '%' + @descripcion + '%'
-
-EXEC sp_DevolverIdGenero punk
-
 CREATE PROCEDURE sp_EliminarGenero
 	@idGenero int
 AS
 	DELETE FROM generos
 	WHERE id_genero = @idGenero
 
-EXEC sp_EliminacionGenero 9
+EXEC sp_EliminarGenero 1
 
 -- Modificar un Genero
 
@@ -222,3 +217,14 @@ AS
 	WHERE id_genero = @idGenero
 
 EXEC sp_ModificarGenero 10, 'Blues'
+
+-- Devuelve idGenero
+
+CREATE PROCEDURE sp_DevolverIdGenero
+	@descripcion nvarchar(25)
+AS
+	SELECT id_genero
+	FROM generos
+	WHERE descricpion LIKE '%' + @descripcion + '%'
+
+EXEC sp_DevolverIdGenero punk

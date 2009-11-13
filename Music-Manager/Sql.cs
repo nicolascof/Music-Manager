@@ -16,6 +16,7 @@ namespace Music_Manager
         private SqlDataAdapter dataAdapter;
         private DataSet dataSet1;
         private string stringConexion, consulta;
+        public string stringError;
 
         public SqlConnection Conexion
         {
@@ -334,7 +335,10 @@ namespace Music_Manager
             return true;
         }
 
-        // Consultas de laboratorio
+        //####################################################################
+        //## LABORATORIO #####################################################
+        //####################################################################
+
         public bool sp_Consulta01(string nombreGrupo)
         {
             try
@@ -457,7 +461,6 @@ namespace Music_Manager
             return true;
         }
 
-        // ABM
         public bool sp_CargarGeneros ()
         {
             try
@@ -468,7 +471,12 @@ namespace Music_Manager
                 Command1.CommandType = CommandType.StoredProcedure;
 
                 Command1.Connection = Conexion;
-                DataReader1 = Command1.ExecuteReader();
+                //DataReader1 = Command1.ExecuteReader();
+
+                DataSet1 = new DataSet();
+
+                DataAdapter = new SqlDataAdapter(Command1);
+                DataAdapter.Fill(DataSet1, "generos");
             }
             catch (SqlException)
             {
@@ -482,7 +490,6 @@ namespace Music_Manager
         {
             try
             {
-
                 Command2 = new SqlCommand();
                 SqlParameter parametro = new SqlParameter("@descripcion", SqlDbType.NVarChar, 30);
                 parametro.Value = descripcion;
@@ -518,8 +525,9 @@ namespace Music_Manager
                 Command2.Connection = Conexion;
                 Command2.ExecuteNonQuery();
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
+                stringError = ex.ToString();
                 return false;
             }
 
