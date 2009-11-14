@@ -276,12 +276,14 @@ namespace Music_Manager
                     */
 
                     tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum.ToString();
+                    // PROBLEMAS!!!
                     cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero(oGrupo[posicion].OAlbum[dato].IdGenero));
                     cbx_Genero.SelectedIndex = 0;
                     cbx_Disqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria(oGrupo[posicion].OAlbum[dato].IdDisqueria));
                     cbx_Disqueria.SelectedIndex = 0;
                     cbx_Compania.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarCompania(oGrupo[posicion].OAlbum[dato].IdCompania));
                     cbx_Compania.SelectedIndex = 0;
+                    // FIN PROBLEMAS!!!
                     dtp_FechaTerminado.Value = oGrupo[posicion].OAlbum[dato].FechaTerminado;
                     dtp_FechaLanzamiento.Value = oGrupo[posicion].OAlbum[dato].FechaLanzamiento;
                     tbx_CantidadTemas.Text = oGrupo[posicion].OAlbum[dato].CantidadTemas.ToString();
