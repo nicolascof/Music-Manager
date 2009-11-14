@@ -170,3 +170,59 @@ AS
 	WHERE id_album = @idAlbum
 
 EXEC sp_ModificarAlbum 8, 7, 2, 4, 2, 1, 'Exciter', 30.00, '01/12/2000','14/05/2001', 13, 56, 'Es el décimo álbum del grupo inglés de música electrónica'
+
+-- Cargar Companias
+
+CREATE PROCEDURE sp_CargarCompanias
+AS
+	SELECT *
+	FROM companias
+
+EXEC sp_CargarCompanias
+
+--#######################################################
+--## ABM Disquerias #####################################
+--####################################################### 
+
+SELECT * FROM disquerias
+
+-- Cargar Disquerias
+
+CREATE PROCEDURE sp_CargarDisquerias
+AS
+	SELECT *
+	FROM disquerias
+
+EXEC sp_CargarDisquerias
+
+-- Agregar una Disquera
+
+CREATE PROCEDURE sp_AgregarDisqueria
+	@descripcion nvarchar(30)
+AS
+	INSERT INTO disquerias (descripcion)
+	VALUES (@descripcion)
+
+EXEC sp_AgregarDisqueria 'Musique'  
+
+-- Eliminacion de una Disqueria
+
+CREATE PROCEDURE sp_EliminarDisqueria
+	@idDisqueria int
+AS
+	DELETE FROM disquerias
+	WHERE id_disqueria = @idDisqueria
+
+EXEC sp_EliminarDisqueria 3
+
+-- Modificar una Disqueria
+
+CREATE PROCEDURE sp_ModificarDisqueria
+	@idDisqueria int,
+	@descripcion nvarchar(30)
+AS
+	UPDATE disquerias
+	SET descripcion = @descripcion
+	WHERE id_disqueria = @idDisqueria
+
+EXEC sp_ModificarDisqueria 4, 'Musique'

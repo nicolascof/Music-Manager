@@ -42,7 +42,7 @@
             this.tsl_AcercaDe = new System.Windows.Forms.ToolStripButton();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.tsslConexion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tab_Info = new System.Windows.Forms.TabPage();
+            this.tab_Informacion = new System.Windows.Forms.TabPage();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Eliminar = new System.Windows.Forms.Button();
             this.btn_Agregar = new System.Windows.Forms.Button();
@@ -50,9 +50,9 @@
             this.btn_Editar = new System.Windows.Forms.Button();
             this.gbx_Album = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbx_IdCompania = new System.Windows.Forms.ComboBox();
+            this.cbx_Compania = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbx_IdDisqueria = new System.Windows.Forms.ComboBox();
+            this.cbx_Disqueria = new System.Windows.Forms.ComboBox();
             this.tbx_IdAlbum = new System.Windows.Forms.TextBox();
             this.lbl_IdCompania = new System.Windows.Forms.Label();
             this.lbl_IdDisqueria = new System.Windows.Forms.Label();
@@ -124,7 +124,7 @@
             this.errorp_Consulta = new System.Windows.Forms.ErrorProvider(this.components);
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
-            this.tab_Info.SuspendLayout();
+            this.tab_Informacion.SuspendLayout();
             this.gbx_Album.SuspendLayout();
             this.gbx_Grupo.SuspendLayout();
             this.tabc_Principal.SuspendLayout();
@@ -260,23 +260,23 @@
             this.tsslConexion.Size = new System.Drawing.Size(91, 17);
             this.tsslConexion.Text = "Desconectado";
             // 
-            // tab_Info
+            // tab_Informacion
             // 
-            this.tab_Info.Controls.Add(this.btn_Cancelar);
-            this.tab_Info.Controls.Add(this.btn_Eliminar);
-            this.tab_Info.Controls.Add(this.btn_Agregar);
-            this.tab_Info.Controls.Add(this.btn_Grabar);
-            this.tab_Info.Controls.Add(this.btn_Editar);
-            this.tab_Info.Controls.Add(this.gbx_Album);
-            this.tab_Info.Controls.Add(this.gbx_Grupo);
-            this.tab_Info.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tab_Info.Location = new System.Drawing.Point(4, 22);
-            this.tab_Info.Name = "tab_Info";
-            this.tab_Info.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Info.Size = new System.Drawing.Size(610, 520);
-            this.tab_Info.TabIndex = 0;
-            this.tab_Info.Text = "Informacion";
-            this.tab_Info.UseVisualStyleBackColor = true;
+            this.tab_Informacion.Controls.Add(this.btn_Cancelar);
+            this.tab_Informacion.Controls.Add(this.btn_Eliminar);
+            this.tab_Informacion.Controls.Add(this.btn_Agregar);
+            this.tab_Informacion.Controls.Add(this.btn_Grabar);
+            this.tab_Informacion.Controls.Add(this.btn_Editar);
+            this.tab_Informacion.Controls.Add(this.gbx_Album);
+            this.tab_Informacion.Controls.Add(this.gbx_Grupo);
+            this.tab_Informacion.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tab_Informacion.Location = new System.Drawing.Point(4, 22);
+            this.tab_Informacion.Name = "tab_Informacion";
+            this.tab_Informacion.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Informacion.Size = new System.Drawing.Size(610, 520);
+            this.tab_Informacion.TabIndex = 0;
+            this.tab_Informacion.Text = "Informacion";
+            this.tab_Informacion.UseVisualStyleBackColor = true;
             // 
             // btn_Cancelar
             // 
@@ -331,9 +331,9 @@
             // gbx_Album
             // 
             this.gbx_Album.Controls.Add(this.label5);
-            this.gbx_Album.Controls.Add(this.cbx_IdCompania);
+            this.gbx_Album.Controls.Add(this.cbx_Compania);
             this.gbx_Album.Controls.Add(this.label6);
-            this.gbx_Album.Controls.Add(this.cbx_IdDisqueria);
+            this.gbx_Album.Controls.Add(this.cbx_Disqueria);
             this.gbx_Album.Controls.Add(this.tbx_IdAlbum);
             this.gbx_Album.Controls.Add(this.lbl_IdCompania);
             this.gbx_Album.Controls.Add(this.lbl_IdDisqueria);
@@ -368,14 +368,14 @@
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 22;
             // 
-            // cbx_IdCompania
+            // cbx_Compania
             // 
-            this.cbx_IdCompania.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_IdCompania.FormattingEnabled = true;
-            this.cbx_IdCompania.Location = new System.Drawing.Point(129, 125);
-            this.cbx_IdCompania.Name = "cbx_IdCompania";
-            this.cbx_IdCompania.Size = new System.Drawing.Size(174, 21);
-            this.cbx_IdCompania.TabIndex = 20;
+            this.cbx_Compania.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_Compania.FormattingEnabled = true;
+            this.cbx_Compania.Location = new System.Drawing.Point(129, 125);
+            this.cbx_Compania.Name = "cbx_Compania";
+            this.cbx_Compania.Size = new System.Drawing.Size(174, 21);
+            this.cbx_Compania.TabIndex = 20;
             // 
             // label6
             // 
@@ -386,14 +386,14 @@
             this.label6.TabIndex = 21;
             this.label6.Text = "Id Album";
             // 
-            // cbx_IdDisqueria
+            // cbx_Disqueria
             // 
-            this.cbx_IdDisqueria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_IdDisqueria.FormattingEnabled = true;
-            this.cbx_IdDisqueria.Location = new System.Drawing.Point(129, 98);
-            this.cbx_IdDisqueria.Name = "cbx_IdDisqueria";
-            this.cbx_IdDisqueria.Size = new System.Drawing.Size(174, 21);
-            this.cbx_IdDisqueria.TabIndex = 19;
+            this.cbx_Disqueria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_Disqueria.FormattingEnabled = true;
+            this.cbx_Disqueria.Location = new System.Drawing.Point(129, 98);
+            this.cbx_Disqueria.Name = "cbx_Disqueria";
+            this.cbx_Disqueria.Size = new System.Drawing.Size(174, 21);
+            this.cbx_Disqueria.TabIndex = 19;
             // 
             // tbx_IdAlbum
             // 
@@ -520,6 +520,7 @@
             this.dtp_FechaLanzamiento.Name = "dtp_FechaLanzamiento";
             this.dtp_FechaLanzamiento.Size = new System.Drawing.Size(100, 20);
             this.dtp_FechaLanzamiento.TabIndex = 5;
+            this.dtp_FechaLanzamiento.Value = new System.DateTime(2009, 11, 14, 0, 0, 0, 0);
             // 
             // dtp_FechaTerminado
             // 
@@ -528,7 +529,7 @@
             this.dtp_FechaTerminado.Name = "dtp_FechaTerminado";
             this.dtp_FechaTerminado.Size = new System.Drawing.Size(100, 20);
             this.dtp_FechaTerminado.TabIndex = 4;
-            this.dtp_FechaTerminado.Value = new System.DateTime(2009, 11, 8, 0, 0, 0, 0);
+            this.dtp_FechaTerminado.Value = new System.DateTime(2009, 11, 14, 0, 0, 0, 0);
             // 
             // lbl_Genero
             // 
@@ -634,7 +635,7 @@
             // 
             // tabc_Principal
             // 
-            this.tabc_Principal.Controls.Add(this.tab_Info);
+            this.tabc_Principal.Controls.Add(this.tab_Informacion);
             this.tabc_Principal.Controls.Add(this.tab_Consultas);
             this.tabc_Principal.Controls.Add(this.tab_Disquerias);
             this.tabc_Principal.HotTrack = true;
@@ -1050,7 +1051,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(93, 127);
+            this.radioButton3.Location = new System.Drawing.Point(24, 79);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(85, 17);
             this.radioButton3.TabIndex = 4;
@@ -1061,7 +1062,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(93, 91);
+            this.radioButton2.Location = new System.Drawing.Point(24, 56);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(85, 17);
             this.radioButton2.TabIndex = 3;
@@ -1072,7 +1073,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(93, 46);
+            this.radioButton1.Location = new System.Drawing.Point(24, 33);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(85, 17);
             this.radioButton1.TabIndex = 2;
@@ -1120,7 +1121,7 @@
             this.ToolStrip.PerformLayout();
             this.StatusStrip.ResumeLayout(false);
             this.StatusStrip.PerformLayout();
-            this.tab_Info.ResumeLayout(false);
+            this.tab_Informacion.ResumeLayout(false);
             this.gbx_Album.ResumeLayout(false);
             this.gbx_Album.PerformLayout();
             this.gbx_Grupo.ResumeLayout(false);
@@ -1163,7 +1164,7 @@
         private System.Windows.Forms.ToolStripDropDownButton tsddb_Archivo;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Archivo_Cerrar;
         private System.Windows.Forms.ToolStripLabel tsl_Buscar;
-        private System.Windows.Forms.TabPage tab_Info;
+        private System.Windows.Forms.TabPage tab_Informacion;
         private System.Windows.Forms.GroupBox gbx_Grupo;
         private System.Windows.Forms.TextBox tbx_CantidadIntegrantes;
         private System.Windows.Forms.Label lbl_Grupo_Nombre;
@@ -1204,9 +1205,9 @@
         private System.Windows.Forms.Label lbl_IdGrupo;
         private System.Windows.Forms.Label lbl_PosicionArreglo;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbx_IdCompania;
+        private System.Windows.Forms.ComboBox cbx_Compania;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbx_IdDisqueria;
+        private System.Windows.Forms.ComboBox cbx_Disqueria;
         private System.Windows.Forms.TextBox tbx_IdAlbum;
         private System.Windows.Forms.Label lbl_IdCompania;
         private System.Windows.Forms.Label lbl_IdDisqueria;

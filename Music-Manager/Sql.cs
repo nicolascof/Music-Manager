@@ -335,11 +335,145 @@ namespace Music_Manager
             return true;
         }
 
+        /* NAME: sp_CargarCompanias
+         * DESCRIPTION: llama a un procedimiento almacenado
+         * PARAMETERS: 
+         * RETURNS: true:consulta exitosa false:consulta fallida
+         */
+        public bool sp_CargarCompanias ()
+        {
+            try
+            {
+                Command1 = new SqlCommand();
+
+                Command1.CommandText = "sp_CargarCompanias";
+                Command1.CommandType = CommandType.StoredProcedure;
+
+                Command1.Connection = Conexion;
+
+                DataSet1 = new DataSet();
+
+                DataAdapter = new SqlDataAdapter(Command1);
+                DataAdapter.Fill(DataSet1, "companias");
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //####################################################################
+        //## ABM Disquerias ##################################################
+        //####################################################################
+
+        public bool sp_CargarDisquerias ()
+        {
+            try
+            {
+                Command1 = new SqlCommand();
+
+                Command1.CommandText = "sp_CargarDisquerias";
+                Command1.CommandType = CommandType.StoredProcedure;
+
+                Command1.Connection = Conexion;
+
+                DataSet1 = new DataSet();
+
+                DataAdapter = new SqlDataAdapter(Command1);
+                DataAdapter.Fill(DataSet1, "disquerias");
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool sp_AgregarDisqueria (string descripcion)
+        {
+            try
+            {
+                Command2 = new SqlCommand();
+
+                SqlParameter parametro = new SqlParameter("@descripcion", SqlDbType.NVarChar, 30);
+                parametro.Value = descripcion;
+
+                Command2.CommandText = "sp_AgregarDisqueria";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.Add(parametro);
+
+                Command2.Connection = Conexion;
+                Command2.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                stringError = ex.Message;
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool sp_EliminarDisqueria(int idDisqueria)
+        {
+            try
+            {
+                Command2 = new SqlCommand();
+
+                SqlParameter parametro = new SqlParameter("@idDisqueria", SqlDbType.Int);
+                parametro.Value = idDisqueria;
+
+                Command2.CommandText = "sp_EliminarDisqueria";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.Add(parametro);
+
+                Command2.Connection = Conexion;
+                Command2.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                stringError = ex.Message;
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool sp_ModificarDisqueria (int idDisqueria, string descripcion)
+        {
+            try
+            {
+                Command2 = new SqlCommand();
+
+                SqlParameter[] parametro = new SqlParameter[2];
+                parametro[0] = new SqlParameter("@idDisqueria", SqlDbType.Int);
+                parametro[0].Value = idDisqueria;
+
+                parametro[1] = new SqlParameter("@descripcion", SqlDbType.NVarChar, 30);
+                parametro[1].Value = descripcion;
+
+                Command2.CommandText = "sp_ModificarDisqueria";
+                Command2.CommandType = CommandType.StoredProcedure;
+                Command2.Parameters.AddRange(parametro);
+
+                Command2.Connection = Conexion;
+                Command2.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                stringError = ex.Message;
+                return false;
+            }
+
+            return true;
+        }
+
         //####################################################################
         //## LABORATORIO #####################################################
         //####################################################################
 
-        public bool sp_Consulta01(string nombreGrupo)
+        public bool sp_Consulta01 (string nombreGrupo)
         {
             try
             {
@@ -429,7 +563,6 @@ namespace Music_Manager
                 Command2 = new SqlCommand();
 
                 SqlParameter[] parametro = new SqlParameter[4];
-
                 parametro[0] = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar, 25);
                 parametro[0].Value = nombreGrupo;
 
@@ -495,6 +628,7 @@ namespace Music_Manager
             try
             {
                 Command2 = new SqlCommand();
+
                 SqlParameter parametro = new SqlParameter("@descripcion", SqlDbType.NVarChar, 30);
                 parametro.Value = descripcion;
 
@@ -544,10 +678,11 @@ namespace Music_Manager
             try
             {
                 Command2 = new SqlCommand();
-                SqlParameter[] parametro = new SqlParameter[2];
 
+                SqlParameter[] parametro = new SqlParameter[2];
                 parametro[0] = new SqlParameter("@idGenero", SqlDbType.Int);
                 parametro[0].Value = idGenero;
+
                 parametro[1] = new SqlParameter("@descripcion", SqlDbType.NVarChar, 30);
                 parametro[1].Value = descripcion;
 

@@ -46,7 +46,7 @@ namespace Music_Manager
         {
             EnableBoxes(false);
 
-            tsl_Buscar.Enabled = false;
+            tsl_Buscar.Visible = false; // Boton Buscar
 
             tabc_Principal.TabPages.Remove(tab_Consultas);
             tab_Consultas.Enabled = false;
@@ -102,6 +102,23 @@ namespace Music_Manager
             }
         }
 
+        private void tsmi_AdministradorDatos_Desconectar_Click(object sender, EventArgs e)
+        {
+            oSql.Conexion.Close();
+            tsslConexion.Image = global::Music_Manager.Properties.Resources.DeleteDatabase;
+            tsslConexion.Text = "Desconectado";
+            tsmi_AdministradorDatos_Conectar.Enabled = true;
+            tsmi_AdministradorDatos_Desconectar.Enabled = false;
+            CleanBoxes();
+            tv_Grupo.Nodes.Clear();
+            Iniciar();
+        }
+
+        /* NAME: CargarClases
+         * DESCRIPTION: carga la clase grupo con sus respectivos album's
+         * PARAMETERS:
+         * RETURNS: void
+         */
         private void CargarClases ()
         {
             int cantidadAlbums;
@@ -164,8 +181,8 @@ namespace Music_Manager
                     ++cantidadGrupos;
                 }
 
-                oSql.DataReader1.Close();
-                oSql.DataReader2.Close();
+                //oSql.DataReader1.Close();
+                //oSql.DataReader2.Close();
 
                 for (int i = 0; i < tv_Grupo.Nodes.Count; ++i)
                 {
@@ -176,23 +193,11 @@ namespace Music_Manager
                 tsmi_AdministradorDatos_Conectar.Enabled = false;
                 tsmi_AdministradorDatos_Desconectar.Enabled = true;
             }
-        } // Fin CargarClases
-
-        private void tsmi_AdministradorDatos_Desconectar_Click(object sender, EventArgs e)
-        {
-            oSql.Conexion.Close();
-            tsslConexion.Image = global::Music_Manager.Properties.Resources.DeleteDatabase;
-            tsslConexion.Text = "Desconectado";
-            tsmi_AdministradorDatos_Conectar.Enabled = true;
-            tsmi_AdministradorDatos_Desconectar.Enabled = false;
-            CleanBoxes();
-            tv_Grupo.Nodes.Clear();
-            Iniciar();
         }
 
         /* NAME: tv_Grupo_AfterSelect 
-         * DESCRIPTION: evento de seleccion de nodo
-         * PARAMETERS: object, TreeViewEventArgs
+         * DESCRIPTION: evento afterSelect de seleccion de nodo
+         * PARAMETERS:
          * RETURNS: void
          */
         private void tv_Grupo_AfterSelect (object sender, TreeViewEventArgs e)
@@ -249,8 +254,8 @@ namespace Music_Manager
         }
 
         /* NAME: cbx_Titulo_SelectedIndexChanged 
-         * DESCRIPTION: evento de eleccion de album
-         * PARAMETERS: object, EventArgs
+         * DESCRIPTION: evento indexChanged de seleccion de album
+         * PARAMETERS: 
          * RETURNS: void
          */
         private void cbx_Titulo_SelectedIndexChanged (object sender, EventArgs e)
@@ -264,17 +269,19 @@ namespace Music_Manager
 
                 if (dato != -1)
                 {
+                    /*
                     cbx_Genero.Items.Clear();
-                    cbx_IdDisqueria.Items.Clear();
-                    cbx_IdCompania.Items.Clear();
+                    cbx_Disqueria.Items.Clear();
+                    cbx_Compania.Items.Clear();
+                    */
 
                     tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum.ToString();
                     cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero(oGrupo[posicion].OAlbum[dato].IdGenero));
                     cbx_Genero.SelectedIndex = 0;
-                    cbx_IdDisqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria(oGrupo[posicion].OAlbum[dato].IdDisqueria));
-                    cbx_IdDisqueria.SelectedIndex = 0;
-                    cbx_IdCompania.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarCompania(oGrupo[posicion].OAlbum[dato].IdCompania));
-                    cbx_IdCompania.SelectedIndex = 0;
+                    cbx_Disqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria(oGrupo[posicion].OAlbum[dato].IdDisqueria));
+                    cbx_Disqueria.SelectedIndex = 0;
+                    cbx_Compania.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarCompania(oGrupo[posicion].OAlbum[dato].IdCompania));
+                    cbx_Compania.SelectedIndex = 0;
                     dtp_FechaTerminado.Value = oGrupo[posicion].OAlbum[dato].FechaTerminado;
                     dtp_FechaLanzamiento.Value = oGrupo[posicion].OAlbum[dato].FechaLanzamiento;
                     tbx_CantidadTemas.Text = oGrupo[posicion].OAlbum[dato].CantidadTemas.ToString();
@@ -291,8 +298,8 @@ namespace Music_Manager
 
         /* NAME: BusquedaBinaria 
          * DESCRIPTION: busca dato en arreglo mediante metodo binario
-         * PARAMETERS: int -1:no encontro dato
-         * RETURNS: int
+         * PARAMETERS: 
+         * RETURNS: int -1:no encontro dato
          */
         private int BusquedaBinaria (Grupo[] oGrupo, int Dato)
         {
@@ -317,8 +324,8 @@ namespace Music_Manager
 
         /* NAME: BusquedaSecuencial 
          * DESCRIPTION: busca dato en arreglo mediante metodo secuencial
-         * PARAMETERS: int -1:no encontro dato
-         * RETURNS: int
+         * PARAMETERS:
+         * RETURNS: int -1:no encontro dato
          */
         private int BusquedaSecuencial (Grupo[] oGrupo, int Posicion, string Dato)
         {
@@ -382,20 +389,11 @@ namespace Music_Manager
             cbx_Titulo.Items.Clear();
         }
 
-        /* NAME: VisibleGroupBoxesConsultas
-         * DESCRIPTION: hace visible los groupbox
-         * PARAMETERS: bool
+        /* NAME: btn_Eliminar_Click
+         * DESCRIPTION: evento click del boton Eliminar del tab_Informacion
+         * PARAMETERS: 
          * RETURNS: void
          */
-        private void VisibleGroupBoxesConsultas (bool b)
-        {
-            foreach (Control obj in this.gbx_Consultas.Controls)
-            {
-                if (obj is GroupBox)
-                    obj.Visible = b;
-            }
-        }
-
         private void btn_Eliminar_Click (object sender, EventArgs e)
         {
             if (MessageBox.Show("Esta seguro de eliminar el album " + cbx_Titulo.SelectedItem.ToString() + " del Grupo " + cbx_GrupoNombre.SelectedItem.ToString(), 
@@ -414,6 +412,11 @@ namespace Music_Manager
             }
         }
 
+        /* NAME: btn_Agregar_Click
+         * DESCRIPTION: evento click del boton Agregar del tab_Informacion
+         * PARAMETERS: 
+         * RETURNS: void
+         */
         private void btn_Agregar_Click (object sender, EventArgs e)
         {
             foreach (Control obj in this.gbx_Album.Controls)
@@ -439,9 +442,16 @@ namespace Music_Manager
             btn_Cancelar.Enabled = true;
             btn_Grabar.Enabled = true;
 
+            CargarComboBoxesGeneroDisqueriaCompania();
+
             botonEditarAgregar = "agregar";
         }
 
+        /* NAME: btn_Editar_Click
+         * DESCRIPTION: evento click del boton Editar del tab_Informacion
+         * PARAMETERS: 
+         * RETURNS: void
+         */
         private void btn_Editar_Click (object sender, EventArgs e)
         {
             EnableBoxes(true);
@@ -459,9 +469,52 @@ namespace Music_Manager
             btn_Cancelar.Enabled = true;
             btn_Grabar.Enabled = true;
 
+            CargarComboBoxesGeneroDisqueriaCompania();
+
             botonEditarAgregar = "editar";
         }
 
+        public void CargarComboBoxesGeneroDisqueriaCompania ()
+        {
+            if (!oSql.sp_CargarGeneros())
+            {
+                MessageBox.Show("Error Cargar Generos\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cbx_Genero.DataSource = oSql.DataSet1;
+                cbx_Genero.DisplayMember = "generos.descricpion";
+                cbx_Genero.ValueMember = "generos.id_genero";
+            }
+
+            if (!oSql.sp_CargarDisquerias())
+            {
+                MessageBox.Show("Error Cargar Disquerias\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cbx_Disqueria.DataSource = oSql.DataSet1;
+                cbx_Disqueria.DisplayMember = "disquerias.descripcion";
+                cbx_Disqueria.ValueMember = "disquerias.id_disqueria";
+            }
+
+            if (!oSql.sp_CargarCompanias())
+            {
+                MessageBox.Show("Error Cargar Compañias\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cbx_Compania.DataSource = oSql.DataSet1;
+                cbx_Compania.DisplayMember = "companias.descripcion";
+                cbx_Compania.ValueMember = "companias.id_compania";
+            }
+        }
+
+        /* NAME: btn_Cancelar_Click
+         * DESCRIPTION: evento click del boton Cancelar del tab_Informacion
+         * PARAMETERS: 
+         * RETURNS: void
+         */
         private void btn_Cancelar_Click (object sender, EventArgs e)
         {
             CleanBoxes();
@@ -474,7 +527,12 @@ namespace Music_Manager
             CargarClases();
         }
 
-        private void btn_Grabar_Click(object sender, EventArgs e)
+        /* NAME: btn_Grabar_Click
+         * DESCRIPTION: evento click del boton Grabar del tab_Informacion
+         * PARAMETERS: 
+         * RETURNS: void
+         */
+        private void btn_Grabar_Click (object sender, EventArgs e)
         {
             if (tbx_Costo.Text == "" || tbx_CantidadTemas.Text == "" || tbx_Duracion.Text == "")
             {
@@ -496,7 +554,7 @@ namespace Music_Manager
             {
                 if ("editar".CompareTo(botonEditarAgregar) == 0)
                 {
-                    if (!oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+                    if (!oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_Disqueria.SelectedIndex + 1, cbx_Compania.SelectedIndex + 1,
                         int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.SelectedItem.ToString(),
                         decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
                         int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text))
@@ -515,7 +573,7 @@ namespace Music_Manager
 
                 if ("agregar".CompareTo(botonEditarAgregar) == 0)
                 {
-                    if (!oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_IdDisqueria.SelectedIndex + 1, cbx_IdCompania.SelectedIndex + 1,
+                    if (!oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_Disqueria.SelectedIndex + 1, cbx_Compania.SelectedIndex + 1,
                         int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.Text,
                         decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
                         int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text))
@@ -540,7 +598,7 @@ namespace Music_Manager
 
         private void tabc_Principal_SelectedIndexChanged (object sender, EventArgs e)
         {
-            if (tabc_Principal.SelectedTab == tab_Info)
+            if (tabc_Principal.SelectedTab == tab_Informacion)
             {
                 tabc_Principal.TabPages.Remove(tab_Consultas);
                 tab_Consultas.Enabled = false;
