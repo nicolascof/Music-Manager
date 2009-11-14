@@ -461,6 +461,10 @@ namespace Music_Manager
             return true;
         }
 
+        //####################################################################
+        //## ABM Generos #####################################################
+        //####################################################################
+
         public bool sp_CargarGeneros ()
         {
             try
@@ -471,15 +475,15 @@ namespace Music_Manager
                 Command1.CommandType = CommandType.StoredProcedure;
 
                 Command1.Connection = Conexion;
-                //DataReader1 = Command1.ExecuteReader();
 
                 DataSet1 = new DataSet();
 
                 DataAdapter = new SqlDataAdapter(Command1);
                 DataAdapter.Fill(DataSet1, "generos");
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
+                stringError = ex.Message;
                 return false;
             }
 
@@ -501,8 +505,9 @@ namespace Music_Manager
                 Command2.Connection = Conexion;
                 Command2.ExecuteNonQuery();
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
+                stringError = ex.Message;
                 return false;
             }
 
@@ -534,30 +539,6 @@ namespace Music_Manager
             return true;
         }
 
-        public bool sp_DevolverIdGenero (string descripcion)
-        {
-            try
-            {
-                Command1 = new SqlCommand();
-
-                SqlParameter parametro = new SqlParameter("@descripcion", SqlDbType.NVarChar, 25);
-                parametro.Value = descripcion;
-
-                Command1.CommandText = "sp_DevolverIdGenero";
-                Command1.CommandType = CommandType.StoredProcedure;
-                Command1.Parameters.Add(parametro);
-
-                Command1.Connection = Conexion;
-                DataReader1 = Command1.ExecuteReader();
-            }
-            catch (SqlException)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         public bool sp_ModificarGenero (int idGenero, string descripcion)
         {
             try
@@ -577,8 +558,9 @@ namespace Music_Manager
                 Command2.Connection = Conexion;
                 Command2.ExecuteNonQuery();
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
+                stringError = ex.Message;
                 return false;
             }
 

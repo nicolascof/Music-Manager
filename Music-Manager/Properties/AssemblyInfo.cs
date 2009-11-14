@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Music-Manager")]
+[assembly: AssemblyTitle("Music Manager™")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Happy Hacking!")]
-[assembly: AssemblyProduct("Music-Manager")]
+[assembly: AssemblyCompany("Happy Programming!")]
+[assembly: AssemblyProduct("Music Manager™")]
 [assembly: AssemblyCopyright("GPL v3")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

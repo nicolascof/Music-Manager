@@ -343,13 +343,18 @@ namespace Music_Manager
             foreach (Control obj in this.gbx_Grupo.Controls)
             {
                 if (obj is TextBox || obj is ComboBox)
+                {
                     obj.Enabled = b;
+                }
             }
 
             foreach (Control obj in this.gbx_Album.Controls)
             {
                 if (obj is TextBox || obj is ComboBox || obj is RichTextBox || obj is DateTimePicker)
+                {
                     obj.Enabled = b;
+                }
+
             }
         }
 
@@ -565,6 +570,9 @@ namespace Music_Manager
             tabc_Consultas.Enabled = true;
             btn_Ejecutar.Enabled = true;
 
+            lbl_ModificarPor.Visible = false;
+            tbx_ModificarPor.Visible = false;
+
             switch (cbx_SeleccionConsulta.SelectedIndex)
             {
                 case 0:
@@ -588,6 +596,9 @@ namespace Music_Manager
 
         private void cbx_Consulta_SeleccionABM_SelectedIndexChanged (object sender, EventArgs e)
         {
+            lbl_ModificarPor.Visible = false;
+            tbx_ModificarPor.Visible = false;
+
             if (cbx_Consulta_SeleccionABM.SelectedIndex == 0) // Agregar
             {
                 cbx_Consulta_Genero2.SelectedIndex = -1;
@@ -595,17 +606,17 @@ namespace Music_Manager
             }
             else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1) // Eliminar
             {
-                if (cbx_Consulta_Genero2.DataSource == null)
-                    Actualizar_cbx_Consulta_Genero2();
+                Actualizar_cbx_Consulta_Genero2();
                 cbx_Consulta_Genero2.SelectedIndex = 0;
                 cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDownList;
             }
             else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2) // Modificar
             {
-                if (cbx_Consulta_Genero2.DataSource == null)
-                    Actualizar_cbx_Consulta_Genero2();
+                lbl_ModificarPor.Visible = true;
+                tbx_ModificarPor.Visible = true;
+                Actualizar_cbx_Consulta_Genero2();
                 cbx_Consulta_Genero2.SelectedIndex = 0;
-                cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDown;
+                cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDownList;
             }
         }
 
@@ -679,15 +690,14 @@ namespace Music_Manager
             }
             else if (tabc_Consultas.SelectedTab == tab_Generos) // Eleccion del tab Generos
             {
-                bool btmp = ValidacionGenero2();
-                if (btmp)
+                if (ValidacionGenero2())
                 {
                     errorp_Consulta.Clear();
                     if (cbx_Consulta_SeleccionABM.SelectedIndex == 0) // Agregar
                     {
                         if (!oSql.sp_AgregarGenero(cbx_Consulta_Genero2.Text))
                         {
-                            MessageBox.Show("Error Agregar Genero", "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Error Agregar Genero\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -697,72 +707,53 @@ namespace Music_Manager
                     }
                     else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1) // Eliminar
                     {
-                        oSql.sp_DevolverIdGenero(cbx_Consulta_Genero2.SelectedValue.ToString());
-
-                        while (oSql.DataReader1.Read())
+                        if (!oSql.sp_EliminarGenero(Convert.ToInt32(cbx_Consulta_Genero2.SelectedValue)))
                         {
-                            if (!oSql.sp_EliminarGenero(Convert.ToInt32(oSql.DataReader1["id_genero"])))
-                            {
-                                MessageBox.Show("Error Eliminar Genero\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                Actualizar_cbx_Consulta_Genero2();
-                                MostrarDataGridView();
-                            }
+                            MessageBox.Show("Error Eliminar Genero\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            Actualizar_cbx_Consulta_Genero2();
+                            MostrarDataGridView();
                         }
                     }
                     else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2) // Modificar
                     {
-                        oSql.sp_DevolverIdGenero(seleccionCbx_Consulta_GenerosDescripcion);
-
-                        while (oSql.DataReader1.Read())
+                        //MessageBox.Show(cbx_Consulta_Genero2.Text);
+                        if (!oSql.sp_ModificarGenero(Convert.ToInt32(cbx_Consulta_Genero2.SelectedValue), tbx_ModificarPor.Text))//cbx_Consulta_Genero2.Text))
                         {
-                            if (!oSql.sp_ModificarGenero(Convert.ToInt32(oSql.DataReader1["id_genero"]),
-                                cbx_Consulta_Genero2.Text))
-                            {
-                                MessageBox.Show("Error Modificar Genero", "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                Actualizar_cbx_Consulta_Genero2();
-                                MostrarDataGridView();
-                            }
+                            MessageBox.Show("Error Modificar Genero\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            tbx_ModificarPor.Text = null;
+                            Actualizar_cbx_Consulta_Genero2();
+                            MostrarDataGridView();
                         }
                     }
                 }
             }
         }
 
-        string seleccionCbx_Consulta_GenerosDescripcion = null;
-        /*private void cbx_Consulta_GenerosDescripcion_SelectedIndexChanged (object sender, EventArgs e)
-        {
-            if (cbx_Consulta_Genero2.SelectedValue != null)
-            {
-                seleccionCbx_Consulta_GenerosDescripcion = cbx_Consulta_Genero2.SelectedValue.ToString();
-            }
-        }*/
-        private void cbx_Consulta_Genero2_SelectedValueChanged (object sender, EventArgs e)
-        {
-            /*if (cbx_Consulta_Genero2.GetItemText(cbx_Consulta_Genero2.Items[cbx_Consulta_Genero2.SelectedIndex]) != null)
-            {
-                seleccionCbx_Consulta_GenerosDescripcion = cbx_Consulta_Genero2.SelectedValue.ToString();
-            }*/
-            seleccionCbx_Consulta_GenerosDescripcion = cbx_Consulta_Genero2.GetItemText(cbx_Consulta_Genero2.Items[cbx_Consulta_Genero2.SelectedIndex]);
-        }
-
         private void Actualizar_cbx_Consulta_Genero2 ()
         {
-            oSql.sp_CargarGeneros();
-            cbx_Consulta_Genero2.DataSource = oSql.DataSet1;
-            cbx_Consulta_Genero2.DisplayMember = "descricpion";
-            cbx_Consulta_Genero2.ValueMember = "generos.descricpion";
+            if (!oSql.sp_CargarGeneros())
+            {
+                MessageBox.Show("Error Cargar Generos\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cbx_Consulta_Genero2.DataSource = oSql.DataSet1;
+                cbx_Consulta_Genero2.DisplayMember = "generos.descricpion";
+                cbx_Consulta_Genero2.ValueMember = "generos.id_genero";
+            }
         }
 
         private void MostrarDataGridView ()
         {
             //dgv_Consultas.DataSource = null;
             dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
+            dgv_Consultas.Columns[0].Visible = false; // Oculto la columna id_genero
 
             if (dgv_Consultas.Rows.Count - 1 == 0)
             {

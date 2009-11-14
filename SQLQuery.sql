@@ -141,9 +141,10 @@ SELECT * FROM generos
 
 -- Cargar Generos
 
-CREATE PROCEDURE sp_CargarGeneros
+CREATE 
+ALTER PROCEDURE sp_CargarGeneros
 AS
-	SELECT descricpion
+	SELECT *
 	FROM generos
 
 EXEC sp_CargarGeneros
@@ -179,14 +180,3 @@ AS
 	WHERE id_genero = @idGenero
 
 EXEC sp_ModificarGenero 7, 'ElectroPop'
-
--- Devuelve idGenero
-
-CREATE PROCEDURE sp_DevolverIdGenero
-	@descripcion nvarchar(25)
-AS
-	SELECT id_genero
-	FROM generos
-	WHERE descricpion LIKE '%' + @descripcion + '%'
-
-EXEC sp_DevolverIdGenero punk
