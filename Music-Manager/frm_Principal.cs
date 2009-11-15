@@ -691,6 +691,7 @@ namespace Music_Manager
         {
             if (rbtn_Disquerias_Agregar.Checked)
             {
+                tbx_Disquerias_Item.Enabled = true;
                 tbx_Disquerias_Item.Text = null;
             }
             else if (rbtn_Disquerias_Modificar.Checked)
