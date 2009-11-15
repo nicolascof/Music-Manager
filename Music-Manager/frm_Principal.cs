@@ -112,23 +112,26 @@ namespace Music_Manager
             frm_ConectarBaseDeDatos ofrm_ConectarBaseDeDatos = new frm_ConectarBaseDeDatos();
             ofrm_ConectarBaseDeDatos.ShowDialog();
 
-            DialogResult respuesta = ofrm_ConectarBaseDeDatos.DialogResult;
-            
-            if (respuesta == DialogResult.OK)
+            if (!ofrm_ConectarBaseDeDatos.Error)
             {
-                if (!oSql.Conectar(ofrm_ConectarBaseDeDatos.TipoAutenticacion, ofrm_ConectarBaseDeDatos.Bd,
-                ofrm_ConectarBaseDeDatos.Servidor, ofrm_ConectarBaseDeDatos.Usuario, ofrm_ConectarBaseDeDatos.Contrasenia))
-                {
-                    MessageBox.Show("Error en la conexión", "Conectar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    if (MessageBox.Show("Exito en la conexión", "Conectar", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
-                    {
-                        tsslConexion.Image = global::Music_Manager.Properties.Resources.WebDatabase;
-                        tsslConexion.Text = "Conectado";
+                DialogResult respuesta = ofrm_ConectarBaseDeDatos.DialogResult;
 
-                        CargarClases();
+                if (respuesta == DialogResult.OK)
+                {
+                    if (!oSql.Conectar(ofrm_ConectarBaseDeDatos.TipoAutenticacion, ofrm_ConectarBaseDeDatos.Bd,
+                    ofrm_ConectarBaseDeDatos.Servidor, ofrm_ConectarBaseDeDatos.Usuario, ofrm_ConectarBaseDeDatos.Contrasenia))
+                    {
+                        MessageBox.Show("Error en la conexión", "Conectar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Exito en la conexión", "Conectar", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                        {
+                            tsslConexion.Image = global::Music_Manager.Properties.Resources.WebDatabase;
+                            tsslConexion.Text = "Conectado";
+
+                            CargarClases();
+                        }
                     }
                 }
             }
@@ -142,12 +145,6 @@ namespace Music_Manager
             tsmi_AdministradorDatos_Conectar.Enabled = true;
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
             tsmi_Archivo_Disquerias.Enabled = true;
-            /*
-            if (tab_Disquerias.Created)
-            {
-                tabc_Principal.TabPages.Remove(tab_Disquerias);
-            }
-            */
             CleanBoxes();
             tv_Grupo.Nodes.Clear();
             Iniciar();

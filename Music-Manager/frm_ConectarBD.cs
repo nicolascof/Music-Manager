@@ -23,6 +23,7 @@ namespace Music_Manager
         private string servidor;
         private string usuario;
         private string contrasenia;
+        private bool error;
 
         public int TipoAutenticacion
         {
@@ -54,6 +55,12 @@ namespace Music_Manager
             get { return contrasenia; }
         }
 
+        public bool Error
+        {
+            set { error = value; }
+            get { return error; }
+        }
+
         public frm_ConectarBaseDeDatos ()
         {
             InitializeComponent();
@@ -61,6 +68,8 @@ namespace Music_Manager
             IntPtr hMenu = GetSystemMenu(this.Handle, false);
             int menuItemCount = GetMenuItemCount(hMenu);
             RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
+
+            Error = false;
         }
 
         private void frm_ConectarBaseDeDatos_Load (object sender, EventArgs e)
@@ -104,6 +113,7 @@ namespace Music_Manager
             else
             {
                 MessageBox.Show("Faltan Datos por Completar", "Conectar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Error = true;
             }
         }
 
