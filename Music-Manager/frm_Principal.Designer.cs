@@ -83,6 +83,7 @@
             this.tabc_Principal = new System.Windows.Forms.TabControl();
             this.tab_Consultas = new System.Windows.Forms.TabPage();
             this.gbx_Consultas = new System.Windows.Forms.GroupBox();
+            this.dgv_Consultas = new System.Windows.Forms.DataGridView();
             this.pbx_Consultas = new System.Windows.Forms.PictureBox();
             this.tabc_Consultas = new System.Windows.Forms.TabControl();
             this.tab_Consulta01 = new System.Windows.Forms.TabPage();
@@ -110,17 +111,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbx_Consulta_SeleccionABM = new System.Windows.Forms.ComboBox();
             this.cbx_Consulta_Genero2 = new System.Windows.Forms.ComboBox();
-            this.dgv_Consultas = new System.Windows.Forms.DataGridView();
             this.tbx_Resultado = new System.Windows.Forms.TextBox();
             this.btn_Ejecutar = new System.Windows.Forms.Button();
             this.lbl_SeleccionConsulta = new System.Windows.Forms.Label();
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
             this.tab_Disquerias = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gbx_Disquerias = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.errorp_Consulta = new System.Windows.Forms.ErrorProvider(this.components);
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -130,6 +127,7 @@
             this.tabc_Principal.SuspendLayout();
             this.tab_Consultas.SuspendLayout();
             this.gbx_Consultas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Consultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_Consultas)).BeginInit();
             this.tabc_Consultas.SuspendLayout();
             this.tab_Consulta01.SuspendLayout();
@@ -137,10 +135,8 @@
             this.tab_Consulta03.SuspendLayout();
             this.tab_Consulta04.SuspendLayout();
             this.tab_Generos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Consultas)).BeginInit();
             this.tab_Disquerias.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.gbx_Disquerias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorp_Consulta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,9 +175,11 @@
             // 
             // tsmi_Archivo_Disquerias
             // 
+            this.tsmi_Archivo_Disquerias.Image = global::Music_Manager.Properties.Resources.Cd;
             this.tsmi_Archivo_Disquerias.Name = "tsmi_Archivo_Disquerias";
             this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(134, 22);
             this.tsmi_Archivo_Disquerias.Text = "Disquerias";
+            this.tsmi_Archivo_Disquerias.Click += new System.EventHandler(this.tsmi_Archivo_Disquerias_Click);
             // 
             // tsmi_Archivo_Cerrar
             // 
@@ -644,6 +642,7 @@
             this.tabc_Principal.SelectedIndex = 0;
             this.tabc_Principal.Size = new System.Drawing.Size(618, 546);
             this.tabc_Principal.TabIndex = 2;
+            this.tabc_Principal.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabc_Principal_Selecting);
             this.tabc_Principal.SelectedIndexChanged += new System.EventHandler(this.tabc_Principal_SelectedIndexChanged);
             // 
             // tab_Consultas
@@ -658,9 +657,9 @@
             // 
             // gbx_Consultas
             // 
+            this.gbx_Consultas.Controls.Add(this.dgv_Consultas);
             this.gbx_Consultas.Controls.Add(this.pbx_Consultas);
             this.gbx_Consultas.Controls.Add(this.tabc_Consultas);
-            this.gbx_Consultas.Controls.Add(this.dgv_Consultas);
             this.gbx_Consultas.Controls.Add(this.tbx_Resultado);
             this.gbx_Consultas.Controls.Add(this.btn_Ejecutar);
             this.gbx_Consultas.Controls.Add(this.lbl_SeleccionConsulta);
@@ -671,6 +670,22 @@
             this.gbx_Consultas.TabIndex = 0;
             this.gbx_Consultas.TabStop = false;
             this.gbx_Consultas.Text = "Consultas";
+            // 
+            // dgv_Consultas
+            // 
+            this.dgv_Consultas.AllowUserToAddRows = false;
+            this.dgv_Consultas.AllowUserToDeleteRows = false;
+            this.dgv_Consultas.AllowUserToOrderColumns = true;
+            this.dgv_Consultas.AllowUserToResizeRows = false;
+            this.dgv_Consultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_Consultas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgv_Consultas.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgv_Consultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Consultas.Location = new System.Drawing.Point(6, 169);
+            this.dgv_Consultas.Name = "dgv_Consultas";
+            this.dgv_Consultas.ReadOnly = true;
+            this.dgv_Consultas.Size = new System.Drawing.Size(586, 333);
+            this.dgv_Consultas.TabIndex = 0;
             // 
             // pbx_Consultas
             // 
@@ -962,22 +977,6 @@
             this.cbx_Consulta_Genero2.TabIndex = 3;
             this.cbx_Consulta_Genero2.Validating += new System.ComponentModel.CancelEventHandler(this.cbx_Consulta_Genero2_Validating);
             // 
-            // dgv_Consultas
-            // 
-            this.dgv_Consultas.AllowUserToAddRows = false;
-            this.dgv_Consultas.AllowUserToDeleteRows = false;
-            this.dgv_Consultas.AllowUserToOrderColumns = true;
-            this.dgv_Consultas.AllowUserToResizeRows = false;
-            this.dgv_Consultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_Consultas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgv_Consultas.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgv_Consultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Consultas.Location = new System.Drawing.Point(6, 169);
-            this.dgv_Consultas.Name = "dgv_Consultas";
-            this.dgv_Consultas.ReadOnly = true;
-            this.dgv_Consultas.Size = new System.Drawing.Size(586, 333);
-            this.dgv_Consultas.TabIndex = 0;
-            // 
             // tbx_Resultado
             // 
             this.tbx_Resultado.BackColor = System.Drawing.SystemColors.Control;
@@ -1027,7 +1026,7 @@
             // 
             // tab_Disquerias
             // 
-            this.tab_Disquerias.Controls.Add(this.groupBox1);
+            this.tab_Disquerias.Controls.Add(this.gbx_Disquerias);
             this.tab_Disquerias.Location = new System.Drawing.Point(4, 22);
             this.tab_Disquerias.Name = "tab_Disquerias";
             this.tab_Disquerias.Size = new System.Drawing.Size(610, 520);
@@ -1035,67 +1034,23 @@
             this.tab_Disquerias.Text = "Disquerias";
             this.tab_Disquerias.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // gbx_Disquerias
             // 
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(598, 508);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.gbx_Disquerias.Controls.Add(this.richTextBox1);
+            this.gbx_Disquerias.Location = new System.Drawing.Point(6, 6);
+            this.gbx_Disquerias.Name = "gbx_Disquerias";
+            this.gbx_Disquerias.Size = new System.Drawing.Size(598, 508);
+            this.gbx_Disquerias.TabIndex = 2;
+            this.gbx_Disquerias.TabStop = false;
+            this.gbx_Disquerias.Text = "Disquerias";
             // 
-            // radioButton3
+            // richTextBox1
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(24, 79);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 17);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(24, 56);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(24, 33);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 226);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(586, 276);
-            this.dataGridView1.TabIndex = 1;
+            this.richTextBox1.Location = new System.Drawing.Point(78, 77);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(453, 131);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // errorp_Consulta
             // 
@@ -1130,6 +1085,7 @@
             this.tab_Consultas.ResumeLayout(false);
             this.gbx_Consultas.ResumeLayout(false);
             this.gbx_Consultas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Consultas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_Consultas)).EndInit();
             this.tabc_Consultas.ResumeLayout(false);
             this.tab_Consulta01.ResumeLayout(false);
@@ -1142,11 +1098,8 @@
             this.tab_Consulta04.PerformLayout();
             this.tab_Generos.ResumeLayout(false);
             this.tab_Generos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Consultas)).EndInit();
             this.tab_Disquerias.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.gbx_Disquerias.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorp_Consulta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1241,13 +1194,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Archivo_Disquerias;
         private System.Windows.Forms.TabPage tab_Disquerias;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox gbx_Disquerias;
         private System.Windows.Forms.Label lbl_ModificarPor;
         private System.Windows.Forms.TextBox tbx_ModificarPor;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
-

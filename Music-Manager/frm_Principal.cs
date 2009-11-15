@@ -49,16 +49,32 @@ namespace Music_Manager
             tsl_Buscar.Visible = false; // Boton Buscar
 
             tabc_Principal.TabPages.Remove(tab_Consultas);
+            tabc_Principal.TabPages.Remove(tab_Disquerias);
             tab_Consultas.Enabled = false;
 
             lbl_PosicionArreglo.Visible = false;
+
             tsl_Consultas.Enabled = false;
+            tsmi_Archivo_Disquerias.Enabled = false;
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
             btn_Eliminar.Enabled = false;
             btn_Editar.Enabled = false;
             btn_Agregar.Enabled = false;
             btn_Cancelar.Enabled = false;
             btn_Grabar.Enabled = false;
+        }
+
+        private void tsmi_Archivo_Disquerias_Click(object sender, EventArgs e)
+        {
+            if (!btn_Cancelar.Enabled)
+            {
+                tabc_Principal.TabPages.Add(tab_Disquerias);
+                tabc_Principal.SelectedTab = tab_Disquerias;
+            }
+            else
+            {
+                MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
@@ -190,6 +206,7 @@ namespace Music_Manager
                 }
 
                 tsl_Consultas.Enabled = true;
+                tsmi_Archivo_Disquerias.Enabled = true;
                 tsmi_AdministradorDatos_Conectar.Enabled = false;
                 tsmi_AdministradorDatos_Desconectar.Enabled = true;
             }
@@ -594,9 +611,9 @@ namespace Music_Manager
         //## LABORATORIO #####################################################
         //####################################################################
 
-        private void tabc_Principal_SelectedIndexChanged (object sender, EventArgs e)
+        private void tabc_Principal_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (tabc_Principal.SelectedTab == tab_Informacion)
+            if (e.TabPage == tab_Informacion || e.TabPage == tab_Disquerias)
             {
                 tabc_Principal.TabPages.Remove(tab_Consultas);
                 tab_Consultas.Enabled = false;
@@ -611,14 +628,40 @@ namespace Music_Manager
             }
         }
 
+        private void tabc_Principal_SelectedIndexChanged (object sender, EventArgs e)
+        {
+            /*
+            if (tabc_Principal.SelectedTab == tab_Informacion) //|| tabc_Principal.SelectedTab == tab_Disquerias)
+            {
+                tabc_Principal.TabPages.Remove(tab_Consultas);
+                tab_Consultas.Enabled = false;
+                tsl_Consultas.Enabled = true;
+
+                tabc_Consultas.SelectedTab = tab_Consulta01;
+
+                cbx_SeleccionConsulta.SelectedIndex = -1;
+                LimpiarConsultas();
+
+                errorp_Consulta.Clear();
+            }
+            */
+        }
+
         private void tsl_Consultas_Click (object sender, EventArgs e)
         {
-            tsl_Consultas.Enabled = false;
-            tabc_Principal.TabPages.Add(tab_Consultas);
-            tab_Consultas.Enabled = true;
-            tabc_Principal.SelectedTab = tab_Consultas;
-            tabc_Consultas.Enabled = false;
-            btn_Ejecutar.Enabled = false;
+            if (!btn_Cancelar.Enabled)
+            {
+                tsl_Consultas.Enabled = false;
+                tabc_Principal.TabPages.Add(tab_Consultas);
+                tab_Consultas.Enabled = true;
+                tabc_Principal.SelectedTab = tab_Consultas;
+                tabc_Consultas.Enabled = false;
+                btn_Ejecutar.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cbx_SeleccionConsulta_SelectedIndexChanged (object sender, EventArgs e)
