@@ -4,9 +4,9 @@ Practico Integrador Programacion II - Lab. de Computacion II
 - Project Name: 
 Music-Manager
 
-- Autors:
-# Back, Leonardo ()
-# Fassi, Claudio ()
+- Programmers:
+# Back, Leonardo (104218)
+# Fassi, Claudio (104226)
 # Mastroviti, Nicolas (104186)
 
 - Convenciones: despues del prefijo va _ (guion bajo) ej. frm_
@@ -20,15 +20,12 @@ Button : btn
 RadioButton : rbtn
 RichTextBox : rtbx
 GroupBox : gbx
-TabControl : tctrl
 DataGridView : dgv
 ToolStripLabel : tsl
 ToolStripDropDownBox : tsddb
 ToolStripMenuItem : tsmi
-TabControl : tc
 TreeView : tv
 RootNode : rn
-RichTextBox : rtbx
 DateTimePicker : dtp
 TabControl : tabc
 
@@ -41,7 +38,7 @@ git pull origin master
 git add Music-Manager/Autor.cs
 git add Querys.sql
 
-git commit -m 'Modificacion'
+git commit -a -m 'Modificacion'
 
 git push origin master
 

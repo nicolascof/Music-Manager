@@ -51,7 +51,7 @@
             this.gbx_Album = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbx_Compania = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.IdAlbum = new System.Windows.Forms.Label();
             this.cbx_Disqueria = new System.Windows.Forms.ComboBox();
             this.tbx_IdAlbum = new System.Windows.Forms.TextBox();
             this.lbl_IdCompania = new System.Windows.Forms.Label();
@@ -108,7 +108,7 @@
             this.lbl_ModificarPor = new System.Windows.Forms.Label();
             this.tbx_ModificarPor = new System.Windows.Forms.TextBox();
             this.lbl_Consulta_Genero2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.EleccionABM = new System.Windows.Forms.Label();
             this.cbx_Consulta_SeleccionABM = new System.Windows.Forms.ComboBox();
             this.cbx_Consulta_Genero2 = new System.Windows.Forms.ComboBox();
             this.tbx_Resultado = new System.Windows.Forms.TextBox();
@@ -330,7 +330,7 @@
             // 
             this.gbx_Album.Controls.Add(this.label5);
             this.gbx_Album.Controls.Add(this.cbx_Compania);
-            this.gbx_Album.Controls.Add(this.label6);
+            this.gbx_Album.Controls.Add(this.IdAlbum);
             this.gbx_Album.Controls.Add(this.cbx_Disqueria);
             this.gbx_Album.Controls.Add(this.tbx_IdAlbum);
             this.gbx_Album.Controls.Add(this.lbl_IdCompania);
@@ -375,14 +375,14 @@
             this.cbx_Compania.Size = new System.Drawing.Size(174, 21);
             this.cbx_Compania.TabIndex = 20;
             // 
-            // label6
+            // IdAlbum
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Id Album";
+            this.IdAlbum.AutoSize = true;
+            this.IdAlbum.Location = new System.Drawing.Point(75, 22);
+            this.IdAlbum.Name = "IdAlbum";
+            this.IdAlbum.Size = new System.Drawing.Size(48, 13);
+            this.IdAlbum.TabIndex = 21;
+            this.IdAlbum.Text = "Id Album";
             // 
             // cbx_Disqueria
             // 
@@ -906,7 +906,7 @@
             this.tab_Generos.Controls.Add(this.lbl_ModificarPor);
             this.tab_Generos.Controls.Add(this.tbx_ModificarPor);
             this.tab_Generos.Controls.Add(this.lbl_Consulta_Genero2);
-            this.tab_Generos.Controls.Add(this.label1);
+            this.tab_Generos.Controls.Add(this.EleccionABM);
             this.tab_Generos.Controls.Add(this.cbx_Consulta_SeleccionABM);
             this.tab_Generos.Controls.Add(this.cbx_Consulta_Genero2);
             this.tab_Generos.Location = new System.Drawing.Point(4, 22);
@@ -944,14 +944,14 @@
             this.lbl_Consulta_Genero2.TabIndex = 6;
             this.lbl_Consulta_Genero2.Text = "Genero(s)";
             // 
-            // label1
+            // EleccionABM
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Eleccion de ABM";
+            this.EleccionABM.AutoSize = true;
+            this.EleccionABM.Location = new System.Drawing.Point(25, 29);
+            this.EleccionABM.Name = "EleccionABM";
+            this.EleccionABM.Size = new System.Drawing.Size(89, 13);
+            this.EleccionABM.TabIndex = 5;
+            this.EleccionABM.Text = "Eleccion de ABM";
             // 
             // cbx_Consulta_SeleccionABM
             // 
@@ -1159,7 +1159,7 @@
         private System.Windows.Forms.Label lbl_PosicionArreglo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbx_Compania;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label IdAlbum;
         private System.Windows.Forms.ComboBox cbx_Disqueria;
         private System.Windows.Forms.TextBox tbx_IdAlbum;
         private System.Windows.Forms.Label lbl_IdCompania;
@@ -1191,7 +1191,7 @@
         private System.Windows.Forms.ErrorProvider errorp_Consulta;
         private System.Windows.Forms.ComboBox cbx_Consulta_SeleccionABM;
         private System.Windows.Forms.Label lbl_Consulta_Genero2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label EleccionABM;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Archivo_Disquerias;
         private System.Windows.Forms.TabPage tab_Disquerias;
         private System.Windows.Forms.GroupBox gbx_Disquerias;

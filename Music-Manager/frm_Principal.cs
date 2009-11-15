@@ -66,14 +66,17 @@ namespace Music_Manager
 
         private void tsmi_Archivo_Disquerias_Click(object sender, EventArgs e)
         {
-            if (!btn_Cancelar.Enabled)
+            if (!tab_Disquerias.Created)
             {
-                tabc_Principal.TabPages.Add(tab_Disquerias);
-                tabc_Principal.SelectedTab = tab_Disquerias;
-            }
-            else
-            {
-                MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!btn_Cancelar.Enabled)
+                {
+                    tabc_Principal.TabPages.Add(tab_Disquerias);
+                    tabc_Principal.SelectedTab = tab_Disquerias;
+                }
+                else
+                {
+                    MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -818,16 +821,18 @@ namespace Music_Manager
                     }
                     else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2) // Modificar
                     {
-                        //MessageBox.Show(cbx_Consulta_Genero2.Text);
-                        if (!oSql.sp_ModificarGenero(Convert.ToInt32(cbx_Consulta_Genero2.SelectedValue), tbx_ModificarPor.Text))//cbx_Consulta_Genero2.Text))
+                        if (tbx_ModificarPor.Text != "")
                         {
-                            MessageBox.Show("Error Modificar Genero\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            tbx_ModificarPor.Text = null;
-                            Actualizar_cbx_Consulta_Genero2();
-                            MostrarDataGridView();
+                            if (!oSql.sp_ModificarGenero(Convert.ToInt32(cbx_Consulta_Genero2.SelectedValue), tbx_ModificarPor.Text))//cbx_Consulta_Genero2.Text))
+                            {
+                                MessageBox.Show("Error Modificar Genero\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                tbx_ModificarPor.Text = null;
+                                Actualizar_cbx_Consulta_Genero2();
+                                MostrarDataGridView();
+                            }
                         }
                     }
                 }
