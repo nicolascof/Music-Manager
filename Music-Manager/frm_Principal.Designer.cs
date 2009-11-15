@@ -985,6 +985,7 @@
             this.tbx_Resultado.ForeColor = System.Drawing.Color.Red;
             this.tbx_Resultado.Location = new System.Drawing.Point(6, 150);
             this.tbx_Resultado.Name = "tbx_Resultado";
+            this.tbx_Resultado.ReadOnly = true;
             this.tbx_Resultado.Size = new System.Drawing.Size(586, 13);
             this.tbx_Resultado.TabIndex = 12;
             this.tbx_Resultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
