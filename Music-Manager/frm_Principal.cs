@@ -572,7 +572,7 @@ namespace Music_Manager
             {
                 MessageBox.Show("Verifique le Duracion del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!Regex.Match(tbx_Costo.Text, @"^[0-9]*$").Success)
+            else if (!Regex.Match(tbx_Costo.Text, @"^[0-9]*$").Success) //&& tbx_Costo.Text == "")
             {
                 MessageBox.Show("Verifique el Costo del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

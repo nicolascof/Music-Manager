@@ -17,6 +17,15 @@ WHERE id_album = 3
 
 -- DEPECHE MODE
 
+INSERT INTO temas
+VALUES (12, 3, 2, 342, 'The Sweetest Condition', null)
+
+INSERT INTO temas
+VALUES (12, 4, 2, 450, 'The Dead of Night', null)
+
+INSERT INTO autores
+VALUES ('David Gahan', 'M', null, null, null, null)
+
 INSERT INTO generos (descricpion)
 VALUES ('Electropop')
 
