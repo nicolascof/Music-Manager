@@ -152,14 +152,14 @@ namespace Music_Manager
          * PARAMETERS: string
          * RETURNS: true:consulta exitosa false:consulta fallida
          */
-        public bool sp_SeleccionAlbumPorGrupo (string nombreGrupo)
+        public bool sp_SeleccionAlbumPorGrupo (int idGrupo)
         {
             try
             {
                 Command2 = new SqlCommand();
 
-                SqlParameter parametro = new SqlParameter("@nombreGrupo", SqlDbType.NVarChar);
-                parametro.Value = nombreGrupo;
+                SqlParameter parametro = new SqlParameter("@idGrupo", SqlDbType.Int);
+                parametro.Value = idGrupo;
 
                 Command2.CommandText = "sp_SeleccionAlbumPorGrupo";
                 Command2.CommandType = CommandType.StoredProcedure;

@@ -95,7 +95,7 @@ SELECT * FROM album
 
 CREATE 
 ALTER PROCEDURE sp_SeleccionAlbumPorGrupo
-	@nombreGrupo nvarchar(25)
+	@idGrupo int
 AS
 	SELECT *
 	FROM album AS A
@@ -104,10 +104,10 @@ AS
 	WHERE A.id_grupo IN (
 		SELECT G.id_grupo
 		FROM grupo AS G 
-		WHERE G.descripcion LIKE '%' + @nombreGrupo + '%'
+		WHERE G.id_grupo = @idGrupo
 		)
 
-EXEC sp_SeleccionAlbumPorGrupo 'adams'
+EXEC sp_SeleccionAlbumPorGrupo 2
 
 -- Eliminacion de un album
 

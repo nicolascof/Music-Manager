@@ -189,7 +189,7 @@ namespace Music_Manager
                         rn_Conjuntos.Nodes.Add(oGrupo[cantidadGrupos].IdGrupo.ToString(), oGrupo[cantidadGrupos].Descripcion);
                     }
 
-                    oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].Descripcion);
+                    oSql.sp_SeleccionAlbumPorGrupo(oGrupo[cantidadGrupos].IdGrupo);
 
                     using (oSql.DataReader2)
                     {
@@ -216,9 +216,6 @@ namespace Music_Manager
 
                     ++cantidadGrupos;
                 }
-
-                //oSql.DataReader1.Close();
-                //oSql.DataReader2.Close();
 
                 for (int i = 0; i < tv_Grupo.Nodes.Count; ++i)
                 {
@@ -304,6 +301,19 @@ namespace Music_Manager
             {
                 CargarComboBoxesGeneroDisqueriaCompania();
 
+                dato = cbx_Titulo.SelectedIndex;
+
+                tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum.ToString();
+                cbx_Genero.SelectedValue = oGrupo[posicion].OAlbum[dato].IdGenero.ToString();
+                cbx_Disqueria.SelectedValue = oGrupo[posicion].OAlbum[dato].IdDisqueria.ToString();
+                cbx_Compania.SelectedValue = oGrupo[posicion].OAlbum[dato].IdCompania.ToString();
+                dtp_FechaTerminado.Value = oGrupo[posicion].OAlbum[dato].FechaTerminado;
+                dtp_FechaLanzamiento.Value = oGrupo[posicion].OAlbum[dato].FechaLanzamiento;
+                tbx_CantidadTemas.Text = oGrupo[posicion].OAlbum[dato].CantidadTemas.ToString();
+                tbx_Duracion.Text = oGrupo[posicion].OAlbum[dato].DuracionAlbum.ToString();
+                tbx_Costo.Text = oGrupo[posicion].OAlbum[dato].Costo.ToString();
+                rtbx_Observaciones.Text = oGrupo[posicion].OAlbum[dato].Obsevaciones;
+                /*
                 dato = BusquedaSecuencial(oGrupo, posicion, cbx_Titulo.SelectedItem.ToString());
 
                 if (dato != -1)
@@ -323,6 +333,7 @@ namespace Music_Manager
                 {
                     MessageBox.Show("Dato No Encontrado", "Album", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                */
             }
         }
 
