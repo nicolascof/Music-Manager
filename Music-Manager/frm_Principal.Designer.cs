@@ -122,6 +122,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_Disquerias_Ejecutar = new System.Windows.Forms.Button();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Informacion.SuspendLayout();
@@ -1031,6 +1032,7 @@
             // 
             // gbx_Disquerias
             // 
+            this.gbx_Disquerias.Controls.Add(this.btn_Disquerias_Ejecutar);
             this.gbx_Disquerias.Controls.Add(this.textBox1);
             this.gbx_Disquerias.Controls.Add(this.radioButton3);
             this.gbx_Disquerias.Controls.Add(this.radioButton2);
@@ -1038,7 +1040,7 @@
             this.gbx_Disquerias.Controls.Add(this.listBox1);
             this.gbx_Disquerias.Location = new System.Drawing.Point(6, 6);
             this.gbx_Disquerias.Name = "gbx_Disquerias";
-            this.gbx_Disquerias.Size = new System.Drawing.Size(598, 144);
+            this.gbx_Disquerias.Size = new System.Drawing.Size(598, 508);
             this.gbx_Disquerias.TabIndex = 2;
             this.gbx_Disquerias.TabStop = false;
             this.gbx_Disquerias.Text = "Disquerias";
@@ -1052,7 +1054,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(290, 30);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(260, 95);
+            this.listBox1.Size = new System.Drawing.Size(260, 459);
             this.listBox1.TabIndex = 0;
             // 
             // radioButton1
@@ -1095,6 +1097,15 @@
             this.textBox1.Size = new System.Drawing.Size(225, 20);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "Aparece el item seleccionado";
+            // 
+            // btn_Disquerias_Ejecutar
+            // 
+            this.btn_Disquerias_Ejecutar.Location = new System.Drawing.Point(59, 128);
+            this.btn_Disquerias_Ejecutar.Name = "btn_Disquerias_Ejecutar";
+            this.btn_Disquerias_Ejecutar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Disquerias_Ejecutar.TabIndex = 5;
+            this.btn_Disquerias_Ejecutar.Text = "Ejecutar";
+            this.btn_Disquerias_Ejecutar.UseVisualStyleBackColor = true;
             // 
             // frm_Principal
             // 
@@ -1242,5 +1253,6 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btn_Disquerias_Ejecutar;
     }
 }
