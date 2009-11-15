@@ -265,6 +265,8 @@ namespace Music_Manager
 
             if (tv_Grupo.SelectedNode.Name != "" && cbx_Titulo.SelectedIndex != -1)
             {
+                CargarComboBoxesGeneroDisqueriaCompania();
+
                 dato = BusquedaSecuencial(oGrupo, posicion, cbx_Titulo.SelectedItem.ToString());
 
                 if (dato != -1)
@@ -277,12 +279,17 @@ namespace Music_Manager
 
                     tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum.ToString();
                     // PROBLEMAS!!!
-                    cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero(oGrupo[posicion].OAlbum[dato].IdGenero));
-                    cbx_Genero.SelectedIndex = 0;
+                    cbx_Genero.SelectedValue = oGrupo[posicion].OAlbum[dato].IdGenero.ToString();
+                    cbx_Disqueria.SelectedValue = oGrupo[posicion].OAlbum[dato].IdDisqueria.ToString();
+                    cbx_Compania.SelectedValue = oGrupo[posicion].OAlbum[dato].IdCompania.ToString();
+                    //cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero(oGrupo[posicion].OAlbum[dato].IdGenero));
+                    //cbx_Genero.SelectedIndex = 0;
+                    /*
                     cbx_Disqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria(oGrupo[posicion].OAlbum[dato].IdDisqueria));
                     cbx_Disqueria.SelectedIndex = 0;
                     cbx_Compania.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarCompania(oGrupo[posicion].OAlbum[dato].IdCompania));
                     cbx_Compania.SelectedIndex = 0;
+                    */
                     // FIN PROBLEMAS!!!
                     dtp_FechaTerminado.Value = oGrupo[posicion].OAlbum[dato].FechaTerminado;
                     dtp_FechaLanzamiento.Value = oGrupo[posicion].OAlbum[dato].FechaLanzamiento;
