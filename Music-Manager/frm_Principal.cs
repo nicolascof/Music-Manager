@@ -271,26 +271,10 @@ namespace Music_Manager
 
                 if (dato != -1)
                 {
-                    /*
-                    cbx_Genero.Items.Clear();
-                    cbx_Disqueria.Items.Clear();
-                    cbx_Compania.Items.Clear();
-                    */
-
                     tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum.ToString();
-                    // PROBLEMAS!!!
                     cbx_Genero.SelectedValue = oGrupo[posicion].OAlbum[dato].IdGenero.ToString();
                     cbx_Disqueria.SelectedValue = oGrupo[posicion].OAlbum[dato].IdDisqueria.ToString();
                     cbx_Compania.SelectedValue = oGrupo[posicion].OAlbum[dato].IdCompania.ToString();
-                    //cbx_Genero.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarGenero(oGrupo[posicion].OAlbum[dato].IdGenero));
-                    //cbx_Genero.SelectedIndex = 0;
-                    /*
-                    cbx_Disqueria.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarDisqueria(oGrupo[posicion].OAlbum[dato].IdDisqueria));
-                    cbx_Disqueria.SelectedIndex = 0;
-                    cbx_Compania.Items.Add(oGrupo[posicion].OAlbum[dato].MostrarCompania(oGrupo[posicion].OAlbum[dato].IdCompania));
-                    cbx_Compania.SelectedIndex = 0;
-                    */
-                    // FIN PROBLEMAS!!!
                     dtp_FechaTerminado.Value = oGrupo[posicion].OAlbum[dato].FechaTerminado;
                     dtp_FechaLanzamiento.Value = oGrupo[posicion].OAlbum[dato].FechaLanzamiento;
                     tbx_CantidadTemas.Text = oGrupo[posicion].OAlbum[dato].CantidadTemas.ToString();
@@ -559,16 +543,21 @@ namespace Music_Manager
             {
                 MessageBox.Show("Verifique el Costo del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else if (DateTime.Compare(dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date) > 0)
+            {
+                MessageBox.Show("La Fecha de Terminado no puede ser mayor que la Fecha de Lanzamiento", 
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else
             {
-                if ("editar".CompareTo(botonEditarAgregar) == 0)
+                if ("agregar".CompareTo(botonEditarAgregar) == 0)
                 {
-                    if (!oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), cbx_Genero.SelectedIndex + 1, cbx_Disqueria.SelectedIndex + 1, cbx_Compania.SelectedIndex + 1,
-                        int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.SelectedItem.ToString(),
-                        decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
+                    if (!oSql.sp_AgregarAlbum(Convert.ToInt32(cbx_Genero.SelectedValue), Convert.ToInt32(cbx_Disqueria.SelectedValue),
+                        Convert.ToInt32(cbx_Compania.SelectedValue), int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false,
+                        cbx_Titulo.Text, decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
                         int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text))
                     {
-                        MessageBox.Show("Error al modificar album", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al agregar album", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -580,14 +569,14 @@ namespace Music_Manager
                     }
                 }
 
-                if ("agregar".CompareTo(botonEditarAgregar) == 0)
+                if ("editar".CompareTo(botonEditarAgregar) == 0)
                 {
-                    if (!oSql.sp_AgregarAlbum(cbx_Genero.SelectedIndex + 1, cbx_Disqueria.SelectedIndex + 1, cbx_Compania.SelectedIndex + 1,
-                        int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false, cbx_Titulo.Text,
-                        decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date, int.Parse(tbx_CantidadTemas.Text),
-                        int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text))
+                    if (!oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), Convert.ToInt32(cbx_Genero.SelectedValue), Convert.ToInt32(cbx_Disqueria.SelectedValue),
+                        Convert.ToInt32(cbx_Compania.SelectedValue), int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false,
+                        cbx_Titulo.SelectedItem.ToString(), decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date,
+                        int.Parse(tbx_CantidadTemas.Text), int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text))
                     {
-                        MessageBox.Show("Error al agregar album", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al modificar album", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
