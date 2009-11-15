@@ -163,7 +163,7 @@
             this.ToolStrip.Location = new System.Drawing.Point(0, 0);
             this.ToolStrip.Name = "ToolStrip";
             this.ToolStrip.Size = new System.Drawing.Size(825, 25);
-            this.ToolStrip.TabIndex = 0;
+            this.ToolStrip.TabIndex = 2;
             this.ToolStrip.Text = "ts";
             // 
             // tsddb_Archivo
@@ -181,7 +181,7 @@
             // 
             this.tsmi_Archivo_Disquerias.Image = global::Music_Manager.Properties.Resources.Cd;
             this.tsmi_Archivo_Disquerias.Name = "tsmi_Archivo_Disquerias";
-            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(134, 22);
             this.tsmi_Archivo_Disquerias.Text = "Disquerias";
             this.tsmi_Archivo_Disquerias.Click += new System.EventHandler(this.tsmi_Archivo_Disquerias_Click);
             // 
@@ -189,7 +189,7 @@
             // 
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(134, 22);
             this.tsmi_Archivo_Cerrar.Text = "Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.tsmi_Archivo_Cerrar_Click);
             // 
@@ -285,7 +285,7 @@
             this.btn_Cancelar.Location = new System.Drawing.Point(448, 489);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancelar.TabIndex = 16;
+            this.btn_Cancelar.TabIndex = 3;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
@@ -295,7 +295,7 @@
             this.btn_Eliminar.Location = new System.Drawing.Point(205, 489);
             this.btn_Eliminar.Name = "btn_Eliminar";
             this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Eliminar.TabIndex = 15;
+            this.btn_Eliminar.TabIndex = 0;
             this.btn_Eliminar.Text = "Eliminar";
             this.btn_Eliminar.UseVisualStyleBackColor = true;
             this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
@@ -305,7 +305,7 @@
             this.btn_Agregar.Location = new System.Drawing.Point(286, 489);
             this.btn_Agregar.Name = "btn_Agregar";
             this.btn_Agregar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Agregar.TabIndex = 14;
+            this.btn_Agregar.TabIndex = 1;
             this.btn_Agregar.Text = "Agregar";
             this.btn_Agregar.UseVisualStyleBackColor = true;
             this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
@@ -315,7 +315,7 @@
             this.btn_Grabar.Location = new System.Drawing.Point(529, 489);
             this.btn_Grabar.Name = "btn_Grabar";
             this.btn_Grabar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Grabar.TabIndex = 13;
+            this.btn_Grabar.TabIndex = 4;
             this.btn_Grabar.Text = "Grabar";
             this.btn_Grabar.UseVisualStyleBackColor = true;
             this.btn_Grabar.Click += new System.EventHandler(this.btn_Grabar_Click);
@@ -325,7 +325,7 @@
             this.btn_Editar.Location = new System.Drawing.Point(367, 489);
             this.btn_Editar.Name = "btn_Editar";
             this.btn_Editar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Editar.TabIndex = 12;
+            this.btn_Editar.TabIndex = 2;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = true;
             this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
@@ -368,7 +368,7 @@
             this.cbx_Compania.Location = new System.Drawing.Point(129, 125);
             this.cbx_Compania.Name = "cbx_Compania";
             this.cbx_Compania.Size = new System.Drawing.Size(174, 21);
-            this.cbx_Compania.TabIndex = 20;
+            this.cbx_Compania.TabIndex = 4;
             // 
             // IdAlbum
             // 
@@ -386,14 +386,14 @@
             this.cbx_Disqueria.Location = new System.Drawing.Point(129, 98);
             this.cbx_Disqueria.Name = "cbx_Disqueria";
             this.cbx_Disqueria.Size = new System.Drawing.Size(174, 21);
-            this.cbx_Disqueria.TabIndex = 19;
+            this.cbx_Disqueria.TabIndex = 3;
             // 
             // tbx_IdAlbum
             // 
             this.tbx_IdAlbum.Location = new System.Drawing.Point(129, 19);
             this.tbx_IdAlbum.Name = "tbx_IdAlbum";
             this.tbx_IdAlbum.Size = new System.Drawing.Size(100, 20);
-            this.tbx_IdAlbum.TabIndex = 20;
+            this.tbx_IdAlbum.TabIndex = 0;
             // 
             // lbl_IdCompania
             // 
@@ -427,7 +427,7 @@
             this.tbx_Costo.Location = new System.Drawing.Point(129, 256);
             this.tbx_Costo.Name = "tbx_Costo";
             this.tbx_Costo.Size = new System.Drawing.Size(100, 20);
-            this.tbx_Costo.TabIndex = 15;
+            this.tbx_Costo.TabIndex = 9;
             // 
             // cbx_Titulo
             // 
@@ -436,7 +436,7 @@
             this.cbx_Titulo.Location = new System.Drawing.Point(129, 45);
             this.cbx_Titulo.Name = "cbx_Titulo";
             this.cbx_Titulo.Size = new System.Drawing.Size(358, 21);
-            this.cbx_Titulo.TabIndex = 14;
+            this.cbx_Titulo.TabIndex = 1;
             this.cbx_Titulo.SelectedIndexChanged += new System.EventHandler(this.cbx_Titulo_SelectedIndexChanged);
             // 
             // lbl_Observaciones
@@ -489,7 +489,7 @@
             this.rtbx_Observaciones.Location = new System.Drawing.Point(129, 282);
             this.rtbx_Observaciones.Name = "rtbx_Observaciones";
             this.rtbx_Observaciones.Size = new System.Drawing.Size(358, 81);
-            this.rtbx_Observaciones.TabIndex = 8;
+            this.rtbx_Observaciones.TabIndex = 10;
             this.rtbx_Observaciones.Text = "";
             // 
             // tbx_Duracion
@@ -497,14 +497,14 @@
             this.tbx_Duracion.Location = new System.Drawing.Point(129, 230);
             this.tbx_Duracion.Name = "tbx_Duracion";
             this.tbx_Duracion.Size = new System.Drawing.Size(100, 20);
-            this.tbx_Duracion.TabIndex = 7;
+            this.tbx_Duracion.TabIndex = 8;
             // 
             // tbx_CantidadTemas
             // 
             this.tbx_CantidadTemas.Location = new System.Drawing.Point(129, 204);
             this.tbx_CantidadTemas.Name = "tbx_CantidadTemas";
             this.tbx_CantidadTemas.Size = new System.Drawing.Size(100, 20);
-            this.tbx_CantidadTemas.TabIndex = 6;
+            this.tbx_CantidadTemas.TabIndex = 7;
             // 
             // dtp_FechaLanzamiento
             // 
@@ -512,7 +512,7 @@
             this.dtp_FechaLanzamiento.Location = new System.Drawing.Point(129, 178);
             this.dtp_FechaLanzamiento.Name = "dtp_FechaLanzamiento";
             this.dtp_FechaLanzamiento.Size = new System.Drawing.Size(100, 20);
-            this.dtp_FechaLanzamiento.TabIndex = 5;
+            this.dtp_FechaLanzamiento.TabIndex = 6;
             this.dtp_FechaLanzamiento.Value = new System.DateTime(2009, 11, 14, 0, 0, 0, 0);
             // 
             // dtp_FechaTerminado
@@ -521,7 +521,7 @@
             this.dtp_FechaTerminado.Location = new System.Drawing.Point(129, 152);
             this.dtp_FechaTerminado.Name = "dtp_FechaTerminado";
             this.dtp_FechaTerminado.Size = new System.Drawing.Size(100, 20);
-            this.dtp_FechaTerminado.TabIndex = 4;
+            this.dtp_FechaTerminado.TabIndex = 5;
             this.dtp_FechaTerminado.Value = new System.DateTime(2009, 11, 14, 0, 0, 0, 0);
             // 
             // lbl_Genero
@@ -549,7 +549,7 @@
             this.cbx_Genero.Location = new System.Drawing.Point(129, 71);
             this.cbx_Genero.Name = "cbx_Genero";
             this.cbx_Genero.Size = new System.Drawing.Size(174, 21);
-            this.cbx_Genero.TabIndex = 1;
+            this.cbx_Genero.TabIndex = 2;
             // 
             // gbx_Grupo
             // 
@@ -574,7 +574,7 @@
             this.cbx_GrupoNombre.Location = new System.Drawing.Point(129, 45);
             this.cbx_GrupoNombre.Name = "cbx_GrupoNombre";
             this.cbx_GrupoNombre.Size = new System.Drawing.Size(211, 21);
-            this.cbx_GrupoNombre.TabIndex = 20;
+            this.cbx_GrupoNombre.TabIndex = 1;
             // 
             // lbl_PosicionArreglo
             // 
@@ -599,7 +599,7 @@
             this.tbx_IdGrupo.Location = new System.Drawing.Point(129, 19);
             this.tbx_IdGrupo.Name = "tbx_IdGrupo";
             this.tbx_IdGrupo.Size = new System.Drawing.Size(100, 20);
-            this.tbx_IdGrupo.TabIndex = 17;
+            this.tbx_IdGrupo.TabIndex = 0;
             // 
             // lbl_CantidadIntegrantes
             // 
@@ -615,7 +615,7 @@
             this.tbx_CantidadIntegrantes.Location = new System.Drawing.Point(129, 71);
             this.tbx_CantidadIntegrantes.Name = "tbx_CantidadIntegrantes";
             this.tbx_CantidadIntegrantes.Size = new System.Drawing.Size(100, 20);
-            this.tbx_CantidadIntegrantes.TabIndex = 10;
+            this.tbx_CantidadIntegrantes.TabIndex = 2;
             // 
             // lbl_Grupo_Nombre
             // 
@@ -636,7 +636,7 @@
             this.tabc_Principal.Name = "tabc_Principal";
             this.tabc_Principal.SelectedIndex = 0;
             this.tabc_Principal.Size = new System.Drawing.Size(618, 546);
-            this.tabc_Principal.TabIndex = 2;
+            this.tabc_Principal.TabIndex = 0;
             this.tabc_Principal.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabc_Principal_Selecting);
             // 
             // tab_Consultas
@@ -1050,7 +1050,7 @@
             this.btn_Disquerias_Ejecutar.Location = new System.Drawing.Point(338, 132);
             this.btn_Disquerias_Ejecutar.Name = "btn_Disquerias_Ejecutar";
             this.btn_Disquerias_Ejecutar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Disquerias_Ejecutar.TabIndex = 5;
+            this.btn_Disquerias_Ejecutar.TabIndex = 3;
             this.btn_Disquerias_Ejecutar.Text = "Ejecutar";
             this.btn_Disquerias_Ejecutar.UseVisualStyleBackColor = true;
             this.btn_Disquerias_Ejecutar.Click += new System.EventHandler(this.btn_Disquerias_Ejecutar_Click);
@@ -1069,7 +1069,7 @@
             this.rbtn_Disquerias_Modificar.Location = new System.Drawing.Point(338, 108);
             this.rbtn_Disquerias_Modificar.Name = "rbtn_Disquerias_Modificar";
             this.rbtn_Disquerias_Modificar.Size = new System.Drawing.Size(68, 17);
-            this.rbtn_Disquerias_Modificar.TabIndex = 3;
+            this.rbtn_Disquerias_Modificar.TabIndex = 2;
             this.rbtn_Disquerias_Modificar.TabStop = true;
             this.rbtn_Disquerias_Modificar.Text = "Modificar";
             this.rbtn_Disquerias_Modificar.UseVisualStyleBackColor = true;
@@ -1081,7 +1081,7 @@
             this.rbtn_Disquerias_Eliminar.Location = new System.Drawing.Point(338, 84);
             this.rbtn_Disquerias_Eliminar.Name = "rbtn_Disquerias_Eliminar";
             this.rbtn_Disquerias_Eliminar.Size = new System.Drawing.Size(61, 17);
-            this.rbtn_Disquerias_Eliminar.TabIndex = 2;
+            this.rbtn_Disquerias_Eliminar.TabIndex = 1;
             this.rbtn_Disquerias_Eliminar.TabStop = true;
             this.rbtn_Disquerias_Eliminar.Text = "Eliminar";
             this.rbtn_Disquerias_Eliminar.UseVisualStyleBackColor = true;
@@ -1093,7 +1093,7 @@
             this.rbtn_Disquerias_Agregar.Location = new System.Drawing.Point(338, 60);
             this.rbtn_Disquerias_Agregar.Name = "rbtn_Disquerias_Agregar";
             this.rbtn_Disquerias_Agregar.Size = new System.Drawing.Size(62, 17);
-            this.rbtn_Disquerias_Agregar.TabIndex = 1;
+            this.rbtn_Disquerias_Agregar.TabIndex = 0;
             this.rbtn_Disquerias_Agregar.TabStop = true;
             this.rbtn_Disquerias_Agregar.Text = "Agregar";
             this.rbtn_Disquerias_Agregar.UseVisualStyleBackColor = true;
