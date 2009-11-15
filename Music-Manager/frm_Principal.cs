@@ -475,8 +475,6 @@ namespace Music_Manager
             btn_Cancelar.Enabled = true;
             btn_Grabar.Enabled = true;
 
-            CargarComboBoxesGeneroDisqueriaCompania();
-
             botonEditarAgregar = "agregar";
         }
 
@@ -501,8 +499,6 @@ namespace Music_Manager
             btn_Editar.Enabled = false;
             btn_Cancelar.Enabled = true;
             btn_Grabar.Enabled = true;
-
-            CargarComboBoxesGeneroDisqueriaCompania();
 
             botonEditarAgregar = "editar";
         }
@@ -950,6 +946,12 @@ namespace Music_Manager
             }
         }
 
+        private void cbx_Consulta_Genero2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbx_Consulta_SeleccionABM.SelectedIndex == 2)
+                tbx_ModificarPor.Text = cbx_Consulta_Genero2.Text;
+        }
+
         private void Actualizar_cbx_Consulta_Genero2 ()
         {
             if (!oSql.sp_CargarGeneros())
@@ -1131,12 +1133,6 @@ namespace Music_Manager
             }
 
             return b;
-        }
-
-        private void cbx_Consulta_Genero2_DropDownClosed(object sender, EventArgs e)
-        {
-            if (cbx_SeleccionConsulta.SelectedIndex == 2)
-                tbx_ModificarPor.Text = cbx_Consulta_Genero2.Text;
         }
 
         //####################################################################

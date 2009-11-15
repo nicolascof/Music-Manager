@@ -970,7 +970,7 @@
             this.cbx_Consulta_Genero2.Size = new System.Drawing.Size(174, 21);
             this.cbx_Consulta_Genero2.TabIndex = 3;
             this.cbx_Consulta_Genero2.Validating += new System.ComponentModel.CancelEventHandler(this.cbx_Consulta_Genero2_Validating);
-            this.cbx_Consulta_Genero2.DropDownClosed += new System.EventHandler(this.cbx_Consulta_Genero2_DropDownClosed);
+            this.cbx_Consulta_Genero2.SelectedIndexChanged += new System.EventHandler(this.cbx_Consulta_Genero2_SelectedIndexChanged);
             // 
             // tbx_Resultado
             // 
