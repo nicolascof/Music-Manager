@@ -68,6 +68,20 @@ namespace Music_Manager
         {
             if (!btn_Cancelar.Enabled)
             {
+                if (tab_Consultas.Created)
+                {
+                    tabc_Principal.TabPages.Remove(tab_Consultas);
+                    tab_Consultas.Enabled = false;
+                    tsl_Consultas.Enabled = true;
+
+                    tabc_Consultas.SelectedTab = tab_Consulta01;
+
+                    cbx_SeleccionConsulta.SelectedIndex = -1;
+                    LimpiarConsultas();
+
+                    errorp_Consulta.Clear();
+                }
+
                 tabc_Principal.TabPages.Add(tab_Disquerias);
                 tabc_Principal.SelectedTab = tab_Disquerias;
                 Actualizar_lbx_Disquerias_Descripcion();
@@ -128,10 +142,12 @@ namespace Music_Manager
             tsmi_AdministradorDatos_Conectar.Enabled = true;
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
             tsmi_Archivo_Disquerias.Enabled = true;
+            /*
             if (tab_Disquerias.Created)
             {
                 tabc_Principal.TabPages.Remove(tab_Disquerias);
             }
+            */
             CleanBoxes();
             tv_Grupo.Nodes.Clear();
             Iniciar();
@@ -727,7 +743,8 @@ namespace Music_Manager
 
                     errorp_Consulta.Clear();
                 }
-                else if (tab_Disquerias.Created)
+                
+                if (tab_Disquerias.Created)
                 {
                     tabc_Principal.TabPages.Remove(tab_Disquerias);
                     tsmi_Archivo_Disquerias.Enabled = true;
