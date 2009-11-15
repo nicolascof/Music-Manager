@@ -66,17 +66,16 @@ namespace Music_Manager
 
         private void tsmi_Archivo_Disquerias_Click(object sender, EventArgs e)
         {
-            if (!tab_Disquerias.Created)
+            if (!btn_Cancelar.Enabled)
             {
-                if (!btn_Cancelar.Enabled)
-                {
-                    tabc_Principal.TabPages.Add(tab_Disquerias);
-                    tabc_Principal.SelectedTab = tab_Disquerias;
-                }
-                else
-                {
-                    MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                tabc_Principal.TabPages.Add(tab_Disquerias);
+                tabc_Principal.SelectedTab = tab_Disquerias;
+                Actualizar_lbx_Disquerias_Descripcion();
+                tsmi_Archivo_Disquerias.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -128,6 +127,11 @@ namespace Music_Manager
             tsslConexion.Text = "Desconectado";
             tsmi_AdministradorDatos_Conectar.Enabled = true;
             tsmi_AdministradorDatos_Desconectar.Enabled = false;
+            tsmi_Archivo_Disquerias.Enabled = true;
+            if (tab_Disquerias.Created)
+            {
+                tabc_Principal.TabPages.Remove(tab_Disquerias);
+            }
             CleanBoxes();
             tv_Grupo.Nodes.Clear();
             Iniciar();
@@ -549,7 +553,7 @@ namespace Music_Manager
         {
             if (tbx_Costo.Text == "" || tbx_CantidadTemas.Text == "" || tbx_Duracion.Text == "")
             {
-                MessageBox.Show("Lene los casilleros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Llene los casilleros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (!Regex.Match(tbx_CantidadTemas.Text, @"^[0-9]*$").Success)
             {
@@ -610,44 +614,124 @@ namespace Music_Manager
             }
         }
 
+        private void btn_Disquerias_Ejecutar_Click(object sender, EventArgs e)
+        {
+            if (rbtn_Disquerias_Agregar.Checked)
+            {
+                if (tbx_Disquerias_Item.Text == "")
+                {
+                    MessageBox.Show("Imposible Agregar Disqueria Vacia\n" + oSql.stringError, "Disquerias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (!oSql.sp_AgregarDisqueria(tbx_Disquerias_Item.Text))
+                    {
+                        MessageBox.Show("Error Agregar Genero\n" + oSql.stringError, "Disquerias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        tbx_Disquerias_Item.Text = null;
+                        Actualizar_lbx_Disquerias_Descripcion();
+                    }
+                }
+            }
+            else if (rbtn_Disquerias_Eliminar.Checked)
+            {
+                if (!oSql.sp_EliminarDisqueria(Convert.ToInt32(lbx_Disquerias_Descripcion.SelectedValue)))
+                {
+                    MessageBox.Show("Error Eliminar Genero\n" + oSql.stringError, "Disquerias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Actualizar_lbx_Disquerias_Descripcion();
+                }
+            }
+            else if (rbtn_Disquerias_Modificar.Checked)
+            {
+                if (tbx_Disquerias_Item.Text == "")
+                {
+                    MessageBox.Show("Imposible Modificar por Disqueria Vacia\n" + oSql.stringError, "Disquerias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (!oSql.sp_ModificarDisqueria(Convert.ToInt32(lbx_Disquerias_Descripcion.SelectedValue),
+                        tbx_Disquerias_Item.Text))
+                    {
+                        MessageBox.Show("Error Modificar Genero\n" + oSql.stringError, "Disquerias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Actualizar_lbx_Disquerias_Descripcion();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No ha seleccionado ninguna opcion\n" + oSql.stringError, "Disquerias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Actualizar_lbx_Disquerias_Descripcion()
+        {
+            oSql.sp_CargarDisquerias();
+            lbx_Disquerias_Descripcion.DataSource = oSql.DataSet1;
+            lbx_Disquerias_Descripcion.DisplayMember = "disquerias.descripcion";
+            lbx_Disquerias_Descripcion.ValueMember = "disquerias.id_disqueria";
+        }
+
+        private void lbx_Disquerias_Descripcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rbtn_Disquerias_Modificar.Checked)
+            {
+                tbx_Disquerias_Item.Text = lbx_Disquerias_Descripcion.Text;
+            }
+        }
+
+        private void rbtn_Disquerias_Modificar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtn_Disquerias_Agregar.Checked)
+            {
+                tbx_Disquerias_Item.Text = null;
+            }
+            else if (rbtn_Disquerias_Modificar.Checked)
+            {
+                tbx_Disquerias_Item.Enabled = true;
+                tbx_Disquerias_Item.Text = lbx_Disquerias_Descripcion.Text;
+            }
+            else if (rbtn_Disquerias_Eliminar.Checked)
+            {
+                tbx_Disquerias_Item.Text = null;
+                tbx_Disquerias_Item.Enabled = false;
+            }
+        }
+
         //####################################################################
         //## LABORATORIO #####################################################
         //####################################################################
 
-        private void tabc_Principal_Selecting(object sender, TabControlCancelEventArgs e)
+        private void tabc_Principal_Selecting (object sender, TabControlCancelEventArgs e)
         {
-            if (e.TabPage == tab_Informacion || e.TabPage == tab_Disquerias)
+            if (e.TabPage == tab_Informacion)
             {
-                tabc_Principal.TabPages.Remove(tab_Consultas);
-                tab_Consultas.Enabled = false;
-                tsl_Consultas.Enabled = true;
+                if (tab_Consultas.Created)
+                {
+                    tabc_Principal.TabPages.Remove(tab_Consultas);
+                    tab_Consultas.Enabled = false;
+                    tsl_Consultas.Enabled = true;
 
-                tabc_Consultas.SelectedTab = tab_Consulta01;
+                    tabc_Consultas.SelectedTab = tab_Consulta01;
 
-                cbx_SeleccionConsulta.SelectedIndex = -1;
-                LimpiarConsultas();
+                    cbx_SeleccionConsulta.SelectedIndex = -1;
+                    LimpiarConsultas();
 
-                errorp_Consulta.Clear();
+                    errorp_Consulta.Clear();
+                }
+                else if (tab_Disquerias.Created)
+                {
+                    tabc_Principal.TabPages.Remove(tab_Disquerias);
+                    tsmi_Archivo_Disquerias.Enabled = true;
+                }
             }
-        }
-
-        private void tabc_Principal_SelectedIndexChanged (object sender, EventArgs e)
-        {
-            /*
-            if (tabc_Principal.SelectedTab == tab_Informacion) //|| tabc_Principal.SelectedTab == tab_Disquerias)
-            {
-                tabc_Principal.TabPages.Remove(tab_Consultas);
-                tab_Consultas.Enabled = false;
-                tsl_Consultas.Enabled = true;
-
-                tabc_Consultas.SelectedTab = tab_Consulta01;
-
-                cbx_SeleccionConsulta.SelectedIndex = -1;
-                LimpiarConsultas();
-
-                errorp_Consulta.Clear();
-            }
-            */
         }
 
         private void tsl_Consultas_Click (object sender, EventArgs e)

@@ -115,27 +115,6 @@ namespace Music_Manager
             this.Obsevaciones = null;
         }
 
-        public string MostrarGenero (int posicion)
-        {
-            string[] arregloGenero = { "", "Jazz", "Rock", "Pop", "Heavy Metal", "Dead Metal", "Grunge", "ElectroPop" };
-
-            return arregloGenero[posicion];
-        }
-
-        public string MostrarDisqueria (int posicion)
-        {
-            string[] arregloDisqueria = { "", "Eden", "Musimundo" };
-
-            return arregloDisqueria[posicion];
-        }
-
-        public string MostrarCompania (int posicion)
-        {
-            string[] arregloCompania = { "", "Sony BMG", "BGM", "Warner Music Group", "EMI", "Universal Music Group" };
-
-            return arregloCompania[posicion];
-        }
-
         /*
         public Album(int IdAlbum, int IdGenero, int IdDisqueria, int IdCompania, int IdGrupo, bool VariosArtistas, decimal Costo, string FechaTerminado, string FechaLanzamiento, int CantidadTemas, int DuracionAlbum, string Obsevaciones)
         {

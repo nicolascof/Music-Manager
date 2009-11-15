@@ -116,13 +116,13 @@
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
             this.tab_Disquerias = new System.Windows.Forms.TabPage();
             this.gbx_Disquerias = new System.Windows.Forms.GroupBox();
-            this.errorp_Consulta = new System.Windows.Forms.ErrorProvider(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_Disquerias_Ejecutar = new System.Windows.Forms.Button();
+            this.tbx_Disquerias_Item = new System.Windows.Forms.TextBox();
+            this.rbtn_Disquerias_Modificar = new System.Windows.Forms.RadioButton();
+            this.rbtn_Disquerias_Eliminar = new System.Windows.Forms.RadioButton();
+            this.rbtn_Disquerias_Agregar = new System.Windows.Forms.RadioButton();
+            this.lbx_Disquerias_Descripcion = new System.Windows.Forms.ListBox();
+            this.errorp_Consulta = new System.Windows.Forms.ErrorProvider(this.components);
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Informacion.SuspendLayout();
@@ -638,7 +638,6 @@
             this.tabc_Principal.Size = new System.Drawing.Size(618, 546);
             this.tabc_Principal.TabIndex = 2;
             this.tabc_Principal.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabc_Principal_Selecting);
-            this.tabc_Principal.SelectedIndexChanged += new System.EventHandler(this.tabc_Principal_SelectedIndexChanged);
             // 
             // tab_Consultas
             // 
@@ -1033,11 +1032,11 @@
             // gbx_Disquerias
             // 
             this.gbx_Disquerias.Controls.Add(this.btn_Disquerias_Ejecutar);
-            this.gbx_Disquerias.Controls.Add(this.textBox1);
-            this.gbx_Disquerias.Controls.Add(this.radioButton3);
-            this.gbx_Disquerias.Controls.Add(this.radioButton2);
-            this.gbx_Disquerias.Controls.Add(this.radioButton1);
-            this.gbx_Disquerias.Controls.Add(this.listBox1);
+            this.gbx_Disquerias.Controls.Add(this.tbx_Disquerias_Item);
+            this.gbx_Disquerias.Controls.Add(this.rbtn_Disquerias_Modificar);
+            this.gbx_Disquerias.Controls.Add(this.rbtn_Disquerias_Eliminar);
+            this.gbx_Disquerias.Controls.Add(this.rbtn_Disquerias_Agregar);
+            this.gbx_Disquerias.Controls.Add(this.lbx_Disquerias_Descripcion);
             this.gbx_Disquerias.Location = new System.Drawing.Point(6, 6);
             this.gbx_Disquerias.Name = "gbx_Disquerias";
             this.gbx_Disquerias.Size = new System.Drawing.Size(598, 508);
@@ -1045,67 +1044,72 @@
             this.gbx_Disquerias.TabStop = false;
             this.gbx_Disquerias.Text = "Disquerias";
             // 
-            // errorp_Consulta
-            // 
-            this.errorp_Consulta.ContainerControl = this;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(290, 30);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(260, 459);
-            this.listBox1.TabIndex = 0;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(59, 56);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(62, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Agregar";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(59, 80);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(61, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Eliminar";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(59, 104);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(68, 17);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Modificar";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(59, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(225, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Aparece el item seleccionado";
-            // 
             // btn_Disquerias_Ejecutar
             // 
-            this.btn_Disquerias_Ejecutar.Location = new System.Drawing.Point(59, 128);
+            this.btn_Disquerias_Ejecutar.Location = new System.Drawing.Point(338, 132);
             this.btn_Disquerias_Ejecutar.Name = "btn_Disquerias_Ejecutar";
             this.btn_Disquerias_Ejecutar.Size = new System.Drawing.Size(75, 23);
             this.btn_Disquerias_Ejecutar.TabIndex = 5;
             this.btn_Disquerias_Ejecutar.Text = "Ejecutar";
             this.btn_Disquerias_Ejecutar.UseVisualStyleBackColor = true;
+            this.btn_Disquerias_Ejecutar.Click += new System.EventHandler(this.btn_Disquerias_Ejecutar_Click);
+            // 
+            // tbx_Disquerias_Item
+            // 
+            this.tbx_Disquerias_Item.Enabled = false;
+            this.tbx_Disquerias_Item.Location = new System.Drawing.Point(338, 34);
+            this.tbx_Disquerias_Item.Name = "tbx_Disquerias_Item";
+            this.tbx_Disquerias_Item.Size = new System.Drawing.Size(225, 20);
+            this.tbx_Disquerias_Item.TabIndex = 4;
+            // 
+            // rbtn_Disquerias_Modificar
+            // 
+            this.rbtn_Disquerias_Modificar.AutoSize = true;
+            this.rbtn_Disquerias_Modificar.Location = new System.Drawing.Point(338, 108);
+            this.rbtn_Disquerias_Modificar.Name = "rbtn_Disquerias_Modificar";
+            this.rbtn_Disquerias_Modificar.Size = new System.Drawing.Size(68, 17);
+            this.rbtn_Disquerias_Modificar.TabIndex = 3;
+            this.rbtn_Disquerias_Modificar.TabStop = true;
+            this.rbtn_Disquerias_Modificar.Text = "Modificar";
+            this.rbtn_Disquerias_Modificar.UseVisualStyleBackColor = true;
+            this.rbtn_Disquerias_Modificar.CheckedChanged += new System.EventHandler(this.rbtn_Disquerias_Modificar_CheckedChanged);
+            // 
+            // rbtn_Disquerias_Eliminar
+            // 
+            this.rbtn_Disquerias_Eliminar.AutoSize = true;
+            this.rbtn_Disquerias_Eliminar.Location = new System.Drawing.Point(338, 84);
+            this.rbtn_Disquerias_Eliminar.Name = "rbtn_Disquerias_Eliminar";
+            this.rbtn_Disquerias_Eliminar.Size = new System.Drawing.Size(61, 17);
+            this.rbtn_Disquerias_Eliminar.TabIndex = 2;
+            this.rbtn_Disquerias_Eliminar.TabStop = true;
+            this.rbtn_Disquerias_Eliminar.Text = "Eliminar";
+            this.rbtn_Disquerias_Eliminar.UseVisualStyleBackColor = true;
+            this.rbtn_Disquerias_Eliminar.CheckedChanged += new System.EventHandler(this.rbtn_Disquerias_Modificar_CheckedChanged);
+            // 
+            // rbtn_Disquerias_Agregar
+            // 
+            this.rbtn_Disquerias_Agregar.AutoSize = true;
+            this.rbtn_Disquerias_Agregar.Location = new System.Drawing.Point(338, 60);
+            this.rbtn_Disquerias_Agregar.Name = "rbtn_Disquerias_Agregar";
+            this.rbtn_Disquerias_Agregar.Size = new System.Drawing.Size(62, 17);
+            this.rbtn_Disquerias_Agregar.TabIndex = 1;
+            this.rbtn_Disquerias_Agregar.TabStop = true;
+            this.rbtn_Disquerias_Agregar.Text = "Agregar";
+            this.rbtn_Disquerias_Agregar.UseVisualStyleBackColor = true;
+            this.rbtn_Disquerias_Agregar.CheckedChanged += new System.EventHandler(this.rbtn_Disquerias_Modificar_CheckedChanged);
+            // 
+            // lbx_Disquerias_Descripcion
+            // 
+            this.lbx_Disquerias_Descripcion.FormattingEnabled = true;
+            this.lbx_Disquerias_Descripcion.Location = new System.Drawing.Point(36, 34);
+            this.lbx_Disquerias_Descripcion.Name = "lbx_Disquerias_Descripcion";
+            this.lbx_Disquerias_Descripcion.Size = new System.Drawing.Size(296, 459);
+            this.lbx_Disquerias_Descripcion.TabIndex = 0;
+            this.lbx_Disquerias_Descripcion.SelectedIndexChanged += new System.EventHandler(this.lbx_Disquerias_Descripcion_SelectedIndexChanged);
+            // 
+            // errorp_Consulta
+            // 
+            this.errorp_Consulta.ContainerControl = this;
             // 
             // frm_Principal
             // 
@@ -1248,11 +1252,11 @@
         private System.Windows.Forms.GroupBox gbx_Disquerias;
         private System.Windows.Forms.Label lbl_ModificarPor;
         private System.Windows.Forms.TextBox tbx_ModificarPor;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox tbx_Disquerias_Item;
+        private System.Windows.Forms.RadioButton rbtn_Disquerias_Modificar;
+        private System.Windows.Forms.RadioButton rbtn_Disquerias_Eliminar;
+        private System.Windows.Forms.RadioButton rbtn_Disquerias_Agregar;
+        private System.Windows.Forms.ListBox lbx_Disquerias_Descripcion;
         private System.Windows.Forms.Button btn_Disquerias_Ejecutar;
     }
 }
