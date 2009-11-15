@@ -181,7 +181,7 @@
             // 
             this.tsmi_Archivo_Disquerias.Image = global::Music_Manager.Properties.Resources.Cd;
             this.tsmi_Archivo_Disquerias.Name = "tsmi_Archivo_Disquerias";
-            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(134, 22);
+            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(152, 22);
             this.tsmi_Archivo_Disquerias.Text = "Disquerias";
             this.tsmi_Archivo_Disquerias.Click += new System.EventHandler(this.tsmi_Archivo_Disquerias_Click);
             // 
@@ -189,7 +189,7 @@
             // 
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(134, 22);
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
             this.tsmi_Archivo_Cerrar.Text = "Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.tsmi_Archivo_Cerrar_Click);
             // 
@@ -970,6 +970,7 @@
             this.cbx_Consulta_Genero2.Size = new System.Drawing.Size(174, 21);
             this.cbx_Consulta_Genero2.TabIndex = 3;
             this.cbx_Consulta_Genero2.Validating += new System.ComponentModel.CancelEventHandler(this.cbx_Consulta_Genero2_Validating);
+            this.cbx_Consulta_Genero2.DropDownClosed += new System.EventHandler(this.cbx_Consulta_Genero2_DropDownClosed);
             // 
             // tbx_Resultado
             // 

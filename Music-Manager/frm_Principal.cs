@@ -805,8 +805,17 @@ namespace Music_Manager
 
             if (cbx_Consulta_SeleccionABM.SelectedIndex == 0) // Agregar
             {
-                cbx_Consulta_Genero2.SelectedIndex = -1;
-                cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.Simple;
+                if (!oSql.sp_CargarGeneros())
+                {
+                    MessageBox.Show("Error Cargar Generos\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MostrarDataGridView();
+                    pbx_Consultas.Image = null;
+                    cbx_Consulta_Genero2.SelectedIndex = -1;
+                    cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.Simple;
+                }
             }
             else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1) // Eliminar
             {
@@ -959,9 +968,11 @@ namespace Music_Manager
         {
             //dgv_Consultas.DataSource = null;
             dgv_Consultas.DataSource = oSql.DataSet1.Tables[0];
-            dgv_Consultas.Columns[0].Visible = false; // Oculto la columna id_genero
+            
+            if (tabc_Consultas.SelectedTab == tab_Generos)
+                dgv_Consultas.Columns[0].Visible = false; // Oculto la columna id_genero
 
-            if (dgv_Consultas.Rows.Count - 1 == 0)
+            if ((dgv_Consultas.RowCount) == 0)
             {
                 pbx_Consultas.Image = global::Music_Manager.Properties.Resources.Error;
                 tbx_Resultado.Text = "Ningun Resultado Encontrado";
@@ -969,7 +980,7 @@ namespace Music_Manager
             else
             {
                 pbx_Consultas.Image = global::Music_Manager.Properties.Resources.GoodTick;
-                tbx_Resultado.Text = (dgv_Consultas.Rows.Count - 1) + " Resultados Encontrados";
+                tbx_Resultado.Text = (dgv_Consultas.RowCount) + " Resultados Encontrados";
             }
         }
 
@@ -1120,6 +1131,12 @@ namespace Music_Manager
             }
 
             return b;
+        }
+
+        private void cbx_Consulta_Genero2_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cbx_SeleccionConsulta.SelectedIndex == 2)
+                tbx_ModificarPor.Text = cbx_Consulta_Genero2.Text;
         }
 
         //####################################################################
