@@ -49,7 +49,6 @@
             this.btn_Grabar = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.gbx_Album = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.cbx_Compania = new System.Windows.Forms.ComboBox();
             this.IdAlbum = new System.Windows.Forms.Label();
             this.cbx_Disqueria = new System.Windows.Forms.ComboBox();
@@ -117,8 +116,12 @@
             this.cbx_SeleccionConsulta = new System.Windows.Forms.ComboBox();
             this.tab_Disquerias = new System.Windows.Forms.TabPage();
             this.gbx_Disquerias = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.errorp_Consulta = new System.Windows.Forms.ErrorProvider(this.components);
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.ToolStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.tab_Informacion.SuspendLayout();
@@ -328,7 +331,6 @@
             // 
             // gbx_Album
             // 
-            this.gbx_Album.Controls.Add(this.label5);
             this.gbx_Album.Controls.Add(this.cbx_Compania);
             this.gbx_Album.Controls.Add(this.IdAlbum);
             this.gbx_Album.Controls.Add(this.cbx_Disqueria);
@@ -357,14 +359,6 @@
             this.gbx_Album.TabIndex = 11;
             this.gbx_Album.TabStop = false;
             this.gbx_Album.Text = "Album";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(235, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 13);
-            this.label5.TabIndex = 22;
             // 
             // cbx_Compania
             // 
@@ -1037,25 +1031,70 @@
             // 
             // gbx_Disquerias
             // 
-            this.gbx_Disquerias.Controls.Add(this.richTextBox1);
+            this.gbx_Disquerias.Controls.Add(this.textBox1);
+            this.gbx_Disquerias.Controls.Add(this.radioButton3);
+            this.gbx_Disquerias.Controls.Add(this.radioButton2);
+            this.gbx_Disquerias.Controls.Add(this.radioButton1);
+            this.gbx_Disquerias.Controls.Add(this.listBox1);
             this.gbx_Disquerias.Location = new System.Drawing.Point(6, 6);
             this.gbx_Disquerias.Name = "gbx_Disquerias";
-            this.gbx_Disquerias.Size = new System.Drawing.Size(598, 508);
+            this.gbx_Disquerias.Size = new System.Drawing.Size(598, 144);
             this.gbx_Disquerias.TabIndex = 2;
             this.gbx_Disquerias.TabStop = false;
             this.gbx_Disquerias.Text = "Disquerias";
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(78, 77);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(453, 131);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
-            // 
             // errorp_Consulta
             // 
             this.errorp_Consulta.ContainerControl = this;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(290, 30);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(260, 95);
+            this.listBox1.TabIndex = 0;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(59, 56);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(62, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Agregar";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(59, 80);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(61, 17);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Eliminar";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(59, 104);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(68, 17);
+            this.radioButton3.TabIndex = 3;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Modificar";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(59, 30);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(225, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "Aparece el item seleccionado";
             // 
             // frm_Principal
             // 
@@ -1101,6 +1140,7 @@
             this.tab_Generos.PerformLayout();
             this.tab_Disquerias.ResumeLayout(false);
             this.gbx_Disquerias.ResumeLayout(false);
+            this.gbx_Disquerias.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorp_Consulta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1158,7 +1198,6 @@
         private System.Windows.Forms.TextBox tbx_IdGrupo;
         private System.Windows.Forms.Label lbl_IdGrupo;
         private System.Windows.Forms.Label lbl_PosicionArreglo;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbx_Compania;
         private System.Windows.Forms.Label IdAlbum;
         private System.Windows.Forms.ComboBox cbx_Disqueria;
@@ -1198,6 +1237,10 @@
         private System.Windows.Forms.GroupBox gbx_Disquerias;
         private System.Windows.Forms.Label lbl_ModificarPor;
         private System.Windows.Forms.TextBox tbx_ModificarPor;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

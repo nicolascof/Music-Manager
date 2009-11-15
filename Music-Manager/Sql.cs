@@ -95,6 +95,11 @@ namespace Music_Manager
                         + db + "_data" + ".mdf;"
                         + "Database=" + db + ";"
                         + "Trusted_Connection=Yes;MultipleActiveResultSets=True";
+                    /*StringConexion = @"Data Source=.\" + servidor + ";"
+                        + @"AttachDbFilename=C:\Program Files (x86)\Microsoft SQL Server\MSSQL.1\MSSQL\Data\"
+                        + db + "_data" + ".mdf;"
+                        + "Database=" + db + ";"
+                        + "Trusted_Connection=Yes;MultipleActiveResultSets=True";*/
                     break;
                 case 1:
                     StringConexion = @"Data Source=" + servidor + ";"
