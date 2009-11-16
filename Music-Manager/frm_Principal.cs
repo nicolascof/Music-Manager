@@ -615,6 +615,11 @@ namespace Music_Manager
                         CleanBoxes();
 
                         EnableBoxes(false);
+                        btn_Eliminar.Enabled = true;
+                        btn_Agregar.Enabled = true;
+                        btn_Editar.Enabled = true;
+                        btn_Cancelar.Enabled = false;
+                        btn_Grabar.Enabled = false;
 
                         CargarClases();
                     }
@@ -638,6 +643,11 @@ namespace Music_Manager
                         CleanBoxes();
 
                         EnableBoxes(false);
+                        btn_Eliminar.Enabled = true;
+                        btn_Agregar.Enabled = true;
+                        btn_Editar.Enabled = true;
+                        btn_Cancelar.Enabled = false;
+                        btn_Grabar.Enabled = false;
 
                         CargarClases();
                     }

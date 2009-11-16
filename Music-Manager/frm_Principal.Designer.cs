@@ -183,7 +183,7 @@
             // 
             this.tsmi_Archivo_Disquerias.Image = global::Music_Manager.Properties.Resources.Cd;
             this.tsmi_Archivo_Disquerias.Name = "tsmi_Archivo_Disquerias";
-            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(134, 22);
+            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(152, 22);
             this.tsmi_Archivo_Disquerias.Text = "Disquerias";
             this.tsmi_Archivo_Disquerias.Click += new System.EventHandler(this.tsmi_Archivo_Disquerias_Click);
             // 
@@ -191,8 +191,9 @@
             // 
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(134, 22);
-            this.tsmi_Archivo_Cerrar.Text = "Salir";
+            this.tsmi_Archivo_Cerrar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_Archivo_Cerrar.Text = "&Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.tsmi_Archivo_Cerrar_Click);
             // 
             // tsddb_AdministradorDatos
@@ -210,16 +211,18 @@
             // 
             this.tsmi_AdministradorDatos_Conectar.Image = global::Music_Manager.Properties.Resources.NewDatabase;
             this.tsmi_AdministradorDatos_Conectar.Name = "tsmi_AdministradorDatos_Conectar";
-            this.tsmi_AdministradorDatos_Conectar.Size = new System.Drawing.Size(221, 22);
-            this.tsmi_AdministradorDatos_Conectar.Text = "Conectar con Base de Datos";
+            this.tsmi_AdministradorDatos_Conectar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.tsmi_AdministradorDatos_Conectar.Size = new System.Drawing.Size(260, 22);
+            this.tsmi_AdministradorDatos_Conectar.Text = "&Conectar con Base de Datos";
             this.tsmi_AdministradorDatos_Conectar.Click += new System.EventHandler(this.tsmi_AdministradorDatos_Conectar_Click);
             // 
             // tsmi_AdministradorDatos_Desconectar
             // 
             this.tsmi_AdministradorDatos_Desconectar.Image = global::Music_Manager.Properties.Resources.DeleteDatabase;
             this.tsmi_AdministradorDatos_Desconectar.Name = "tsmi_AdministradorDatos_Desconectar";
-            this.tsmi_AdministradorDatos_Desconectar.Size = new System.Drawing.Size(221, 22);
-            this.tsmi_AdministradorDatos_Desconectar.Text = "Desconectar";
+            this.tsmi_AdministradorDatos_Desconectar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.tsmi_AdministradorDatos_Desconectar.Size = new System.Drawing.Size(260, 22);
+            this.tsmi_AdministradorDatos_Desconectar.Text = "&Desconectar";
             this.tsmi_AdministradorDatos_Desconectar.Click += new System.EventHandler(this.tsmi_AdministradorDatos_Desconectar_Click);
             // 
             // tsl_Consultas
