@@ -49,6 +49,8 @@
             this.btn_Grabar = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.gbx_Album = new System.Windows.Forms.GroupBox();
+            this.lbl_ModificarPor = new System.Windows.Forms.Label();
+            this.tbx_ModificarPor = new System.Windows.Forms.TextBox();
             this.cbx_Compania = new System.Windows.Forms.ComboBox();
             this.IdAlbum = new System.Windows.Forms.Label();
             this.cbx_Disqueria = new System.Windows.Forms.ComboBox();
@@ -104,11 +106,11 @@
             this.dtp_Consulta_FechaHasta = new System.Windows.Forms.DateTimePicker();
             this.lbl_Consulta_FechaDesde = new System.Windows.Forms.Label();
             this.tab_Generos = new System.Windows.Forms.TabPage();
-            this.lbl_ModificarPor = new System.Windows.Forms.Label();
-            this.tbx_ModificarPor = new System.Windows.Forms.TextBox();
+            this.lbl_Consulta_ModificarPor = new System.Windows.Forms.Label();
+            this.tbx_Consulta_ModificarPor = new System.Windows.Forms.TextBox();
             this.lbl_Consulta_Genero2 = new System.Windows.Forms.Label();
-            this.EleccionABM = new System.Windows.Forms.Label();
-            this.cbx_Consulta_SeleccionABM = new System.Windows.Forms.ComboBox();
+            this.lbl_Consulta_EleccionABM = new System.Windows.Forms.Label();
+            this.cbx_Consulta_EleccionABM = new System.Windows.Forms.ComboBox();
             this.cbx_Consulta_Genero2 = new System.Windows.Forms.ComboBox();
             this.tbx_Resultado = new System.Windows.Forms.TextBox();
             this.btn_Ejecutar = new System.Windows.Forms.Button();
@@ -332,6 +334,8 @@
             // 
             // gbx_Album
             // 
+            this.gbx_Album.Controls.Add(this.lbl_ModificarPor);
+            this.gbx_Album.Controls.Add(this.tbx_ModificarPor);
             this.gbx_Album.Controls.Add(this.cbx_Compania);
             this.gbx_Album.Controls.Add(this.IdAlbum);
             this.gbx_Album.Controls.Add(this.cbx_Disqueria);
@@ -360,6 +364,24 @@
             this.gbx_Album.TabIndex = 11;
             this.gbx_Album.TabStop = false;
             this.gbx_Album.Text = "Album";
+            // 
+            // lbl_ModificarPor
+            // 
+            this.lbl_ModificarPor.AutoSize = true;
+            this.lbl_ModificarPor.Location = new System.Drawing.Point(368, 22);
+            this.lbl_ModificarPor.Name = "lbl_ModificarPor";
+            this.lbl_ModificarPor.Size = new System.Drawing.Size(68, 13);
+            this.lbl_ModificarPor.TabIndex = 23;
+            this.lbl_ModificarPor.Text = "Modificar por";
+            this.lbl_ModificarPor.Visible = false;
+            // 
+            // tbx_ModificarPor
+            // 
+            this.tbx_ModificarPor.Location = new System.Drawing.Point(371, 45);
+            this.tbx_ModificarPor.Name = "tbx_ModificarPor";
+            this.tbx_ModificarPor.Size = new System.Drawing.Size(221, 20);
+            this.tbx_ModificarPor.TabIndex = 22;
+            this.tbx_ModificarPor.Visible = false;
             // 
             // cbx_Compania
             // 
@@ -435,7 +457,7 @@
             this.cbx_Titulo.FormattingEnabled = true;
             this.cbx_Titulo.Location = new System.Drawing.Point(129, 45);
             this.cbx_Titulo.Name = "cbx_Titulo";
-            this.cbx_Titulo.Size = new System.Drawing.Size(358, 21);
+            this.cbx_Titulo.Size = new System.Drawing.Size(236, 21);
             this.cbx_Titulo.TabIndex = 1;
             this.cbx_Titulo.SelectedIndexChanged += new System.EventHandler(this.cbx_Titulo_SelectedIndexChanged);
             // 
@@ -897,11 +919,11 @@
             // 
             // tab_Generos
             // 
-            this.tab_Generos.Controls.Add(this.lbl_ModificarPor);
-            this.tab_Generos.Controls.Add(this.tbx_ModificarPor);
+            this.tab_Generos.Controls.Add(this.lbl_Consulta_ModificarPor);
+            this.tab_Generos.Controls.Add(this.tbx_Consulta_ModificarPor);
             this.tab_Generos.Controls.Add(this.lbl_Consulta_Genero2);
-            this.tab_Generos.Controls.Add(this.EleccionABM);
-            this.tab_Generos.Controls.Add(this.cbx_Consulta_SeleccionABM);
+            this.tab_Generos.Controls.Add(this.lbl_Consulta_EleccionABM);
+            this.tab_Generos.Controls.Add(this.cbx_Consulta_EleccionABM);
             this.tab_Generos.Controls.Add(this.cbx_Consulta_Genero2);
             this.tab_Generos.Location = new System.Drawing.Point(4, 22);
             this.tab_Generos.Name = "tab_Generos";
@@ -911,23 +933,23 @@
             this.tab_Generos.ToolTipText = "ABM Generos";
             this.tab_Generos.UseVisualStyleBackColor = true;
             // 
-            // lbl_ModificarPor
+            // lbl_Consulta_ModificarPor
             // 
-            this.lbl_ModificarPor.AutoSize = true;
-            this.lbl_ModificarPor.Location = new System.Drawing.Point(271, 56);
-            this.lbl_ModificarPor.Name = "lbl_ModificarPor";
-            this.lbl_ModificarPor.Size = new System.Drawing.Size(76, 13);
-            this.lbl_ModificarPor.TabIndex = 8;
-            this.lbl_ModificarPor.Text = "Modificarlo por";
-            this.lbl_ModificarPor.Visible = false;
+            this.lbl_Consulta_ModificarPor.AutoSize = true;
+            this.lbl_Consulta_ModificarPor.Location = new System.Drawing.Point(271, 56);
+            this.lbl_Consulta_ModificarPor.Name = "lbl_Consulta_ModificarPor";
+            this.lbl_Consulta_ModificarPor.Size = new System.Drawing.Size(76, 13);
+            this.lbl_Consulta_ModificarPor.TabIndex = 8;
+            this.lbl_Consulta_ModificarPor.Text = "Modificarlo por";
+            this.lbl_Consulta_ModificarPor.Visible = false;
             // 
-            // tbx_ModificarPor
+            // tbx_Consulta_ModificarPor
             // 
-            this.tbx_ModificarPor.Location = new System.Drawing.Point(353, 53);
-            this.tbx_ModificarPor.Name = "tbx_ModificarPor";
-            this.tbx_ModificarPor.Size = new System.Drawing.Size(174, 20);
-            this.tbx_ModificarPor.TabIndex = 7;
-            this.tbx_ModificarPor.Visible = false;
+            this.tbx_Consulta_ModificarPor.Location = new System.Drawing.Point(353, 53);
+            this.tbx_Consulta_ModificarPor.Name = "tbx_Consulta_ModificarPor";
+            this.tbx_Consulta_ModificarPor.Size = new System.Drawing.Size(174, 20);
+            this.tbx_Consulta_ModificarPor.TabIndex = 7;
+            this.tbx_Consulta_ModificarPor.Visible = false;
             // 
             // lbl_Consulta_Genero2
             // 
@@ -938,28 +960,28 @@
             this.lbl_Consulta_Genero2.TabIndex = 6;
             this.lbl_Consulta_Genero2.Text = "Genero(s)";
             // 
-            // EleccionABM
+            // lbl_Consulta_EleccionABM
             // 
-            this.EleccionABM.AutoSize = true;
-            this.EleccionABM.Location = new System.Drawing.Point(25, 29);
-            this.EleccionABM.Name = "EleccionABM";
-            this.EleccionABM.Size = new System.Drawing.Size(89, 13);
-            this.EleccionABM.TabIndex = 5;
-            this.EleccionABM.Text = "Eleccion de ABM";
+            this.lbl_Consulta_EleccionABM.AutoSize = true;
+            this.lbl_Consulta_EleccionABM.Location = new System.Drawing.Point(25, 29);
+            this.lbl_Consulta_EleccionABM.Name = "lbl_Consulta_EleccionABM";
+            this.lbl_Consulta_EleccionABM.Size = new System.Drawing.Size(89, 13);
+            this.lbl_Consulta_EleccionABM.TabIndex = 5;
+            this.lbl_Consulta_EleccionABM.Text = "Eleccion de ABM";
             // 
-            // cbx_Consulta_SeleccionABM
+            // cbx_Consulta_EleccionABM
             // 
-            this.cbx_Consulta_SeleccionABM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_Consulta_SeleccionABM.FormattingEnabled = true;
-            this.cbx_Consulta_SeleccionABM.Items.AddRange(new object[] {
+            this.cbx_Consulta_EleccionABM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_Consulta_EleccionABM.FormattingEnabled = true;
+            this.cbx_Consulta_EleccionABM.Items.AddRange(new object[] {
             "Agregar",
             "Eliminar",
             "Modificar"});
-            this.cbx_Consulta_SeleccionABM.Location = new System.Drawing.Point(120, 26);
-            this.cbx_Consulta_SeleccionABM.Name = "cbx_Consulta_SeleccionABM";
-            this.cbx_Consulta_SeleccionABM.Size = new System.Drawing.Size(121, 21);
-            this.cbx_Consulta_SeleccionABM.TabIndex = 4;
-            this.cbx_Consulta_SeleccionABM.SelectedIndexChanged += new System.EventHandler(this.cbx_Consulta_SeleccionABM_SelectedIndexChanged);
+            this.cbx_Consulta_EleccionABM.Location = new System.Drawing.Point(120, 26);
+            this.cbx_Consulta_EleccionABM.Name = "cbx_Consulta_EleccionABM";
+            this.cbx_Consulta_EleccionABM.Size = new System.Drawing.Size(121, 21);
+            this.cbx_Consulta_EleccionABM.TabIndex = 4;
+            this.cbx_Consulta_EleccionABM.SelectedIndexChanged += new System.EventHandler(this.cbx_Consulta_EleccionABM_SelectedIndexChanged);
             // 
             // cbx_Consulta_Genero2
             // 
@@ -1245,19 +1267,21 @@
         private System.Windows.Forms.PictureBox pbx_Consultas;
         private System.Windows.Forms.ComboBox cbx_Consulta_DuracionAlbum;
         private System.Windows.Forms.ErrorProvider errorp_Consulta;
-        private System.Windows.Forms.ComboBox cbx_Consulta_SeleccionABM;
+        private System.Windows.Forms.ComboBox cbx_Consulta_EleccionABM;
         private System.Windows.Forms.Label lbl_Consulta_Genero2;
-        private System.Windows.Forms.Label EleccionABM;
+        private System.Windows.Forms.Label lbl_Consulta_EleccionABM;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Archivo_Disquerias;
         private System.Windows.Forms.TabPage tab_Disquerias;
         private System.Windows.Forms.GroupBox gbx_Disquerias;
-        private System.Windows.Forms.Label lbl_ModificarPor;
-        private System.Windows.Forms.TextBox tbx_ModificarPor;
+        private System.Windows.Forms.Label lbl_Consulta_ModificarPor;
+        private System.Windows.Forms.TextBox tbx_Consulta_ModificarPor;
         private System.Windows.Forms.TextBox tbx_Disquerias_Item;
         private System.Windows.Forms.RadioButton rbtn_Disquerias_Modificar;
         private System.Windows.Forms.RadioButton rbtn_Disquerias_Eliminar;
         private System.Windows.Forms.RadioButton rbtn_Disquerias_Agregar;
         private System.Windows.Forms.ListBox lbx_Disquerias_Descripcion;
         private System.Windows.Forms.Button btn_Disquerias_Ejecutar;
+        private System.Windows.Forms.Label lbl_ModificarPor;
+        private System.Windows.Forms.TextBox tbx_ModificarPor;
     }
 }

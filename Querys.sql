@@ -84,7 +84,7 @@ AS
 		G.id_compania, 
 		G.cant_integrantes, 
 		G.solista_conjunto
-	ORDER BY 1
+	ORDER BY 2
 
 EXEC sp_SeleccionNombreGrupo
 
@@ -106,6 +106,7 @@ AS
 		FROM grupo AS G 
 		WHERE G.id_grupo = @idGrupo
 		)
+	ORDER BY 7
 
 EXEC sp_SeleccionAlbumPorGrupo 2
 

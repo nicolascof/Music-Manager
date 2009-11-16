@@ -430,6 +430,42 @@ namespace Music_Manager
             cbx_Titulo.Items.Clear();
         }
 
+        public void CargarComboBoxesGeneroDisqueriaCompania()
+        {
+            if (!oSql.sp_CargarGeneros())
+            {
+                MessageBox.Show("Error Cargar Generos\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cbx_Genero.DataSource = oSql.DataSet1;
+                cbx_Genero.DisplayMember = "generos.descricpion";
+                cbx_Genero.ValueMember = "generos.id_genero";
+            }
+
+            if (!oSql.sp_CargarDisquerias())
+            {
+                MessageBox.Show("Error Cargar Disquerias\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cbx_Disqueria.DataSource = oSql.DataSet1;
+                cbx_Disqueria.DisplayMember = "disquerias.descripcion";
+                cbx_Disqueria.ValueMember = "disquerias.id_disqueria";
+            }
+
+            if (!oSql.sp_CargarCompanias())
+            {
+                MessageBox.Show("Error Cargar Compañias\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cbx_Compania.DataSource = oSql.DataSet1;
+                cbx_Compania.DisplayMember = "companias.descripcion";
+                cbx_Compania.ValueMember = "companias.id_compania";
+            }
+        }
+
         /* NAME: btn_Eliminar_Click
          * DESCRIPTION: evento click del boton Eliminar del tab_Informacion
          * PARAMETERS: 
@@ -500,8 +536,11 @@ namespace Music_Manager
             tbx_CantidadIntegrantes.Enabled = false;
             tbx_IdAlbum.Enabled = false;
 
-            cbx_Titulo.DropDownStyle = ComboBoxStyle.DropDown;
-
+            cbx_Titulo.DropDownStyle = ComboBoxStyle.Simple;
+            /*
+            lbl_ModificarPor.Visible = true;
+            tbx_ModificarPor.Visible = true;
+            */
             btn_Eliminar.Enabled = false;
             btn_Agregar.Enabled = false;
             btn_Editar.Enabled = false;
@@ -511,42 +550,6 @@ namespace Music_Manager
             botonEditarAgregar = "editar";
         }
 
-        public void CargarComboBoxesGeneroDisqueriaCompania ()
-        {
-            if (!oSql.sp_CargarGeneros())
-            {
-                MessageBox.Show("Error Cargar Generos\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                cbx_Genero.DataSource = oSql.DataSet1;
-                cbx_Genero.DisplayMember = "generos.descricpion";
-                cbx_Genero.ValueMember = "generos.id_genero";
-            }
-
-            if (!oSql.sp_CargarDisquerias())
-            {
-                MessageBox.Show("Error Cargar Disquerias\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                cbx_Disqueria.DataSource = oSql.DataSet1;
-                cbx_Disqueria.DisplayMember = "disquerias.descripcion";
-                cbx_Disqueria.ValueMember = "disquerias.id_disqueria";
-            }
-
-            if (!oSql.sp_CargarCompanias())
-            {
-                MessageBox.Show("Error Cargar Compañias\n" + oSql.stringError, "Carga", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                cbx_Compania.DataSource = oSql.DataSet1;
-                cbx_Compania.DisplayMember = "companias.descripcion";
-                cbx_Compania.ValueMember = "companias.id_compania";
-            }
-        }
-
         /* NAME: btn_Cancelar_Click
          * DESCRIPTION: evento click del boton Cancelar del tab_Informacion
          * PARAMETERS: 
@@ -554,6 +557,10 @@ namespace Music_Manager
          */
         private void btn_Cancelar_Click (object sender, EventArgs e)
         {
+            /*
+            lbl_ModificarPor.Visible = false;
+            tbx_ModificarPor.Visible = false;
+            */
             CleanBoxes();
 
             EnableBoxes(false);
@@ -617,13 +624,17 @@ namespace Music_Manager
                 {
                     if (!oSql.sp_ModificarAlbum(int.Parse(tbx_IdAlbum.Text), Convert.ToInt32(cbx_Genero.SelectedValue), Convert.ToInt32(cbx_Disqueria.SelectedValue),
                         Convert.ToInt32(cbx_Compania.SelectedValue), int.Parse(tbx_IdGrupo.Text), int.Parse(tbx_CantidadIntegrantes.Text) > 1 ? true : false,
-                        cbx_Titulo.SelectedItem.ToString(), decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date,
+                        cbx_Titulo.Text, decimal.Parse(tbx_Costo.Text), dtp_FechaTerminado.Value.Date, dtp_FechaLanzamiento.Value.Date,
                         int.Parse(tbx_CantidadTemas.Text), int.Parse(tbx_Duracion.Text), rtbx_Observaciones.Text))
                     {
                         MessageBox.Show("Error al modificar album", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
+                        /*
+                        lbl_ModificarPor.Visible = false;
+                        tbx_ModificarPor.Visible = false;
+                        */
                         CleanBoxes();
 
                         EnableBoxes(false);
@@ -778,8 +789,8 @@ namespace Music_Manager
             tabc_Consultas.Enabled = true;
             btn_Ejecutar.Enabled = true;
 
-            lbl_ModificarPor.Visible = false;
-            tbx_ModificarPor.Visible = false;
+            lbl_Consulta_ModificarPor.Visible = false;
+            tbx_Consulta_ModificarPor.Visible = false;
 
             switch (cbx_SeleccionConsulta.SelectedIndex)
             {
@@ -797,17 +808,17 @@ namespace Music_Manager
                     break;
                 case 4:
                     tabc_Consultas.SelectedTab = tab_Generos;
-                    cbx_Consulta_SeleccionABM.SelectedIndex = 0;
+                    cbx_Consulta_EleccionABM.SelectedIndex = 0;
                     break;
             }
         }
 
-        private void cbx_Consulta_SeleccionABM_SelectedIndexChanged (object sender, EventArgs e)
+        private void cbx_Consulta_EleccionABM_SelectedIndexChanged (object sender, EventArgs e)
         {
-            lbl_ModificarPor.Visible = false;
-            tbx_ModificarPor.Visible = false;
+            lbl_Consulta_ModificarPor.Visible = false;
+            tbx_Consulta_ModificarPor.Visible = false;
 
-            if (cbx_Consulta_SeleccionABM.SelectedIndex == 0) // Agregar
+            if (cbx_Consulta_EleccionABM.SelectedIndex == 0) // Agregar
             {
                 if (!oSql.sp_CargarGeneros())
                 {
@@ -821,16 +832,16 @@ namespace Music_Manager
                     cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.Simple;
                 }
             }
-            else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1) // Eliminar
+            else if (cbx_Consulta_EleccionABM.SelectedIndex == 1) // Eliminar
             {
                 Actualizar_cbx_Consulta_Genero2();
                 cbx_Consulta_Genero2.SelectedIndex = 0;
                 cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-            else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2) // Modificar
+            else if (cbx_Consulta_EleccionABM.SelectedIndex == 2) // Modificar
             {
-                lbl_ModificarPor.Visible = true;
-                tbx_ModificarPor.Visible = true;
+                lbl_Consulta_ModificarPor.Visible = true;
+                tbx_Consulta_ModificarPor.Visible = true;
                 Actualizar_cbx_Consulta_Genero2();
                 cbx_Consulta_Genero2.SelectedIndex = 0;
                 cbx_Consulta_Genero2.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -910,7 +921,7 @@ namespace Music_Manager
                 if (ValidacionGenero2())
                 {
                     errorp_Consulta.Clear();
-                    if (cbx_Consulta_SeleccionABM.SelectedIndex == 0) // Agregar
+                    if (cbx_Consulta_EleccionABM.SelectedIndex == 0) // Agregar
                     {
                         if (!oSql.sp_AgregarGenero(cbx_Consulta_Genero2.Text))
                         {
@@ -922,7 +933,7 @@ namespace Music_Manager
                             MostrarDataGridView();
                         }
                     }
-                    else if (cbx_Consulta_SeleccionABM.SelectedIndex == 1) // Eliminar
+                    else if (cbx_Consulta_EleccionABM.SelectedIndex == 1) // Eliminar
                     {
                         if (!oSql.sp_EliminarGenero(Convert.ToInt32(cbx_Consulta_Genero2.SelectedValue)))
                         {
@@ -934,17 +945,17 @@ namespace Music_Manager
                             MostrarDataGridView();
                         }
                     }
-                    else if (cbx_Consulta_SeleccionABM.SelectedIndex == 2) // Modificar
+                    else if (cbx_Consulta_EleccionABM.SelectedIndex == 2) // Modificar
                     {
-                        if (tbx_ModificarPor.Text != "")
+                        if (tbx_Consulta_ModificarPor.Text != "")
                         {
-                            if (!oSql.sp_ModificarGenero(Convert.ToInt32(cbx_Consulta_Genero2.SelectedValue), tbx_ModificarPor.Text))//cbx_Consulta_Genero2.Text))
+                            if (!oSql.sp_ModificarGenero(Convert.ToInt32(cbx_Consulta_Genero2.SelectedValue), tbx_Consulta_ModificarPor.Text))//cbx_Consulta_Genero2.Text))
                             {
                                 MessageBox.Show("Error Modificar Genero\n" + oSql.stringError, "ABM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             else
                             {
-                                tbx_ModificarPor.Text = null;
+                                tbx_Consulta_ModificarPor.Text = null;
                                 Actualizar_cbx_Consulta_Genero2();
                                 MostrarDataGridView();
                             }
@@ -956,8 +967,8 @@ namespace Music_Manager
 
         private void cbx_Consulta_Genero2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbx_Consulta_SeleccionABM.SelectedIndex == 2)
-                tbx_ModificarPor.Text = cbx_Consulta_Genero2.Text;
+            if (cbx_Consulta_EleccionABM.SelectedIndex == 2)
+                tbx_Consulta_ModificarPor.Text = cbx_Consulta_Genero2.Text;
         }
 
         private void Actualizar_cbx_Consulta_Genero2 ()
