@@ -99,7 +99,7 @@
             this.btn_Cancelar.Location = new System.Drawing.Point(211, 248);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancelar.TabIndex = 7;
+            this.btn_Cancelar.TabIndex = 4;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
@@ -110,7 +110,7 @@
             this.btn_Conectar.Location = new System.Drawing.Point(130, 248);
             this.btn_Conectar.Name = "btn_Conectar";
             this.btn_Conectar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Conectar.TabIndex = 8;
+            this.btn_Conectar.TabIndex = 3;
             this.btn_Conectar.Text = "Conectar";
             this.btn_Conectar.UseVisualStyleBackColor = true;
             this.btn_Conectar.Click += new System.EventHandler(this.btn_Conectar_Click);
@@ -157,7 +157,7 @@
             this.gbx_autenticacionBd.Location = new System.Drawing.Point(12, 12);
             this.gbx_autenticacionBd.Name = "gbx_autenticacionBd";
             this.gbx_autenticacionBd.Size = new System.Drawing.Size(275, 81);
-            this.gbx_autenticacionBd.TabIndex = 12;
+            this.gbx_autenticacionBd.TabIndex = 0;
             this.gbx_autenticacionBd.TabStop = false;
             this.gbx_autenticacionBd.Text = "Autenticación y BD";
             // 
@@ -170,7 +170,7 @@
             this.cbx_Servidor.Location = new System.Drawing.Point(94, 19);
             this.cbx_Servidor.Name = "cbx_Servidor";
             this.cbx_Servidor.Size = new System.Drawing.Size(164, 21);
-            this.cbx_Servidor.TabIndex = 2;
+            this.cbx_Servidor.TabIndex = 0;
             // 
             // lbl_Servidor
             // 
@@ -191,7 +191,7 @@
             this.gbx_autenticacionSqlServer.Location = new System.Drawing.Point(12, 162);
             this.gbx_autenticacionSqlServer.Name = "gbx_autenticacionSqlServer";
             this.gbx_autenticacionSqlServer.Size = new System.Drawing.Size(275, 80);
-            this.gbx_autenticacionSqlServer.TabIndex = 15;
+            this.gbx_autenticacionSqlServer.TabIndex = 2;
             this.gbx_autenticacionSqlServer.TabStop = false;
             this.gbx_autenticacionSqlServer.Text = "Autenticacion de Sql Server";
             // 
@@ -202,7 +202,7 @@
             this.gbx_Servidor.Location = new System.Drawing.Point(12, 100);
             this.gbx_Servidor.Name = "gbx_Servidor";
             this.gbx_Servidor.Size = new System.Drawing.Size(274, 56);
-            this.gbx_Servidor.TabIndex = 16;
+            this.gbx_Servidor.TabIndex = 1;
             this.gbx_Servidor.TabStop = false;
             this.gbx_Servidor.Text = "Servidor";
             // 
@@ -218,7 +218,7 @@
             this.Controls.Add(this.btn_Conectar);
             this.Controls.Add(this.btn_Cancelar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_ConectarBaseDeDatos";
