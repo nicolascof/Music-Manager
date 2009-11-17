@@ -72,11 +72,13 @@ namespace Music_Manager
             get { return consulta; }
         }
 
-        public Sql()
+        public Sql ()
         {
-            Conexion = new SqlConnection();
+            Conexion = null;
             DataReader1 = null;
             DataReader2 = null;
+            DataAdapter = null;
+            DataSet1 = null;
             Consulta = null;
         }
 
@@ -85,13 +87,13 @@ namespace Music_Manager
          * PARAMETERS: int, string, servidor, usuario, contrasenia
          * RETURNS: true:conexion exitosa false:conexion fallida
          */
-        public bool Conectar(int tipoAutenticacion, string db, string servidor, string usuario, string contrasenia)
+        public bool Conectar (int tipoAutenticacion, string db, string servidor, string usuario, string contrasenia)
         {
             switch (tipoAutenticacion)
             {
                 case 0:
                     StringConexion = @"Data Source=.\" + servidor + ";"
-                        + @"AttachDbFilename=C:\Archivos de programa\Microsoft SQL Server\MSSQL.1\MSSQL\Data\" 
+                        + @"AttachDbFilename=C:\Archivos de programa\Microsoft SQL Server\MSSQL.1\MSSQL\Data\"
                         + db + "_data" + ".mdf;"
                         + "Database=" + db + ";"
                         + "Trusted_Connection=Yes;MultipleActiveResultSets=True";
@@ -103,7 +105,7 @@ namespace Music_Manager
                     break;
                 case 1:
                     StringConexion = @"Data Source=" + servidor + ";"
-                        + "Initial Catalog=" + servidor + ";" 
+                        + "Initial Catalog=" + servidor + ";"
                         + "User Id=" + usuario + ";"
                         + "Password=" + contrasenia + ";";
                     break;
@@ -111,6 +113,7 @@ namespace Music_Manager
 
             try
             {
+                Conexion = new SqlConnection();
                 Conexion.ConnectionString = StringConexion;
                 Conexion.Open();
             }
@@ -138,8 +141,8 @@ namespace Music_Manager
 
                 Command1.Connection = Conexion;
                 DataReader1 = Command1.ExecuteReader();
-            } 
-            catch (SqlException) 
+            }
+            catch (SqlException)
             {
                 return false;
             }
@@ -210,8 +213,8 @@ namespace Music_Manager
          * PARAMETERS:
          * RETURNS: true:consulta exitosa false:consulta fallida
          */
-        public bool sp_AgregarAlbum (int idGenero, int idDisqueria, int idCompania, int idGrupo, bool variosArtistas, 
-            string titulo, decimal costo, DateTime fechaTerminado, DateTime fechaLanzamiento, int cantidadTemas, 
+        public bool sp_AgregarAlbum (int idGenero, int idDisqueria, int idCompania, int idGrupo, bool variosArtistas,
+            string titulo, decimal costo, DateTime fechaTerminado, DateTime fechaLanzamiento, int cantidadTemas,
             int duracionAlbum, string observaciones)
         {
             try
@@ -276,8 +279,8 @@ namespace Music_Manager
          * PARAMETERS: 
          * RETURNS: true:consulta exitosa false:consulta fallida
          */
-        public bool sp_ModificarAlbum (int idAlbum, int idGenero, int idDisqueria, int idCompania, int idGrupo, 
-            bool variosArtistas, string titulo, decimal costo, DateTime fechaTerminado, DateTime fechaLanzamiento, 
+        public bool sp_ModificarAlbum (int idAlbum, int idGenero, int idDisqueria, int idCompania, int idGrupo,
+            bool variosArtistas, string titulo, decimal costo, DateTime fechaTerminado, DateTime fechaLanzamiento,
             int cantidadTemas, int duracionAlbum, string observaciones)
         {
             try
@@ -420,7 +423,7 @@ namespace Music_Manager
             return true;
         }
 
-        public bool sp_EliminarDisqueria(int idDisqueria)
+        public bool sp_EliminarDisqueria (int idDisqueria)
         {
             try
             {
@@ -505,7 +508,7 @@ namespace Music_Manager
             return true;
         }
 
-        public bool sp_Consulta02(string generoDescripcion)
+        public bool sp_Consulta02 (string generoDescripcion)
         {
             try
             {
@@ -533,7 +536,7 @@ namespace Music_Manager
             return true;
         }
 
-        public bool sp_Consulta03(int anio)
+        public bool sp_Consulta03 (int anio)
         {
             try
             {
@@ -561,7 +564,7 @@ namespace Music_Manager
             return true;
         }
 
-        public bool sp_Consulta04(string nombreGrupo, DateTime fechaInicial, DateTime fechaFinal, int duracionAlbum)
+        public bool sp_Consulta04 (string nombreGrupo, DateTime fechaInicial, DateTime fechaFinal, int duracionAlbum)
         {
             try
             {

@@ -49,8 +49,6 @@
             this.btn_Grabar = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.gbx_Album = new System.Windows.Forms.GroupBox();
-            this.lbl_ModificarPor = new System.Windows.Forms.Label();
-            this.tbx_ModificarPor = new System.Windows.Forms.TextBox();
             this.cbx_Compania = new System.Windows.Forms.ComboBox();
             this.IdAlbum = new System.Windows.Forms.Label();
             this.cbx_Disqueria = new System.Windows.Forms.ComboBox();
@@ -133,8 +131,8 @@
             this.tabc_Principal.SuspendLayout();
             this.tab_Consultas.SuspendLayout();
             this.gbx_Consultas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Consultas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_Consultas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dgv_Consultas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pbx_Consultas)).BeginInit();
             this.tabc_Consultas.SuspendLayout();
             this.tab_Consulta01.SuspendLayout();
             this.tab_Consulta02.SuspendLayout();
@@ -143,7 +141,7 @@
             this.tab_Generos.SuspendLayout();
             this.tab_Disquerias.SuspendLayout();
             this.gbx_Disquerias.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorp_Consulta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.errorp_Consulta)).BeginInit();
             this.SuspendLayout();
             // 
             // tv_Grupo
@@ -183,7 +181,7 @@
             // 
             this.tsmi_Archivo_Disquerias.Image = global::Music_Manager.Properties.Resources.Cd;
             this.tsmi_Archivo_Disquerias.Name = "tsmi_Archivo_Disquerias";
-            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(143, 22);
             this.tsmi_Archivo_Disquerias.Text = "Disquerias";
             this.tsmi_Archivo_Disquerias.Click += new System.EventHandler(this.tsmi_Archivo_Disquerias_Click);
             // 
@@ -191,8 +189,8 @@
             // 
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
-            this.tsmi_Archivo_Cerrar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_Archivo_Cerrar.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(143, 22);
             this.tsmi_Archivo_Cerrar.Text = "&Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.tsmi_Archivo_Cerrar_Click);
             // 
@@ -211,7 +209,7 @@
             // 
             this.tsmi_AdministradorDatos_Conectar.Image = global::Music_Manager.Properties.Resources.NewDatabase;
             this.tsmi_AdministradorDatos_Conectar.Name = "tsmi_AdministradorDatos_Conectar";
-            this.tsmi_AdministradorDatos_Conectar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.tsmi_AdministradorDatos_Conectar.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.tsmi_AdministradorDatos_Conectar.Size = new System.Drawing.Size(260, 22);
             this.tsmi_AdministradorDatos_Conectar.Text = "&Conectar con Base de Datos";
             this.tsmi_AdministradorDatos_Conectar.Click += new System.EventHandler(this.tsmi_AdministradorDatos_Conectar_Click);
@@ -220,7 +218,7 @@
             // 
             this.tsmi_AdministradorDatos_Desconectar.Image = global::Music_Manager.Properties.Resources.DeleteDatabase;
             this.tsmi_AdministradorDatos_Desconectar.Name = "tsmi_AdministradorDatos_Desconectar";
-            this.tsmi_AdministradorDatos_Desconectar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.tsmi_AdministradorDatos_Desconectar.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.tsmi_AdministradorDatos_Desconectar.Size = new System.Drawing.Size(260, 22);
             this.tsmi_AdministradorDatos_Desconectar.Text = "&Desconectar";
             this.tsmi_AdministradorDatos_Desconectar.Click += new System.EventHandler(this.tsmi_AdministradorDatos_Desconectar_Click);
@@ -337,8 +335,6 @@
             // 
             // gbx_Album
             // 
-            this.gbx_Album.Controls.Add(this.lbl_ModificarPor);
-            this.gbx_Album.Controls.Add(this.tbx_ModificarPor);
             this.gbx_Album.Controls.Add(this.cbx_Compania);
             this.gbx_Album.Controls.Add(this.IdAlbum);
             this.gbx_Album.Controls.Add(this.cbx_Disqueria);
@@ -367,24 +363,6 @@
             this.gbx_Album.TabIndex = 11;
             this.gbx_Album.TabStop = false;
             this.gbx_Album.Text = "Album";
-            // 
-            // lbl_ModificarPor
-            // 
-            this.lbl_ModificarPor.AutoSize = true;
-            this.lbl_ModificarPor.Location = new System.Drawing.Point(368, 22);
-            this.lbl_ModificarPor.Name = "lbl_ModificarPor";
-            this.lbl_ModificarPor.Size = new System.Drawing.Size(68, 13);
-            this.lbl_ModificarPor.TabIndex = 23;
-            this.lbl_ModificarPor.Text = "Modificar por";
-            this.lbl_ModificarPor.Visible = false;
-            // 
-            // tbx_ModificarPor
-            // 
-            this.tbx_ModificarPor.Location = new System.Drawing.Point(371, 45);
-            this.tbx_ModificarPor.Name = "tbx_ModificarPor";
-            this.tbx_ModificarPor.Size = new System.Drawing.Size(221, 20);
-            this.tbx_ModificarPor.TabIndex = 22;
-            this.tbx_ModificarPor.Visible = false;
             // 
             // cbx_Compania
             // 
@@ -1001,7 +979,7 @@
             // 
             this.tbx_Resultado.BackColor = System.Drawing.SystemColors.Control;
             this.tbx_Resultado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbx_Resultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbx_Resultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.tbx_Resultado.ForeColor = System.Drawing.Color.Red;
             this.tbx_Resultado.Location = new System.Drawing.Point(6, 150);
             this.tbx_Resultado.Name = "tbx_Resultado";
@@ -1147,7 +1125,7 @@
             this.Controls.Add(this.tv_Grupo);
             this.Controls.Add(this.tabc_Principal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1166,8 +1144,8 @@
             this.tab_Consultas.ResumeLayout(false);
             this.gbx_Consultas.ResumeLayout(false);
             this.gbx_Consultas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Consultas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_Consultas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.dgv_Consultas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pbx_Consultas)).EndInit();
             this.tabc_Consultas.ResumeLayout(false);
             this.tab_Consulta01.ResumeLayout(false);
             this.tab_Consulta01.PerformLayout();
@@ -1182,7 +1160,7 @@
             this.tab_Disquerias.ResumeLayout(false);
             this.gbx_Disquerias.ResumeLayout(false);
             this.gbx_Disquerias.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorp_Consulta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.errorp_Consulta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1284,7 +1262,5 @@
         private System.Windows.Forms.RadioButton rbtn_Disquerias_Agregar;
         private System.Windows.Forms.ListBox lbx_Disquerias_Descripcion;
         private System.Windows.Forms.Button btn_Disquerias_Ejecutar;
-        private System.Windows.Forms.Label lbl_ModificarPor;
-        private System.Windows.Forms.TextBox tbx_ModificarPor;
     }
 }

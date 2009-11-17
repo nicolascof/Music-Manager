@@ -33,11 +33,11 @@ namespace Music_Manager
             RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
 
             oSql = new Sql();
-            oGrupo = new Grupo[50];
+            oGrupo = new Grupo[5];
             botonEditarAgregar = null;
         }
 
-        private void frm_Principal_Load(object sender, EventArgs e)
+        private void frm_Principal_Load (object sender, EventArgs e)
         {
             Iniciar();
         }
@@ -64,9 +64,13 @@ namespace Music_Manager
             btn_Grabar.Enabled = false;
         }
 
-        private void tsmi_Archivo_Disquerias_Click(object sender, EventArgs e)
+        private void tsmi_Archivo_Disquerias_Click (object sender, EventArgs e)
         {
-            if (!btn_Cancelar.Enabled)
+            if (btn_Cancelar.Enabled)
+            {
+                MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
                 if (tab_Consultas.Created)
                 {
@@ -87,27 +91,24 @@ namespace Music_Manager
                 Actualizar_lbx_Disquerias_Descripcion();
                 tsmi_Archivo_Disquerias.Enabled = false;
             }
-            else
-            {
-                MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
-        private void tsmi_Archivo_Cerrar_Click(object sender, EventArgs e)
+        private void tsmi_Archivo_Cerrar_Click (object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Esta Seguro de Salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
+                oSql.Conexion.Close();
                 this.Close();
             }
         }
 
-        private void tsl_AcercaDe_Click(object sender, EventArgs e)
+        private void tsl_AcercaDe_Click (object sender, EventArgs e)
         {
             frm_About ofrm_AcercaDe = new frm_About();
             ofrm_AcercaDe.Show();
         }
 
-        private void tsmi_AdministradorDatos_Conectar_Click(object sender, EventArgs e)
+        private void tsmi_AdministradorDatos_Conectar_Click (object sender, EventArgs e)
         {
             frm_ConectarBaseDeDatos ofrm_ConectarBaseDeDatos = new frm_ConectarBaseDeDatos();
             ofrm_ConectarBaseDeDatos.ShowDialog();
@@ -137,7 +138,7 @@ namespace Music_Manager
             }
         }
 
-        private void tsmi_AdministradorDatos_Desconectar_Click(object sender, EventArgs e)
+        private void tsmi_AdministradorDatos_Desconectar_Click (object sender, EventArgs e)
         {
             oSql.Conexion.Close();
             tsslConexion.Image = global::Music_Manager.Properties.Resources.DeleteDatabase;
@@ -313,27 +314,6 @@ namespace Music_Manager
                 tbx_Duracion.Text = oGrupo[posicion].OAlbum[dato].DuracionAlbum.ToString();
                 tbx_Costo.Text = oGrupo[posicion].OAlbum[dato].Costo.ToString();
                 rtbx_Observaciones.Text = oGrupo[posicion].OAlbum[dato].Obsevaciones;
-                /*
-                dato = BusquedaSecuencial(oGrupo, posicion, cbx_Titulo.SelectedItem.ToString());
-
-                if (dato != -1)
-                {
-                    tbx_IdAlbum.Text = oGrupo[posicion].OAlbum[dato].IdAlbum.ToString();
-                    cbx_Genero.SelectedValue = oGrupo[posicion].OAlbum[dato].IdGenero.ToString();
-                    cbx_Disqueria.SelectedValue = oGrupo[posicion].OAlbum[dato].IdDisqueria.ToString();
-                    cbx_Compania.SelectedValue = oGrupo[posicion].OAlbum[dato].IdCompania.ToString();
-                    dtp_FechaTerminado.Value = oGrupo[posicion].OAlbum[dato].FechaTerminado;
-                    dtp_FechaLanzamiento.Value = oGrupo[posicion].OAlbum[dato].FechaLanzamiento;
-                    tbx_CantidadTemas.Text = oGrupo[posicion].OAlbum[dato].CantidadTemas.ToString();
-                    tbx_Duracion.Text = oGrupo[posicion].OAlbum[dato].DuracionAlbum.ToString();
-                    tbx_Costo.Text = oGrupo[posicion].OAlbum[dato].Costo.ToString();
-                    rtbx_Observaciones.Text = oGrupo[posicion].OAlbum[dato].Obsevaciones;
-                }
-                else
-                {
-                    MessageBox.Show("Dato No Encontrado", "Album", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                */
             }
         }
 
@@ -363,24 +343,6 @@ namespace Music_Manager
             return -1;
         }
 
-        /* NAME: BusquedaSecuencial 
-         * DESCRIPTION: busca dato en arreglo mediante metodo secuencial
-         * PARAMETERS:
-         * RETURNS: int -1:no encontro dato
-         */
-        private int BusquedaSecuencial (Grupo[] oGrupo, int Posicion, string Dato)
-        {
-            for (int i = 0; i < oGrupo[Posicion].OAlbum.Length; ++i)
-            {
-                if (Dato.CompareTo(oGrupo[Posicion].OAlbum[i].Titulo) == 0)
-                {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
         /* NAME: EnableBoxes 
          * DESCRIPTION: habilita o deshabilita controles
          * PARAMETERS: bool
@@ -402,7 +364,6 @@ namespace Music_Manager
                 {
                     obj.Enabled = b;
                 }
-
             }
         }
 
@@ -537,10 +498,7 @@ namespace Music_Manager
             tbx_IdAlbum.Enabled = false;
 
             cbx_Titulo.DropDownStyle = ComboBoxStyle.Simple;
-            /*
-            lbl_ModificarPor.Visible = true;
-            tbx_ModificarPor.Visible = true;
-            */
+
             btn_Eliminar.Enabled = false;
             btn_Agregar.Enabled = false;
             btn_Editar.Enabled = false;
@@ -557,10 +515,6 @@ namespace Music_Manager
          */
         private void btn_Cancelar_Click (object sender, EventArgs e)
         {
-            /*
-            lbl_ModificarPor.Visible = false;
-            tbx_ModificarPor.Visible = false;
-            */
             CleanBoxes();
 
             EnableBoxes(false);
@@ -590,7 +544,7 @@ namespace Music_Manager
             {
                 MessageBox.Show("Verifique le Duracion del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!Regex.Match(tbx_Costo.Text, @"^[0-9]*$").Success) //&& tbx_Costo.Text == "")
+            else if (!Regex.Match(tbx_Costo.Text, @"^[0-9]*$").Success)
             {
                 MessageBox.Show("Verifique el Costo del Album", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -636,10 +590,6 @@ namespace Music_Manager
                     }
                     else
                     {
-                        /*
-                        lbl_ModificarPor.Visible = false;
-                        tbx_ModificarPor.Visible = false;
-                        */
                         CleanBoxes();
 
                         EnableBoxes(false);
