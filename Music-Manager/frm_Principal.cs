@@ -90,6 +90,8 @@ namespace Music_Manager
                 tabc_Principal.SelectedTab = tab_Disquerias;
                 Actualizar_lbx_Disquerias_Descripcion();
                 tsmi_Archivo_Disquerias.Enabled = false;
+
+                tv_Grupo.Enabled = false;
             }
         }
 
@@ -231,7 +233,7 @@ namespace Music_Manager
         }
 
         /* NAME: tv_Grupo_AfterSelect 
-         * DESCRIPTION: evento afterSelect de seleccion de nodo
+         * DESCRIPTION: evento afterSelect de seleccion de nodo del TreeView
          * PARAMETERS:
          * RETURNS: void
          */
@@ -605,6 +607,10 @@ namespace Music_Manager
             }
         }
 
+        //####################################################################
+        //## ABM Disquerias ##################################################
+        //####################################################################
+
         private void btn_Disquerias_Ejecutar_Click(object sender, EventArgs e)
         {
             if (rbtn_Disquerias_Agregar.Checked)
@@ -641,7 +647,8 @@ namespace Music_Manager
             {
                 if (tbx_Disquerias_Item.Text == "")
                 {
-                    MessageBox.Show("Imposible Modificar por Disqueria Vacia\n" + oSql.stringError, "Disquerias", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Imposible Modificar " + lbx_Disquerias_Descripcion.Text + " por Disqueria Vacia\n" + oSql.stringError, "Disquerias", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -717,30 +724,36 @@ namespace Music_Manager
                     LimpiarConsultas();
 
                     errorp_Consulta.Clear();
+
+                    tv_Grupo.Enabled = true;
                 }
                 
                 if (tab_Disquerias.Created)
                 {
                     tabc_Principal.TabPages.Remove(tab_Disquerias);
                     tsmi_Archivo_Disquerias.Enabled = true;
+
+                    tv_Grupo.Enabled = true;
                 }
             }
         }
 
         private void tsl_Consultas_Click (object sender, EventArgs e)
         {
-            if (!btn_Cancelar.Enabled)
+            if (btn_Cancelar.Enabled)
             {
+                MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                tv_Grupo.Enabled = false;
+
                 tsl_Consultas.Enabled = false;
                 tabc_Principal.TabPages.Add(tab_Consultas);
                 tab_Consultas.Enabled = true;
                 tabc_Principal.SelectedTab = tab_Consultas;
                 tabc_Consultas.Enabled = false;
                 btn_Ejecutar.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show("Tiene tareas pendientes en la pestaña Informacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

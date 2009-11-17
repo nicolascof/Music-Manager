@@ -181,7 +181,7 @@
             // 
             this.tsmi_Archivo_Disquerias.Image = global::Music_Manager.Properties.Resources.Cd;
             this.tsmi_Archivo_Disquerias.Name = "tsmi_Archivo_Disquerias";
-            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(143, 22);
+            this.tsmi_Archivo_Disquerias.Size = new System.Drawing.Size(152, 22);
             this.tsmi_Archivo_Disquerias.Text = "Disquerias";
             this.tsmi_Archivo_Disquerias.Click += new System.EventHandler(this.tsmi_Archivo_Disquerias_Click);
             // 
@@ -190,7 +190,7 @@
             this.tsmi_Archivo_Cerrar.Image = global::Music_Manager.Properties.Resources.Exit;
             this.tsmi_Archivo_Cerrar.Name = "tsmi_Archivo_Cerrar";
             this.tsmi_Archivo_Cerrar.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(143, 22);
+            this.tsmi_Archivo_Cerrar.Size = new System.Drawing.Size(152, 22);
             this.tsmi_Archivo_Cerrar.Text = "&Salir";
             this.tsmi_Archivo_Cerrar.Click += new System.EventHandler(this.tsmi_Archivo_Cerrar_Click);
             // 
@@ -438,7 +438,7 @@
             this.cbx_Titulo.FormattingEnabled = true;
             this.cbx_Titulo.Location = new System.Drawing.Point(129, 45);
             this.cbx_Titulo.Name = "cbx_Titulo";
-            this.cbx_Titulo.Size = new System.Drawing.Size(236, 21);
+            this.cbx_Titulo.Size = new System.Drawing.Size(264, 21);
             this.cbx_Titulo.TabIndex = 1;
             this.cbx_Titulo.SelectedIndexChanged += new System.EventHandler(this.cbx_Titulo_SelectedIndexChanged);
             // 
@@ -576,7 +576,7 @@
             this.cbx_GrupoNombre.FormattingEnabled = true;
             this.cbx_GrupoNombre.Location = new System.Drawing.Point(129, 45);
             this.cbx_GrupoNombre.Name = "cbx_GrupoNombre";
-            this.cbx_GrupoNombre.Size = new System.Drawing.Size(211, 21);
+            this.cbx_GrupoNombre.Size = new System.Drawing.Size(264, 21);
             this.cbx_GrupoNombre.TabIndex = 1;
             // 
             // lbl_PosicionArreglo
