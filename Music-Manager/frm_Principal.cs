@@ -99,7 +99,6 @@ namespace Music_Manager
         {
             if (MessageBox.Show("¿Esta Seguro de Salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                oSql.Conexion.Close();
                 this.Close();
             }
         }
